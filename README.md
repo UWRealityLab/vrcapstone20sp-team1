@@ -15,7 +15,7 @@ Unity is in a constant development cycle, which means that new versions are rele
 
 You can breakdown the Unity Version as follows:
 
-![Unity Version Breakdown](./img/version_diagram.png "Unity Version")
+![Unity Version Breakdown](./version_diagram.png "Unity Version")
 
 When you start a development cycle of your project, you should pick a year and large version release. For the smoothest development it is recommended that you stick to the same year and large version, but in reality most projects do end up upgrading to new major releases throughout their development cycle, especially multi year projects. Throughout the development cycle, Unity will probably release smaller updates and bug fixes as well. It is ok to install smaller updates, so long as you maintain the same year and large release, at least until you decide to upgrade to a new major release. Usually you should not work in the Alpha or Beta versions because they are not stable releases. If your Unity Version has an a or b at the end, you should follow the downgrading your unity project tutorial, and change to the latest stable build.
 
