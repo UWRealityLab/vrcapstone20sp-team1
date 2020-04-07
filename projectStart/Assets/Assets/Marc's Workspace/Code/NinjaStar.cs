@@ -22,9 +22,4 @@ public class NinjaStar : MonoBehaviour, Weapon
         Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
         return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        gameObject.GetComponent<Collider>().isTrigger = true; 
-    }
 }
