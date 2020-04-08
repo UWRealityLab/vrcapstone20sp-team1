@@ -138,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: f227b5017a7c0184a96c2c26f1e4408d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7
+      value: -7.67
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: f227b5017a7c0184a96c2c26f1e4408d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: f227b5017a7c0184a96c2c26f1e4408d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.7
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: f227b5017a7c0184a96c2c26f1e4408d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -256,6 +256,22 @@ CapsuleCollider:
   m_Height: 5.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &9331019
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9331014}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &17886115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!65 &88871419
@@ -675,6 +691,22 @@ CapsuleCollider:
   m_Height: 5.2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &90633980
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90633975}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &153137621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4927973787200604, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.98
+      value: -8.65
       objectReference: {fileID: 0}
     - target: {fileID: 4927973787200604, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1321,6 +1353,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &354017987
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354017982}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &359275233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1418,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!136 &359275237
@@ -1592,7 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!136 &381555785
@@ -1686,7 +1734,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &518392549
 BoxCollider:
@@ -1897,6 +1945,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &603249399
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603249394}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &705863656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2032,6 +2096,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &705863662
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705863657}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &708192841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2123,7 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!65 &708192844
@@ -2435,7 +2515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!136 &921112922
@@ -2583,7 +2663,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1240572448
 BoxCollider:
@@ -2851,7 +2931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!136 &1468920800
@@ -3019,7 +3099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!65 &1549498237
@@ -3180,7 +3260,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1683147026
 BoxCollider:
@@ -3191,7 +3271,7 @@ BoxCollider:
   m_GameObject: {fileID: 1683147025}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3273,7 +3353,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1730210427
 BoxCollider:
@@ -3366,7 +3446,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1765151208
 BoxCollider:
@@ -3533,7 +3613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa429067297a044eb622f4f9c0829b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatteredversion: {fileID: 1168907351885854, guid: b3dc6d5c1ab8158418b2f82094975753,
+  shatteredversion: {fileID: 1168907351885854, guid: c18af78ac4b2a9340a796a63d0f88063,
     type: 3}
   scalar: 0
 --- !u!65 &1785056683
@@ -3828,6 +3908,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1896997829
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896997824}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1938790416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3941,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &1938790417
 BoxCollider:
@@ -4244,7 +4340,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!65 &2009592630
 BoxCollider:
