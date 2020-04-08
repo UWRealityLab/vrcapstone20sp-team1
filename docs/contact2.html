@@ -48,9 +48,9 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="about2.html">About 2</a></li>
                         <li><a href="about3.html">About 3</a></li>
-                        <li><a href="contact.html" class="current">Contact</a>
+                        <li><a href="contact.html">Contact</a>
                             <ul class="sub-menu">
-                                <li><a href="contact2.html">Contact + Map</a></li>
+                                <li><a href="contact2.html" class="current">Contact + Map</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -60,17 +60,16 @@
             <div class="clear"></div>
         </div>
 
-
         <div id="content" class="site-content">
 
             <div class="header-image">
-                <h1 class="entry-title">Contact</h1>
+                <h1 class="entry-title">Contact + Map</h1>
                 <img src="demo-images/katt_contact_image01.jpg" alt="">
             </div>
             <article class="content-1170 center-relative">
                 <div class="content-wrapper">
                     <div class="entry-content">
-                        <div class="one_half ">
+                        <div class="one_half">
                             <p><strong>Stay in touch</strong></p>
                             <p>We choose to go to the moon in this decade and do the other things, not because they are easy.</p>
                             <br>
@@ -86,19 +85,25 @@
                             </p>
                         </div>
                         <div class="one_half last ">
-                            <div class="contact-form">
-                                <p><input id="name" type="text" name="your-name" placeholder="Name"></p>
-                                <p><input id="contact-email" type="email" name="your-email" placeholder="Email"></p>
-                                <p><input id="subject" type="text" name="your-subject" placeholder="Subject"></p>
-                                <p><textarea id="message" name="your-message" placeholder="Message"></textarea></p>
-                                <p><input type="submit" onClick="SendMail()" value="SEND"></p>
-                            </div>
+                            <br>
+                            <p>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4274.290564544589!2d-75.2952832049782!3d40.753669641460846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2srs!4v1444506658649" width="600" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                                <br>
+                            </p>
                         </div>
                         <div class="clear"></div>
+                        <br>
+                        <br>
+                        <div class="contact-form">
+                            <p><input id="name" type="text" name="your-name" placeholder="Name"></p>
+                            <p><input id="contact-email" type="email" name="your-email" placeholder="Email"></p>
+                            <p><input id="subject" type="text" name="your-subject" placeholder="Subject"></p>
+                            <p><textarea id="message" name="your-message" placeholder="Message"></textarea></p>
+                            <p><input type="submit" onClick="SendMail()" value="SEND"></p>
+                        </div>
                     </div>
                 </div>
             </article>
-
         </div>
 
         <!--Footer-->
