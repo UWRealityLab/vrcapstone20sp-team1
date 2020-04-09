@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html lang="en-US">
     <head>
         <title>Katt - Tasty Blog Html Template</title>
@@ -68,21 +68,54 @@
             </div>
             <article class="content-1170 center-relative">
                 <div class="content-wrapper">
+                    <h1></h1>
                     <div class="entry-content">
                         <div class="one_half">
-                            <strong>State of our company</strong><br>
-                            We choose to go to the moon in this decade and do the other things, not because they are easy.<p></p>
+
+                            <strong>Planning</strong>
                             <br>
                             <p>
-                                Because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone and one.
-                                <br>
+                                After our first meeting with MAW, we had a pretty good idea of what the project would look like.
+                                Our story focuses  on the ninja is going to other dimmension to train and protect some object that is special.
+                                During the training, dojo is attacked and ninja has to fight 6 green monsters while accomponied by his grandpa in form of
+                                spirit or a ghost. Over all experience should be around 5-6 minutes and easy for 5 year old to follow. To avoid motion
+                                sickness, we decided to avoid any movement that invloved jumping, running/walking, climbing walls and etc. Also, user will not be able to die,
+                                which means we will not be tracking players health or allow monsters have contact with player.
+                                <br />
+                                <br />
+                                The game consisted of multiple parts - training which included throwing ninja stars at targets,
+                                then breaking boxes and other breakable objects. After the training ended, player will be attacked in 3 waves by monsters. 
+                                We haven't decided if number of monsters will increase with each wave or decrease, but we agreed that last monster that attacks should be a boss. 
+                                When the boss is defited, it should either drop object or object will appear in front of the user. Since we are  not sure what device will be used in the end
+                                we decided to go with steam vr plugin. That way we can work while using universal windows platform and for the actually experience we might use Vive. 
+                                Since we are working with MAW, are are not implementning how the assets look, and focusing on the behavior and interactions between objects. 
                             </p>
                         </div>
                         <div class="one_half last">
+                            <strong>Progress</strong>
                             <br>
                             <p>
-                                Which we intend to win. With a warning label this big, you know they gotta be fun. Bring me the forms I need to fill out to have her taken away. I decline the title of iron cook and accept the lesser title of zinc saucier, which I just made up. Dinosaurs are extinct today because they lacked opposable thumbs and the brainpower to build a space program. Houston, Tranquillity Base here.
+                                We started with basic structure of the game - gameManager, navigation, weapons and breakable objects.
+                                <br />
+                                Natalia. Natalia implamented unique gameManager and game logic like number of waves of monsters trasitions between steps of the game.
+                                MonsterController script controles when monsters attack and follow player using navMesh. Natalia also organized basic pratice scene
+                                with prototype of environment. 
+                                <br />
+                                Corey. Corey perfecte the descructble obkect interactions. Destructible script keeps track of all the the weapons that can effect descructible object.
+                                On the contact with one of the weapons, breakable object instance is destroyed and instance of box made of pieces is rendered which created an 
+                                effect of object being broken in pieces. 
+                                <br />
+                                Marc. Marc implemented two weapons - ninja Star and Sword. Marc focused on interaction between player and weapon, as how the weapon appears, looks when
+                                player is holding it and following the players hand. Marc also implemented the ninja star behavior - flying and slight curve of the trajectory.
+                                He also build thid website. 
+                                <br />
+                                Lily. Lily first figured out the by figuring out how our navigation would be and navmesh. After that she moved on to figuring out multiplayer behavior
+                                for the spirit. Thought gradpa will not be able to break boxes around with player, he will be there to bring guidence. Lily also worked on
+                                the video pitch.
+
+
                                 <br>
+
                             </p>
                         </div>
                         <div class="clear"></div>
@@ -91,15 +124,18 @@
                     <div class="full-width-content">
                         <div class="single-post-shortcode">
                             <div class="post-text">
-                                <a href="single.html">
-                                    It suddenly struck me that that tiny pea, pretty and blue, was the Earth. I put up my thumb and shut one eye, and my thumb blotted out the planet Earth. I didn’t feel like a giant. I felt very, very small.
-                                </a>
+                                <strong>What is next?</strong>
+                                <br>
+                                <p>
+                                    Next week we will continue to improve the game experience. We will make sure that boxes appear only when needed, so during
+                                    second part of training. We will also figire out transition to final scene and how it should look and the necklace item. We will continue on working on 
+                                    multiplayer experience and ghost appearance. We are plannign to also add resistance and life bars for monsters to that they wouldn't be able to be killed 
+                                    by one strike. 
+                                    
+                                    <br>
+                                </p>
                             </div>
-                            <ul class="cat-links">
-                                <li>
-                                    <a href="#">Design</a>
-                                </li>
-                            </ul>
+                            
                         </div>
                         <div class="clear"></div>
                     </div>
