@@ -426,7 +426,9 @@ body.blog .more-posts
 }
 .blog-item-holder .one_title .entry-title
 {
-    font-size: 36px;
+    font-family: 'naruto', sans-serif, Arial;
+    color:  #841F27;
+    font-size: 144px;
     line-height: 40px;
     font-weight: 700;
 }
