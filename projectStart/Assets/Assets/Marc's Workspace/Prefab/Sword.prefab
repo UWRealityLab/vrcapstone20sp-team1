@@ -65,7 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 26021274ef3a7314b9f0df5fc9678ac0, type: 2}
-  - {fileID: 824015559753126921, guid: 74790bae4a2daf048b7166f4a5310fb8, type: 3}
+  - {fileID: 2100000, guid: 26021274ef3a7314b9f0df5fc9678ac0, type: 2}
   - {fileID: 2100000, guid: d334632c94c5c3b4aba66fcfdb4568d8, type: 2}
   - {fileID: 2100000, guid: d334632c94c5c3b4aba66fcfdb4568d8, type: 2}
   m_StaticBatchInfo:
@@ -251,3 +251,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 10
+  fadeInDurationinS: 0.25
