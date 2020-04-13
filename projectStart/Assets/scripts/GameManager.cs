@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private string _currentLevel = string.Empty;
     private readonly string[] LEVELS = { "ninjaStars", "breakObjects", "fightMonsters", "final" };
     private int attackWave = 0; //which attackWave is currently active
-    private int deadMonsters = 0;
 
     public static GameManager GetInstance()
     {
@@ -27,10 +26,6 @@ public class GameManager : MonoBehaviour
         return _currentLevel;
     }
 
-    public void IncrementDead()
-    {
-        deadMonsters++;
-    }
     public void SetLevelToNinjaStars()
     {
         _currentLevel = LEVELS[0];
@@ -40,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         _currentLevel = LEVELS[1];
         Debug.Log(_currentLevel);
+        GameObject instance = Instantiate(Resources.Load<GameObject>("breakableObjects"));
         //render boxes 
         //make boxes appear
     }

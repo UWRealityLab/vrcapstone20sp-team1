@@ -45,8 +45,5 @@ public class MonsterController : MonoBehaviour
         }        
         
     }
-    void onDestroy()
-    {
-        manager.IncrementDead();
-    }
+
 }
