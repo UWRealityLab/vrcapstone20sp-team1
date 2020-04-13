@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9512d54cc19c3e418ae1159afabc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 69
+  damageMultiplier: 72
+  aimAssistValue: 0.05
+  aimAssistConeAngle: 5
 --- !u!64 &6527410739436522888
 MeshCollider:
   m_ObjectHideFlags: 0

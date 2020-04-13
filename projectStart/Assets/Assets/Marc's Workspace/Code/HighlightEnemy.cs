@@ -24,13 +24,19 @@ public class HighlightEnemy : MonoBehaviour
 
         foreach (GameObject enemy in enemies)
         {
+            // If both the x and y coordinate of the returned point is between 0 and 1 (and the z coordinate is positive), then the point is seen by the camera.
+            
             Vector3 pos = cam.WorldToViewportPoint(enemy.transform.position);
-            float dist = Mathf.Sqrt( Mathf.Pow(Mathf.Abs(pos.x) - 0.5f, 2) + Mathf.Pow(Mathf.Abs(pos.y) - 0.5f, 2));
 
-            if(nearestDist.CompareTo(dist) > 0)
+            if (pos.x >= 0 && pos.x <= 1 && pos.y >= 0 && pos.y <= 1 && pos.z > 0)
             {
-                nearestDist = dist;
-                nearestObj = enemy;
+                float dist = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(pos.x) - 0.5f, 2) + Mathf.Pow(Mathf.Abs(pos.y) - 0.5f, 2));
+
+                if (nearestDist.CompareTo(dist) > 0)
+                {
+                    nearestDist = dist;
+                    nearestObj = enemy;
+                }
             }
         }
 
@@ -46,5 +52,8 @@ public class HighlightEnemy : MonoBehaviour
 
     }
 
-
+    public GameObject getHighlightedEnemy()
+    {
+        return highlighted;
+    }
 }
