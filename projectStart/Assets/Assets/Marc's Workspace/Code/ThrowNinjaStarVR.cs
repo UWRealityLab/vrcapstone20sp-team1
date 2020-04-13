@@ -36,10 +36,12 @@ public class ThrowNinjaStarVR : MonoBehaviour
 
     private void Throw()
     {
+        NinjaStar ns = star.GetComponent<NinjaStar>();
         GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
 
         if (target != null)
         {
+
             Vector3 handVelocity = (hand.transform.position - prevHandPos) / Time.deltaTime;
             Vector3 handToTarget = target.transform.position - hand.transform.position;
             float angle = Vector3.Angle(handVelocity, handToTarget);
@@ -48,11 +50,10 @@ public class ThrowNinjaStarVR : MonoBehaviour
             if (angle < aimAssistConeAngle)
             {
                 Debug.Log("aim assist applied");
-                NinjaStar ns = star.GetComponent<NinjaStar>();
                 ns.setAimAssist(target, aimAssistValue);
             }
         }
-
+        ns.setThrowTime(Time.time);
         star = null;
     }
 

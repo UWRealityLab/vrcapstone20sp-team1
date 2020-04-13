@@ -7,6 +7,8 @@ public class EquipSword : MonoBehaviour
 {
     public GameObject swordObject;
     public GameObject swordSpawn;
+    public GameObject emitObject;
+
     public Hand hand;
 
     private GameObject sword;
@@ -29,6 +31,7 @@ public class EquipSword : MonoBehaviour
     private void Uneqiup()
     {
         Destroy(sword);
+        emitObject.GetComponent<ParticleSystem>().Play();
         sword = null;
     }
 

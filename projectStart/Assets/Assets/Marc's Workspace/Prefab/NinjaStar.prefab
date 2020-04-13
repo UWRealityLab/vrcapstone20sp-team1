@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 72
-  aimAssistValue: 0.05
-  aimAssistConeAngle: 5
+  durationBeforeVanishSeconds: 1.5
+  poof: {fileID: 6193982347254071539, guid: f9f70ae200a6d4246b0a49666e688e85, type: 3}
 --- !u!64 &6527410739436522888
 MeshCollider:
   m_ObjectHideFlags: 0

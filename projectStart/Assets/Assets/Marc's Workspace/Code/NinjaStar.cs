@@ -6,10 +6,14 @@ public class NinjaStar : MonoBehaviour, Weapon
 {
 
     public float damageMultiplier;
+    public float durationBeforeVanishSeconds;
+    public GameObject poof;
 
     private GameObject targetEnemy;
     private float aimAssistValue;
     private Vector3 velocity = Vector3.zero;
+
+    private float throwTime = float.MaxValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,13 @@ public class NinjaStar : MonoBehaviour, Weapon
                                                     ref velocity, aimAssistValue,
                                                     gameObject.GetComponent<Rigidbody>().velocity.magnitude);
         }
+
+        if(Time.time > throwTime + durationBeforeVanishSeconds)
+        {
+
+            Instantiate(poof, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
     public int damage()
     {
@@ -37,5 +48,10 @@ public class NinjaStar : MonoBehaviour, Weapon
     {
         targetEnemy = target;
         this.aimAssistValue = aimAssistValue;
+    }
+
+    public void setThrowTime(float time)
+    {
+        this.throwTime = time;
     }
 }
