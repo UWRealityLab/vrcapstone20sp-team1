@@ -3,7 +3,102 @@ guid: e80a49244cb7ed74ba89f63b83c1bcbb
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: 2aee86cd9da4736498266ad3265b826e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07 - Default
+    second: {fileID: 2100000, guid: 8e4e50a303dc18f4d9ef169aef5480b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 09 - Default
+    second: {fileID: 2100000, guid: 085499e7cefc959428363d2e3996ce72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 20 - Default
+    second: {fileID: 2100000, guid: 3678529a22f4ef948b70d40bfb4f249b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 21 - Default
+    second: {fileID: 2100000, guid: d955a12a03cc9a74b902d90fe1162bfe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold
+    second: {fileID: 2100000, guid: 398f82864337c074ca9a6813c043160c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold dragon
+    second: {fileID: 2100000, guid: 5313fa600c6830040b6bf21601d6a4ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold writing
+    second: {fileID: 2100000, guid: 80d048b8718ef954d955dd36e6cc6051, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: katana cloth dark
+    second: {fileID: 2100000, guid: e6e43ec5d57320049916c5671adbd30e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: katana cloth light
+    second: {fileID: 2100000, guid: 00c991b903ee2134b891c72827dfa75f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: a25283951e7895b498d812e9bebd98dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper banner
+    second: {fileID: 2100000, guid: d6d7b662fbad3a643a9917f38af965ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper paint
+    second: {fileID: 2100000, guid: b7f9378a5d64c7549b5efc7d49b96c38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tatami
+    second: {fileID: 2100000, guid: 40905c88f98088e4fa694f43b1843a3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tatami center
+    second: {fileID: 2100000, guid: 2c16a460adae5da479d61b8b7e2ce943, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood darker
+    second: {fileID: 2100000, guid: 5678f2e782d110747a204b835805693a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood main
+    second: {fileID: 2100000, guid: c4acdd3a582567e499f8caa7d194bdc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood1
+    second: {fileID: 2100000, guid: 7d74440d48357d540b966e6cc54004e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: woodp lanks
+    second: {fileID: 2100000, guid: a5d2651e529e93847ad0a53d42d57a9e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
