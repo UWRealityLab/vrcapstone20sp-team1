@@ -9,7 +9,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
     public GameObject starSpawn;
     public Hand hand;
 
-    [Tooltip("The smaller the value the more aggressive the assist")]
+    [Tooltip("Scalar value defining how aggressive the assist is, higher means more assist")]
     public float aimAssistValue;
     [Tooltip("The angle from center to edge of the cone that aim assist is applied")]
     public float aimAssistConeAngle;
@@ -49,8 +49,8 @@ public class ThrowNinjaStarVR : MonoBehaviour
 
             if (angle < aimAssistConeAngle)
             {
-                Debug.Log("aim assist applied");
-                ns.setAimAssist(target, aimAssistValue);
+                Debug.Log("aim assist applied, velocity: " + handVelocity.magnitude);
+                ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
             }
         }
         ns.setThrowTime(Time.time);
@@ -60,7 +60,6 @@ public class ThrowNinjaStarVR : MonoBehaviour
     private void SpawnStar()
     {
         star = Instantiate(starObject, starSpawn.transform.position, starSpawn.transform.rotation) as GameObject;
-
         hand.AttachObject(star, GrabTypes.Pinch);
     }
 }

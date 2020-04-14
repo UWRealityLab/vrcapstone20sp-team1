@@ -10,33 +10,36 @@ public class NinjaStar : MonoBehaviour, Weapon
     public GameObject poof;
 
     private GameObject targetEnemy;
-    private float aimAssistValue;
+    private float aimAssistVelocity;
     private Vector3 velocity = Vector3.zero;
 
     private float throwTime = float.MaxValue;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (targetEnemy != null)
         {
             transform.position = Vector3.SmoothDamp(transform.position, 
                                                     targetEnemy.transform.position, 
-                                                    ref velocity, aimAssistValue,
-                                                    gameObject.GetComponent<Rigidbody>().velocity.magnitude);
+                                                    ref velocity, 
+                                                    0.05f,
+                                                    aimAssistVelocity);
         }
 
+        /* Code to disappear on timeout
         if(Time.time > throwTime + durationBeforeVanishSeconds)
         {
-
             Instantiate(poof, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
+        */
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        /* code to disappear on collision */
+        Instantiate(poof, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
     public int damage()
     {
@@ -44,10 +47,10 @@ public class NinjaStar : MonoBehaviour, Weapon
         return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
     }
 
-    public void setAimAssist(GameObject target, float aimAssistValue)
+    public void setAimAssist(GameObject target, float aimAssistVelocity)
     {
-        targetEnemy = target;
-        this.aimAssistValue = aimAssistValue;
+        this.targetEnemy = target;
+        this.aimAssistVelocity = aimAssistVelocity;
     }
 
     public void setThrowTime(float time)
