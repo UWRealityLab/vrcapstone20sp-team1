@@ -37,21 +37,34 @@ public class ThrowNinjaStarVR : MonoBehaviour
     private void Throw()
     {
         NinjaStar ns = star.GetComponent<NinjaStar>();
-        GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
+        //GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
 
-        if (target != null)
+        GameObject[] enemies;
+
+        enemies = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject target = null;
+        float smallestAngle = float.MaxValue;
+
+        Vector3 handVelocity = (hand.transform.position - prevHandPos) / Time.deltaTime;
+
+        foreach (GameObject enemy in enemies)
         {
 
-            Vector3 handVelocity = (hand.transform.position - prevHandPos) / Time.deltaTime;
-            Vector3 handToTarget = target.transform.position - hand.transform.position;
+            Vector3 handToTarget = enemy.transform.position - hand.transform.position;
             float angle = Vector3.Angle(handVelocity, handToTarget);
-            Debug.Log("angle: " + angle);
 
-            if (angle < aimAssistConeAngle)
-            {
-                Debug.Log("aim assist applied, velocity: " + handVelocity.magnitude);
-                ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
-            }
+            if (smallestAngle.CompareTo(angle) > 0)
+                {
+                    smallestAngle = angle;
+                    target = enemy;
+                }
+        }
+        
+
+        if (smallestAngle< aimAssistConeAngle)
+        {
+            Debug.Log("aim assist applied, velocity: " + handVelocity.magnitude);
+            ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
         }
         ns.setThrowTime(Time.time);
         star = null;
