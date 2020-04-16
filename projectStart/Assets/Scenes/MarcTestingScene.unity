@@ -2939,8 +2939,8 @@ MonoBehaviour:
     type: 3}
   starSpawn: {fileID: 642616247}
   hand: {fileID: 40100358}
-  aimAssistValue: 10
-  aimAssistConeAngle: 45
+  aimAssistValue: 15
+  aimAssistConeAngle: 60
 --- !u!114 &2061191684
 MonoBehaviour:
   m_ObjectHideFlags: 0
