@@ -53,6 +53,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentLevel);
         //the end
     }
+    public GameObject LoadInstance(string prefabN)
+    {
+        GameObject instance = Instantiate(Resources.Load<GameObject>(prefabN));
+        return instance;
+    }
     void Awake()
     {
         if(instance == null)
