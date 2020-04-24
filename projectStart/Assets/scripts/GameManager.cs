@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         _currentLevel = LEVELS[0];
         Debug.Log(_currentLevel);
+        LoadInstance("Targets");
     }
     public void SetLevelToBreakObjects()
     {
@@ -81,13 +82,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentLevel.Equals(LEVELS[0]) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0)
+        if (_currentLevel.Equals(LEVELS[1]) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0)
         {
-            SetLevelToBreakObjects();
-        }else if (_currentLevel.Equals(LEVELS[1]) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0)
+            SetLevelFightMonsters();        }
+        else if (_currentLevel.Equals(LEVELS[2]) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0)
         {
-            SetLevelFightMonsters();
-        }else if (_currentLevel.Equals(LEVELS[2]))
+            SetLevelToNinjaStars();
+        }
+        else if (_currentLevel.Equals(LEVELS[2]))
         {
             if (attackWave == 1 && GameObject.FindGameObjectsWithTag("monster1").Length == 0)
             {

@@ -16,7 +16,7 @@ public class RewardController : MonoBehaviour
     void Update()
     {
         Vector3 v = new Vector3(0, 1, 0); //calculate position of the player
-        if(transform.position.y < 2)
+        if(transform.position.y < 1.2)
         {
             Debug.Log(transform.position);
             transform.Translate(v * Time.deltaTime * speed);
