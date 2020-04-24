@@ -2,32 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardController : MonoBehaviour
+namespace Valve.VR.InteractionSystem
 {
-    public float speed = 0.2f;
-    GameManager manager;
-
-    //public final position;
-    // Start is called before the first frame update
-    void Start()
+    public class RewardController : MonoBehaviour
     {
-        manager = GameManager.GetInstance();
-    }
+        public float speed = 0.2f;
+        GameManager manager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 v = new Vector3(0, 1, 0); //calculate position of the player
-        if(transform.position.y < 1.2)
+        //public final position;
+        // Start is called before the first frame update
+        void Start()
         {
-            Debug.Log(transform.position);
-            transform.Translate(v * Time.deltaTime * speed);
+            manager = GameManager.GetInstance();
         }
-        if (Input.GetMouseButton(0) && !holding)
-        {
-            
-            holding = true;
 
+        // Update is called once per frame
+        void Update()
+        {
+            Vector3 v = new Vector3(0, 1, 0); //calculate position of the player
+            if (transform.position.y < 1.2)
+            {
+                Debug.Log(transform.position);
+                transform.Translate(v * Time.deltaTime * speed);
+            }
+        }
+        [EnumFlags]
+        public Hand.AttachmentFlags attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand;
+        private void HandHoverUpdate(Hand hand)
+        {
+
+            GrabTypes startingGrabType = hand.GetGrabStarting();
+            if (startingGrabType != GrabTypes.None)
+            {
+                hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
+                manager.SetLevelEnd();
+            }
         }
     }
 }
