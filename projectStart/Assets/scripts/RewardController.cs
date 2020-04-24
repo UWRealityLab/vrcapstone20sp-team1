@@ -5,11 +5,13 @@ using UnityEngine;
 public class RewardController : MonoBehaviour
 {
     public float speed = 0.2f;
+    GameManager manager;
+
     //public final position;
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = GameManager.GetInstance();
     }
 
     // Update is called once per frame
@@ -20,6 +22,12 @@ public class RewardController : MonoBehaviour
         {
             Debug.Log(transform.position);
             transform.Translate(v * Time.deltaTime * speed);
+        }
+        if (Input.GetMouseButton(0) && !holding)
+        {
+            
+            holding = true;
+
         }
     }
 }
