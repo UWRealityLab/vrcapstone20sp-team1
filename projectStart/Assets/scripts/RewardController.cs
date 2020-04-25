@@ -7,6 +7,7 @@ namespace Valve.VR.InteractionSystem
     public class RewardController : MonoBehaviour
     {
         public float speed = 0.2f;
+        public GameObject[] effects;
         GameManager manager;
 
         //public final position;
@@ -20,7 +21,7 @@ namespace Valve.VR.InteractionSystem
         void Update()
         {
             Vector3 v = new Vector3(0, 1, 0); //calculate position of the player
-            if (transform.position.y < 1.2)
+            if (transform.position.y < 2)
             {
                 Debug.Log(transform.position);
                 transform.Translate(v * Time.deltaTime * speed);
@@ -35,6 +36,10 @@ namespace Valve.VR.InteractionSystem
             if (startingGrabType != GrabTypes.None)
             {
                 hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
+                for(int i = 0; i < effects.Length; i++)
+                {
+                    Destroy(effects[i]);
+                }
                 manager.SetLevelEnd();
             }
         }

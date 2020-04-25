@@ -37,7 +37,7 @@ public class MonsterController : MonoBehaviour
             }
             else
             {
-                Debug.Log("chasing");
+                
                 agent.SetDestination(player.transform.position);
             }
 

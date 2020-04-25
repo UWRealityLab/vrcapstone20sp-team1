@@ -7,12 +7,15 @@ public class GameManager : MonoBehaviour
 
     //this script will have all information stored about the game and game state
     public GameObject breakableObjects;
+    public AudioClip breakableInst;
+    public AudioClip final;
     private static GameManager instance; //Singelton pattern
     private string _currentLevel = string.Empty;
     private readonly string[] LEVELS = { "Intro", "ninjaStars", "breakObjects", "fightMonsters", "final", "end" };
     private int attackWave = 0; //which attackWave is currently active
     private int deadMonsters = 0;
-
+    private bool InProgress = false;
+    //AudioManager audioManager;
 
     public static GameManager GetInstance()
     {
@@ -30,22 +33,31 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetLevelIntro()
-    {
+    {    
         _currentLevel = LEVELS[0];
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
     {
         _currentLevel = LEVELS[1];
-        //load targets
+        LoadInstance("Targets");
         Debug.Log(_currentLevel);
     }
     public void SetLevelToBreakObjects()
     {
-        _currentLevel = LEVELS[1];
-        Debug.Log(_currentLevel);
-        //GameObject instance = Instantiate(breakableObjects);
+        InProgress = true;
+        StartCoroutine(LoadBreakObjectsScene());
         //make boxes appear
+    }
+    IEnumerator LoadBreakObjectsScene()
+    {
+        Debug.Log("break was called");
+        GetComponent<AudioSource>().PlayOneShot(breakableInst);
+        yield return new WaitForSeconds(1.0f);
+        _currentLevel = LEVELS[2];
+        Debug.Log(_currentLevel);
+        LoadInstance("BreakableObjects");
+        InProgress = false;
     }
     public void SetLevelFightMonsters()
     {
@@ -57,7 +69,9 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelFinal()
     {
+        GetComponent<AudioSource>().PlayOneShot(final);
         _currentLevel = LEVELS[4];
+        LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);
     }
     public void SetLevelEnd()
@@ -66,6 +80,12 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentLevel);
         //the end
     }
+    public GameObject LoadInstance(string prefabN)
+    {
+        GameObject instance = Instantiate(Resources.Load<GameObject>(prefabN));
+        return instance;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -82,6 +102,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //audioManager = AudioManager.GetInstance();
+        breakableInst = Resources.Load<AudioClip>("exellent_01");
+        final = Resources.Load<AudioClip>("Nobility");
         SetLevelIntro();
         Debug.Log(_currentLevel);
     }
