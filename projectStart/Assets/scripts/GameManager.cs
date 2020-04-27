@@ -7,15 +7,14 @@ public class GameManager : MonoBehaviour
 
     //this script will have all information stored about the game and game state
     public GameObject breakableObjects;
-    public AudioClip breakableInst;
-    public AudioClip final;
     private static GameManager instance; //Singelton pattern
     private string _currentLevel = string.Empty;
     private readonly string[] LEVELS = { "Intro", "ninjaStars", "breakObjects", "fightMonsters", "final", "end" };
     private int attackWave = 0; //which attackWave is currently active
     private int deadMonsters = 0;
     private bool InProgress = false;
-    //AudioManager audioManager;
+    private AudioManager audioManager;
+    private GameObject grandpa;
 
     public static GameManager GetInstance()
     {
@@ -33,7 +32,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetLevelIntro()
-    {    
+    {
+        grandpa.GetComponent<GrandpaController>().IntroAction();
         _currentLevel = LEVELS[0];
         Debug.Log(_currentLevel);
     }
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-        GetComponent<AudioSource>().PlayOneShot(breakableInst);
+       
         yield return new WaitForSeconds(1.0f);
         _currentLevel = LEVELS[2];
         Debug.Log(_currentLevel);
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelFinal()
     {
-        GetComponent<AudioSource>().PlayOneShot(final);
+        audioManager.PlayFinal();
         _currentLevel = LEVELS[4];
         LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);
@@ -102,9 +102,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //audioManager = AudioManager.GetInstance();
-        breakableInst = Resources.Load<AudioClip>("exellent_01");
-        final = Resources.Load<AudioClip>("Nobility");
+        grandpa = LoadInstance("Grandpa");
+        audioManager = AudioManager.GetInstance();
+       
         SetLevelIntro();
         Debug.Log(_currentLevel);
     }
