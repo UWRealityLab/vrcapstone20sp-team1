@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     private readonly string[] LEVELS = { "Intro", "ninjaStars", "breakObjects", "fightMonsters", "final", "end" };
     private int attackWave = 0; //which attackWave is currently active
     private int deadMonsters = 0;
-    private bool InProgress = false;
+    private bool inProgress = false;
+    private bool manual = false;
     private AudioManager audioManager;
-    private GameObject grandpa;
+    private Grandpa grandpa;
 
     public static GameManager GetInstance()
     {
@@ -33,46 +34,83 @@ public class GameManager : MonoBehaviour
 
     public void SetLevelIntro()
     {
-        grandpa.GetComponent<GrandpaController>().IntroAction();
         _currentLevel = LEVELS[0];
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
     {
+        inProgress = true;
+        if (!manual)
+        {
+            grandpa.NinjaStarsAction();
+        }
+        StartCoroutine(LoadLevelNinjaStars());
+    }
+    IEnumerator LoadLevelNinjaStars()
+    {
+        yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[1];
         LoadInstance("Targets");
         Debug.Log(_currentLevel);
+        inProgress = false;
     }
     public void SetLevelToBreakObjects()
     {
-        InProgress = true;
+        inProgress = true;
+        if (!manual)
+        {
+            grandpa.BreakObjectsAction();
+        }
         StartCoroutine(LoadBreakObjectsScene());
         //make boxes appear
     }
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-       
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[2];
         Debug.Log(_currentLevel);
         LoadInstance("BreakableObjects");
-        InProgress = false;
+        inProgress = false;
     }
     public void SetLevelFightMonsters()
     {
+        inProgress = true;
+        if (!manual)
+        {
+            grandpa.FightAction();
+        }
+        StartCoroutine(LoadLevelFightMonsters());
+        //call up monsters
+
+    }
+    IEnumerator LoadLevelFightMonsters()
+    {
+        yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[3];
         attackWave++;
         Debug.Log(_currentLevel);
+        inProgress = false;
         //call up monsters
 
     }
     public void SetLevelFinal()
     {
+        inProgress = true;
         audioManager.PlayFinal();
+        if (!manual)
+        {
+            grandpa.FinalAction();
+        }
+        StartCoroutine(LoadLevelFinal());
+    }
+    IEnumerator LoadLevelFinal()
+    {
+        yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[4];
         LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);
+        inProgress = true;
     }
     public void SetLevelEnd()
     {
@@ -102,7 +140,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grandpa = LoadInstance("Grandpa");
+        grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
        
         SetLevelIntro();
@@ -112,15 +150,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_currentLevel.Equals(LEVELS[1]) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0)
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            manual = !manual;
+        }
+
+        if (_currentLevel.Equals(LEVELS[0]) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        {
+            SetLevelToBreakObjects();
+        } else if (_currentLevel.Equals(LEVELS[1]) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0 && !inProgress)
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVELS[2]) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0)
+        else if (_currentLevel.Equals(LEVELS[2]) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
         {
             SetLevelToNinjaStars();
         }
-        else if (_currentLevel.Equals(LEVELS[3]))
+        else if (_currentLevel.Equals(LEVELS[3]) && !inProgress)
         {
             if (attackWave == 1 && GameObject.FindGameObjectsWithTag("monster1").Length == 0)
             {
