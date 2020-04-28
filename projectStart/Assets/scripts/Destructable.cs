@@ -28,7 +28,6 @@ public class Destructable : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("yes to colide" + collision.gameObject.tag);
         if (destroyers.Contains(collision.gameObject.tag) && !destroyed)
         {
             ShatterObject();

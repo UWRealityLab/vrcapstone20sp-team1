@@ -17,16 +17,21 @@ public class ThrowNinjaStarVR : MonoBehaviour
     private Vector3 prevHandPos;
 
     private GameObject star;
+    GameManager manager;
+    void Start()
+    {
+        manager = GameManager.GetInstance();
 
+    }
     // Update is called once per frame
     void Update()
     {
-        if(hand.GetGrabStarting() == GrabTypes.Pinch)
+        if(hand.GetGrabStarting() == GrabTypes.Pinch && !manager.GetLevel().Equals("final") && !manager.GetLevel().Equals("end"))
         {
             hand.TriggerHapticPulse(2000); // doesn't work yet
             SpawnStar();
         } 
-        else if (hand.GetGrabEnding() == GrabTypes.Pinch) 
+        else if (hand.GetGrabEnding() == GrabTypes.Pinch && !manager.GetLevel().Equals("final") && !manager.GetLevel().Equals("end")) 
         {
             Throw();
             hand.TriggerHapticPulse(2000); // doesn't work yet

@@ -9,16 +9,22 @@ public class ThrowNinjaStar : MonoBehaviour
     private bool holding = false;
     private GameObject star;
     private Vector3 throwStart;
+    GameManager manager;
+    void Start()
+    {
+        manager = GameManager.GetInstance();
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0) && !holding)
+        if(Input.GetMouseButton(0) && !holding && !manager.GetLevel().Equals("final"))
         {
             SpawnStar();
             holding = true;
             
-        } else if(!Input.GetMouseButton(0) && holding)
+        } else if(!Input.GetMouseButton(0) && holding && !manager.GetLevel().Equals("final"))
         {
             Throw();
             holding = false;
