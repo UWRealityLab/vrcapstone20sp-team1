@@ -44,9 +44,22 @@ public class ThrowNinjaStarVR : MonoBehaviour
         NinjaStar ns = star.GetComponent<NinjaStar>();
         //GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
 
-        GameObject[] enemies;
+        List<GameObject> enemies = new List<GameObject>();
 
-        enemies = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject[] enem = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject[] intro = GameObject.FindGameObjectsWithTag("IntroObject");
+        GameObject[] breakable = GameObject.FindGameObjectsWithTag("breakableItems");
+        GameObject[] stars = GameObject.FindGameObjectsWithTag("ninjaStarTarget");
+        GameObject[] monster1 = GameObject.FindGameObjectsWithTag("monster1");
+        GameObject[] monster2 = GameObject.FindGameObjectsWithTag("monster2");
+        GameObject[] monster3 = GameObject.FindGameObjectsWithTag("monster3");
+        enemies.AddRange(enem);
+        enemies.AddRange(intro);
+        enemies.AddRange(breakable);
+        enemies.AddRange(stars);
+        enemies.AddRange(monster1);
+        enemies.AddRange(monster2);
+        enemies.AddRange(monster3);
         GameObject target = null;
         float smallestAngle = float.MaxValue;
 
