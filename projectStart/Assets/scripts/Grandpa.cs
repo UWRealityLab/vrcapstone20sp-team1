@@ -11,6 +11,9 @@ public class Grandpa : MonoBehaviour
     public AudioClip ninjaStars;
     public AudioClip fight;
     public AudioClip final;
+    public AudioClip end;
+    private long time;
+    GameManager manager;
     public static Grandpa GetInstance()
     {
         return instance;
@@ -30,11 +33,14 @@ public class Grandpa : MonoBehaviour
     }
     void Start()
     {
+        manager = GameManager.GetInstance();
         intro = Resources.Load<AudioClip>("success_02");
         breakObjects = Resources.Load<AudioClip>("goodJob_06");
         ninjaStars = Resources.Load<AudioClip>("exellent_01");
         fight = Resources.Load<AudioClip>("LevelUp_01");
         final = Resources.Load<AudioClip>("gameover_03");
+        end = Resources.Load<AudioClip>("gameover_01");
+        time = 1;
 
     }
 
@@ -53,7 +59,7 @@ public class Grandpa : MonoBehaviour
         Debug.Log("Intro Action called");
         if (breakObjects == null)
         {
-            intro = Resources.Load<AudioClip>("goodJob_06");
+            breakObjects = Resources.Load<AudioClip>("goodJob_06");
         }
         GetComponent<AudioSource>().PlayOneShot(breakObjects);
     }
@@ -61,7 +67,7 @@ public class Grandpa : MonoBehaviour
     {
         if (ninjaStars == null)
         {
-            intro = Resources.Load<AudioClip>("exellent_01");
+            ninjaStars = Resources.Load<AudioClip>("exellent_01");
         }
         GetComponent<AudioSource>().PlayOneShot(ninjaStars);
     }
@@ -69,7 +75,7 @@ public class Grandpa : MonoBehaviour
     {
         if (fight == null)
         {
-            intro = Resources.Load<AudioClip>("success_02");
+            fight = Resources.Load<AudioClip>("success_02");
         }
         GetComponent<AudioSource>().PlayOneShot(fight);
     }
@@ -77,14 +83,34 @@ public class Grandpa : MonoBehaviour
     {
         if (final == null)
         {
-            intro = Resources.Load<AudioClip>("gameover_03");
+             final = Resources.Load<AudioClip>("gameover_03");
         }
         GetComponent<AudioSource>().PlayOneShot(final);
+    }
+    public void EndAction()
+    {
+        if (end == null)
+        {
+            end = Resources.Load<AudioClip>("gameover_01");
+        }
+        GetComponent<AudioSource>().PlayOneShot(end);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (time % 1500 == 0 && manager.GetLevel() == "Intro" && !manager.InProgress())
+        {
+            IntroAction();
+        }else if (manager.InProgress())
+        {
+            time = 0;
+        }
+        if (time % 1000 == 0 && manager.GetLevel() == "end" && !manager.InProgress())
+        {
+            EndAction();
+        }
+        time++;
 
     }
 }

@@ -54,7 +54,6 @@ public class ThrowNinjaStarVR : MonoBehaviour
         //GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
 
         List<GameObject> enemies = CollectEnemies();
-
         GameObject target = null;
         float smallestAngle = float.MaxValue;
 

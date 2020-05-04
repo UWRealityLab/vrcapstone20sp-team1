@@ -36,8 +36,7 @@ public class MonsterController : MonoBehaviour
                 agent.SetDestination(transform.position);
             }
             else
-            {
-                
+            {               
                 agent.SetDestination(player.transform.position);
             }
 

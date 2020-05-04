@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         return _currentLevel;
     }
 
+    public bool InProgress()
+    {
+        return inProgress;
+    }
     public void SetLevelIntro()
     {
         _currentLevel = LEVELS[0];
@@ -109,8 +113,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[4];
         LoadInstance("RewardFinal");
+        LoadInstance("Effects");
         Debug.Log(_currentLevel);
-        inProgress = true;
+        inProgress = false;
     }
     public void SetLevelEnd()
     {
@@ -154,7 +159,6 @@ public class GameManager : MonoBehaviour
         {
             manual = !manual;
         }
-
         if (_currentLevel.Equals(LEVELS[0]) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakObjects();
