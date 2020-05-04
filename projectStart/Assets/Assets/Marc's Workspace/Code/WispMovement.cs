@@ -1,35 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WispMovement : MonoBehaviour
 {
+    public Transform playerPosition;
+    public Camera playerCamera;
+    public float followSpeed = 0.1f;
+    public float maxSpeed = 10;
 
-    public float floatStrength = 1;
-    public float floatSpeed = 1;
-
-    private float sinedValue;
-    private Vector3 prevAnchorPos;
-
+    private Vector3 velocity = Vector3.zero;
+    private Vector3 hoverPos;
+    private float hoverRadius;
+    private GameObject target;
     void Start()
     {
-        sinedValue = Time.time;
-        prevAnchorPos = GetComponentInParent<Transform>().position;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        Vector3 deltaPos = (GetComponentInParent<Transform>().position - prevAnchorPos);
-        float parentSpeed = Mathf.Sqrt(deltaPos.x * deltaPos.x + deltaPos.z * deltaPos.z);
-        sinedValue += Time.deltaTime * (2 + (parentSpeed * 500));
+        if (target == null)
+        {
+            Transform camera = playerCamera.GetComponent<Transform>();
+            Vector3 loc = playerPosition.position + Vector3.Normalize(camera.forward + (camera.up * 0.65f) + (camera.right * 0.5f)) * 4;
+            transform.position = Vector3.SmoothDamp(transform.position, loc, ref velocity, followSpeed, maxSpeed);
+        } else
+        {
+            if ((hoverPos - this.transform.position).magnitude > hoverRadius)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, hoverPos, ref velocity, followSpeed, maxSpeed);
+            } else
+            {
+                transform.RotateAround(hoverPos, Vector3.up, 360 * Time.deltaTime);
+            }
+        }
 
-        Debug.Log((2 + (parentSpeed * 500)));
+        
+    }
 
-        transform.position = new Vector3(transform.position.x,
-            GetComponentInParent<Transform>().position.y + ((float)Mathf.Sin(sinedValue) * floatStrength),
-            transform.position.z);
+    public void setTarget(GameObject target)
+    {
+        this.target = target;
+        this.hoverPos = this.target.GetComponent<Transform>().position + new Vector3(0, this.target.GetComponent<Renderer>().bounds.size.y / 2 + 0.75f, 0);
+        this.hoverRadius = (this.target.GetComponent<Renderer>().bounds.size.x / 2) + 0.25f;
+    }
 
-
-        prevAnchorPos = GetComponentInParent<Transform>().position;
+    public void unsetTarget()
+    {
+        this.target = null;
+        this.hoverPos = Vector3.zero;
+        this.hoverRadius = 0;
     }
 }
