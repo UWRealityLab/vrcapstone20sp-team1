@@ -6,7 +6,7 @@ namespace Valve.VR.InteractionSystem
 {
     public class RewardController : MonoBehaviour
     {
-        public float speed = 0.2f;
+        public float speed = 0.1f;
         public GameObject[] effects;
         GameManager manager;
 

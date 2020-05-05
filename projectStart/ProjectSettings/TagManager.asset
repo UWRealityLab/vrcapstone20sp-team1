@@ -16,6 +16,7 @@ TagManager:
   - FxTemporaire
   - sword
   - enemy
+  - IntroObject
   layers:
   - Default
   - TransparentFX
