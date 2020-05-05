@@ -8,6 +8,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
     public GameObject starObject;
     public GameObject starSpawn;
     public Hand hand;
+    public string[] enemyTags;
 
     [Tooltip("Scalar value defining how aggressive the assist is, higher means more assist")]
     public float aimAssistValue;
@@ -15,28 +16,36 @@ public class ThrowNinjaStarVR : MonoBehaviour
     public float aimAssistConeAngle;
 
     private Vector3 prevHandPos;
-
     private GameObject star;
-    GameManager manager;
+    private bool isActive;
     void Start()
     {
-        manager = GameManager.GetInstance();
-
+        isActive = true;
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if(hand.GetGrabStarting() == GrabTypes.Pinch && !manager.GetLevel().Equals("final") && !manager.GetLevel().Equals("end"))
+        if(hand.GetGrabStarting() == GrabTypes.Pinch && isActive)
         {
-            hand.TriggerHapticPulse(2000); // doesn't work yet
+            hand.TriggerHapticPulse(2000);
             SpawnStar();
         } 
-        else if (hand.GetGrabEnding() == GrabTypes.Pinch && !manager.GetLevel().Equals("final") && !manager.GetLevel().Equals("end")) 
+        else if (hand.GetGrabEnding() == GrabTypes.Pinch && isActive) 
         {
             Throw();
-            hand.TriggerHapticPulse(2000); // doesn't work yet
+            hand.TriggerHapticPulse(2000); 
         }
         prevHandPos = hand.transform.position;
+    }
+
+    public void Activate()
+    {
+        isActive = true;
+    }
+
+    public void Unactivate()
+    {
+        isActive = false;
     }
 
     private void Throw()
@@ -44,22 +53,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
         NinjaStar ns = star.GetComponent<NinjaStar>();
         //GameObject target = this.gameObject.GetComponent<HighlightEnemy>().getHighlightedEnemy();
 
-        List<GameObject> enemies = new List<GameObject>();
-
-        GameObject[] enem = GameObject.FindGameObjectsWithTag("enemy");
-        GameObject[] intro = GameObject.FindGameObjectsWithTag("IntroObject");
-        GameObject[] breakable = GameObject.FindGameObjectsWithTag("breakableItems");
-        GameObject[] stars = GameObject.FindGameObjectsWithTag("ninjaStarTarget");
-        GameObject[] monster1 = GameObject.FindGameObjectsWithTag("monster1");
-        GameObject[] monster2 = GameObject.FindGameObjectsWithTag("monster2");
-        GameObject[] monster3 = GameObject.FindGameObjectsWithTag("monster3");
-        enemies.AddRange(enem);
-        enemies.AddRange(intro);
-        enemies.AddRange(breakable);
-        enemies.AddRange(stars);
-        enemies.AddRange(monster1);
-        enemies.AddRange(monster2);
-        enemies.AddRange(monster3);
+        List<GameObject> enemies = CollectEnemies();
         GameObject target = null;
         float smallestAngle = float.MaxValue;
 
@@ -92,5 +86,14 @@ public class ThrowNinjaStarVR : MonoBehaviour
     {
         star = Instantiate(starObject, starSpawn.transform.position, starSpawn.transform.rotation) as GameObject;
         hand.AttachObject(star, GrabTypes.Pinch);
+    }
+
+    private List<GameObject> CollectEnemies()
+    {
+        List<GameObject> enemies = new List<GameObject>();
+        foreach(string tag in enemyTags) {
+            enemies.AddRange(GameObject.FindGameObjectsWithTag(tag));
+        }
+        return enemies;
     }
 }
