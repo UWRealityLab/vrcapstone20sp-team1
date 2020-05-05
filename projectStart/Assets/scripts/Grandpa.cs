@@ -12,6 +12,7 @@ public class Grandpa : MonoBehaviour
     public AudioClip fight;
     public AudioClip final;
     public AudioClip end;
+    
     private long time;
     GameManager manager;
     public static Grandpa GetInstance()
@@ -96,6 +97,7 @@ public class Grandpa : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(end);
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -109,6 +111,11 @@ public class Grandpa : MonoBehaviour
         if (time % 1000 == 0 && manager.GetLevel() == "end" && !manager.InProgress())
         {
             EndAction();
+        }
+        if (time == 1000 && manager.GetLevel() == "breakObjects" && !manager.InProgress())
+        {
+           AudioClip n = end = Resources.Load<AudioClip>("n");
+           GetComponent<AudioSource>().PlayOneShot(n);
         }
         time++;
 

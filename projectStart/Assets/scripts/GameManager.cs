@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     {
         return inProgress;
     }
+    public bool IsManual()
+    {
+        return manual;
+    }
     public void SetLevelIntro()
     {
         _currentLevel = LEVELS[0];
