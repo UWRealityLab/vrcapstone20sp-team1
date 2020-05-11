@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class GameManager : MonoBehaviour
 {
 
     //this script will have all information stored about the game and game state
+    public StandingTargetSystem[] standingTargetSystems;
     public GameObject breakableObjects;
     private static GameManager instance; //Singelton pattern
     private string _currentLevel = string.Empty;
@@ -78,7 +80,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[2];
         Debug.Log(_currentLevel);
-        LoadInstance("BreakableObjects");
+        //LoadInstance("BreakableObjects");
+        SpawnSwordTargets();
         inProgress = false;
     }
     public void SetLevelFightMonsters()
@@ -133,6 +136,26 @@ public class GameManager : MonoBehaviour
         return instance;
     }
 
+    private void SpawnSwordTargets()
+    {
+        foreach(StandingTargetSystem system in standingTargetSystems)
+        {
+            system.SpawnTarget();
+        }
+    }
+    private bool SwordTargetsCleared()
+    {
+        foreach (StandingTargetSystem system in standingTargetSystems)
+        {
+            if(system.HasTarget())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -170,7 +193,7 @@ public class GameManager : MonoBehaviour
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVELS[2]) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
+        else if (_currentLevel.Equals(LEVELS[2]) && SwordTargetsCleared() && !inProgress)
         {
             SetLevelToNinjaStars();
         }
