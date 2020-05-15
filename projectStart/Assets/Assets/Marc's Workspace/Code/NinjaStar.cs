@@ -22,7 +22,7 @@ public class NinjaStar : MonoBehaviour, Weapon
             transform.position = Vector3.SmoothDamp(transform.position, 
                                                     targetEnemy.transform.position, 
                                                     ref velocity, 
-                                                    0.3f,
+                                                    0.05f,
                                                     aimAssistVelocity);
         }
 

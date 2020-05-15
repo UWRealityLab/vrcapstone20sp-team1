@@ -16,7 +16,8 @@ public class Destructable : MonoBehaviour
         destroyers.Add("sphere");
         destroyers.Add("ninjaStar");
         destroyers.Add("sword");
-        
+        destroyers.Add("airSlash");
+
         destroyed = false;
     }
 
