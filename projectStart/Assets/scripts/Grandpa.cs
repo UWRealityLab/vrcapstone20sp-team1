@@ -12,6 +12,7 @@ public class Grandpa : MonoBehaviour
     public AudioClip fight;
     public AudioClip final;
     public AudioClip end;
+    public AudioClip[] fighting; 
     
     private long time;
     GameManager manager;
@@ -95,6 +96,11 @@ public class Grandpa : MonoBehaviour
             end = Resources.Load<AudioClip>("gameover_01");
         }
         GetComponent<AudioSource>().PlayOneShot(end);
+    }
+    
+    public void onMonsterDeath()
+    {
+        GetComponent<AudioSource>().PlayOneShot(fighting[Random.Range(0, fighting.Length)]);
     }
 
 

@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private string _currentLevel = string.Empty;
     private readonly string[] LEVELS = { "Intro", "ninjaStars", "breakObjects", "fightMonsters", "final", "end" };
     private int attackWave = 0; //which attackWave is currently active
-    private int deadMonsters = 0;
     private bool inProgress = false;
     private bool manual = false;
     private AudioManager audioManager;
@@ -119,8 +118,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVELS[4];
-        LoadInstance("RewardFinal");
-        LoadInstance("Effects");
+       // LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);
         inProgress = false;
     }

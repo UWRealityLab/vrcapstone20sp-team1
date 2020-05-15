@@ -9,11 +9,14 @@ public class StandingTargetSystem : MonoBehaviour
     public GameObject targetObject;
     public float spawnPeriodSeconds;
 
+    public bool autoSpawn;
+
     private  GameObject currentTarget;
     // Start is called before the first frame update
     void Start()
     {
-        //SpawnTarget();
+        if(autoSpawn) 
+            SpawnTarget();
     }
 
     // Update is called once per frame
@@ -23,6 +26,9 @@ public class StandingTargetSystem : MonoBehaviour
         {
             currentTarget.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
+
+        if (autoSpawn && currentTarget == null)
+            SpawnTarget();
     }
 
     public bool SpawnTarget()

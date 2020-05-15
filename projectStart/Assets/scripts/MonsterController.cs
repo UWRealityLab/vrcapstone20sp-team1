@@ -12,13 +12,15 @@ public class MonsterController : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
     GameManager manager;
+    Grandpa grandpa;
 
 
     // Start is called before the first frame update
     void Start()
     {
         manager = GameManager.GetInstance();
-        if(agent == null || manager == null)
+        grandpa = Grandpa.GetInstance();
+        if (agent == null || manager == null)
         {
             Debug.Log("something is wrong");
         }
@@ -43,6 +45,13 @@ public class MonsterController : MonoBehaviour
             //follow the Player!!
         }        
         
+    }
+    void OnDestroy()
+    {
+        if(this.wave < 3)
+        {
+            grandpa.onMonsterDeath();
+        }
     }
 
 }

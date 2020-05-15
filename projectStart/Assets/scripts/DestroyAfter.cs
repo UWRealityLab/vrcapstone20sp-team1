@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyAfter : MonoBehaviour
 {
     // Start is called before the first frame update
+    public int seconds = 5;
     void Start()
     {
         StartCoroutine(ExampleCoroutine());
@@ -16,7 +17,7 @@ public class DestroyAfter : MonoBehaviour
        
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(seconds);
 
         Destroy(gameObject);
     }

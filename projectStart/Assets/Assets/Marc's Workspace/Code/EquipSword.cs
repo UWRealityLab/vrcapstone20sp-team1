@@ -10,21 +10,22 @@ public class EquipSword : MonoBehaviour
     public GameObject emitObject;
 
     public Hand hand;
+    public Camera cam;
 
     private GameObject sword;
 
     // Update is called once per frame
     void Update()
     {
-        if (hand.GetGrabStarting() != GrabTypes.None)
+        if (hand.GetGrabStarting() == GrabTypes.Pinch)
         {
-            hand.TriggerHapticPulse(2000); // doesn't work yet
+            hand.TriggerHapticPulse(2000);
             Equip();
         }
-        else if (hand.GetGrabEnding() != GrabTypes.None)
+        else if (hand.GetGrabEnding() == GrabTypes.Pinch)
         {
             Uneqiup();
-            hand.TriggerHapticPulse(2000); // doesn't work yet
+            hand.TriggerHapticPulse(2000);
         }
     }
 
@@ -40,6 +41,8 @@ public class EquipSword : MonoBehaviour
         sword = Instantiate(swordObject, swordSpawn.GetComponent<Transform>()) as GameObject;
 
         hand.AttachObject(sword, GrabTypes.Pinch);
+        sword.GetComponent<Sword>().SetHand(hand);
+        sword.GetComponent<Sword>().SetCamera(cam);
     }
 }
 
