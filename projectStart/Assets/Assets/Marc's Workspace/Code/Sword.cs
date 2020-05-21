@@ -14,6 +14,8 @@ public class Sword : MonoBehaviour, Weapon
     public GameObject tip;
     public GameObject hilt;
     public GameObject slash;
+    public Hand hand;
+    public Camera cam;
 
     public float slashSpeedThreshold = 8f;
     public float slashDurationThreshold = 10f; // how many calls to fixedupdate (called 90 times per second)
@@ -26,9 +28,6 @@ public class Sword : MonoBehaviour, Weapon
 
     private Color[] originalColors;
     private float initTime;
-
-    private Hand hand;
-    public Camera cam;
 
     private Vector3 prevHandPos;
     // Start is called before the first frame update
@@ -96,7 +95,7 @@ public class Sword : MonoBehaviour, Weapon
         Vector3 bladeDirection = this.transform.right;
         Vector3 swordVelocity = CalculateTipVelocity();
 
-        Debug.Log(Vector3.Angle(swordVelocity, bladeDirection));
+        //Debug.Log(Vector3.Angle(swordVelocity, bladeDirection));
         float speed = swordVelocity.magnitude;
         if(speed >= slashSpeedThreshold && Vector3.Angle(swordVelocity, bladeDirection) < 90)
         {
@@ -117,7 +116,7 @@ public class Sword : MonoBehaviour, Weapon
             {
                 Vector3 tipArcCenter = ((0.5f * startTipPos) + (1.5f*tip.transform.position)) / 2;
                 Vector3 hiltArcCenter = ((startHiltPos * 0.5f) + (hilt.transform.position) * 1.5f) / 2;
-                Vector3 direction = Vector3.Normalize(tipArcCenter - hiltArcCenter + cam.transform.forward);
+                Vector3 direction = Vector3.Normalize(tipArcCenter - hiltArcCenter + cam.transform.forward * 1.5f);
 
                 hand.TriggerHapticPulse(65535);
 
@@ -126,7 +125,7 @@ public class Sword : MonoBehaviour, Weapon
                 GameObject slsh = Instantiate(slash, tipArcCenter, Quaternion.FromToRotation(Vector3.right, slashAngle));
 
                 slsh.GetComponent<Transform>().localScale = new Vector3((tip.transform.position - startTipPos).magnitude, 0.01f, 0.01f);
-                slsh.GetComponent<Rigidbody>().AddForce(direction * 500);
+                slsh.GetComponent<Rigidbody>().AddForce(direction * 800);
 
 
                 Debug.Log("SLASH! " + count);

@@ -15,18 +15,12 @@ public class EquipSword : MonoBehaviour
     private GameObject sword;
 
     // Update is called once per frame
+    private void Start()
+    {
+        Equip();
+    }
     void Update()
     {
-        if (hand.GetGrabStarting() == GrabTypes.Pinch)
-        {
-            hand.TriggerHapticPulse(2000);
-            Equip();
-        }
-        else if (hand.GetGrabEnding() == GrabTypes.Pinch)
-        {
-            Uneqiup();
-            hand.TriggerHapticPulse(2000);
-        }
     }
 
     private void Uneqiup()

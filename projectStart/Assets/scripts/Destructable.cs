@@ -36,6 +36,15 @@ public class Destructable : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (destroyers.Contains(other.gameObject.tag) && !destroyed)
+        {
+            ShatterObject();
+            destroyed = true;
+        }
+    }
+
     void ShatterObject()
     {
         if (shatteredversion != null)
