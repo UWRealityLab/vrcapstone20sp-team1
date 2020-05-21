@@ -362,14 +362,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8ff8439364c4b43bd4c63b1f5c68ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 10
+  damageMultiplier: 30
   fadeInDurationinS: 0.25
   tip: {fileID: 4915676614332943724}
   hilt: {fileID: 7962097362027248457}
   slash: {fileID: 3680243439878741246, guid: 53deac79df45ce84c936b5c7136fe6f5, type: 3}
+  hand: {fileID: 0}
+  cam: {fileID: 0}
   slashSpeedThreshold: 8
   slashDurationThreshold: 10
-  cam: {fileID: 0}
 --- !u!1 &7962097362027248457
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9512d54cc19c3e418ae1159afabc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 3
+  damageMultiplier: 1
   durationBeforeVanishSeconds: 1.5
   poof: {fileID: 6193982347254071539, guid: f9f70ae200a6d4246b0a49666e688e85, type: 3}
 --- !u!64 &6527410739436522888
