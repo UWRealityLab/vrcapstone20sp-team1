@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Monster : MonoBehaviour
 {
     public int health = 100;
-
+    public AudioClip[] noise;
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.GetComponent<Weapon>() != null)
@@ -28,6 +28,10 @@ public class Monster : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+            }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(noise[Random.Range(0, noise.Length)]);
             }
         }
     }
