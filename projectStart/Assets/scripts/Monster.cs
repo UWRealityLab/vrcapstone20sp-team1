@@ -16,10 +16,7 @@ public class Monster : MonoBehaviour
             health -= w.damage();
             if (w.damage() > 5)
             {
-                float knockback = 2f;
-                NavMeshAgent a = gameObject.GetComponent<NavMeshAgent>();
-                a.Move(transform.forward * -1 * knockback);
-                
+                HitReaction();
             }
             if (collider.gameObject.GetComponent<NinjaStar>() != null)
                 {
@@ -27,12 +24,39 @@ public class Monster : MonoBehaviour
                 }
             if (health <= 0)
             {
-                Destroy(gameObject);
+                Death();
             }
             else
             {
-                GetComponent<AudioSource>().PlayOneShot(noise[Random.Range(0, noise.Length)]);
+                PlayHitAudio();
             }
         }
+    }
+
+    public virtual void Death()
+    {
+        Destroy(gameObject);
+    }
+
+    public virtual void HitReaction()
+    {
+        float knockback = 2f;
+        NavMeshAgent a = gameObject.GetComponent<NavMeshAgent>();
+        a.Move(transform.forward * -1 * knockback);
+    }
+
+    public virtual void Attack(string attackType)
+    {
+
+    }
+
+    public virtual bool isAttacking()
+    {
+        return false;
+    }
+
+    public virtual void PlayHitAudio()
+    {
+        GetComponent<AudioSource>().PlayOneShot(noise[Random.Range(0, noise.Length)]);
     }
 }

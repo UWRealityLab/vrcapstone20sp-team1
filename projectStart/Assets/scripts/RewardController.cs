@@ -28,11 +28,11 @@ namespace Valve.VR.InteractionSystem
             other.y = 0;
             other.x = 0;
             Vector3 v = new Vector3(0, -0.2f, -1); //calculate position of the player
-            if (Vector3.Magnitude(other) > 1 && manager.GetLevel() == "final")
+            if (Vector3.Magnitude(other) > 1 && manager.GetLevel() == GameManager.LEVEL.FINAL)
             {
                 //Debug.Log(transform.position);
                 transform.Translate(v * Time.deltaTime * speed);
-            }else if (manager.GetLevel() == "final" && effectsObject == null)
+            }else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
             {
                 effectsObject = manager.LoadInstance("Effects");
             }

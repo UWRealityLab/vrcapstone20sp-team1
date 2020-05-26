@@ -30,7 +30,7 @@ public class MonsterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.GetAttackWave() >= wave && manager.GetLevel().Equals("fightMonsters"))
+        if (manager.GetAttackWave() >= wave && manager.GetLevel().Equals(GameManager.LEVEL.FIGHT_MONSTERS))
         {
             if(Vector3.Distance(transform.position, player.transform.position) < range)
             {

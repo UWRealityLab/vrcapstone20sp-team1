@@ -19,6 +19,7 @@ TagManager:
   - IntroObject
   - airSlash
   - door
+  - dragon
   layers:
   - Default
   - TransparentFX

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : MonoBehaviour
+public class Dragon :  Monster
 {
     // Start is called before the first frame update
     public Animation anim;
+
+    private bool isDying = false;
     void Start()
     {
         anim.Play("birth");
@@ -16,7 +18,24 @@ public class Dragon : MonoBehaviour
     {
         if(!anim.isPlaying)
         {
+            if(isDying)
+            {
+                Destroy(this.gameObject);
+            }
             anim.Play("attack2");
         } 
+    }
+
+    public override void Death()
+    {
+        anim.Play("die");
+        isDying = true;
+    }
+    public override void HitReaction()
+    {
+    }
+
+    public virtual void PlayHitAudio()
+    {
     }
 }
