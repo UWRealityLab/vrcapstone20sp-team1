@@ -173,8 +173,8 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        // SetLevelIntro();
-        SetLevelFightMonsters();
+         SetLevelIntro();
+        //SetLevelFightMonsters();
         Debug.Log(_currentLevel);
     }
 
