@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3680243439878741245}
   - component: {fileID: 3680243439878741244}
   - component: {fileID: 3680243439878741247}
+  - component: {fileID: 7373253749189751121}
   m_Layer: 0
-  m_Name: Slice Placeholder
+  m_Name: Air Slash
   m_TagString: airSlash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,6 +112,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7373253749189751121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680243439878741246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9826957db570e2b4bb7f95597de82def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &571608009196651558
 PrefabInstance:
   m_ObjectHideFlags: 0

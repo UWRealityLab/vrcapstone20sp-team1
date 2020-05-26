@@ -90,8 +90,6 @@ public class Sword : MonoBehaviour, Weapon
 
     private void AirSlashLogic()
     {
-
-
         Vector3 bladeDirection = this.transform.right;
         Vector3 swordVelocity = CalculateTipVelocity();
 
