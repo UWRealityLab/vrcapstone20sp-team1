@@ -1,24 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Fracture : MonoBehaviour {
     public Transform parts;
     private Transform breaked = null;
     private Vector3 velocity;
+    public HashSet<string> destroyers;
+    bool destroyed;
 
+    void Start()
+    {
+        destroyers = new HashSet<string>();
+        destroyers.Add("sphere");
+        destroyers.Add("ninjaStar");
+        destroyers.Add("sword");
+        destroyers.Add("airSlash");
 
-    private void OnCollisionEnter(Collision collision)
+        destroyed = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
     {
         velocity = transform.GetComponent<Rigidbody>().velocity;
 
-        if (velocity.magnitude < 2.1f) return;
-        Execute();
+        
+        if (destroyers.Contains(collision.gameObject.tag) && !destroyed)
+        {
+            Debug.Log("collition");
+            Execute();
+          //  destroyed = true;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if ((destroyers.Contains(other.gameObject.tag) || other == null) && !destroyed)
+        {
+            Debug.Log("trigger");
+            Execute();
+           // destroyed = true;
+        }
     }
 
 
     public void Execute()
     { 
         if (breaked) return;
+        Debug.Log("execute");
 
         breaked = (Transform)Instantiate(parts, transform.position, transform.rotation);
         breaked.localScale = transform.localScale;

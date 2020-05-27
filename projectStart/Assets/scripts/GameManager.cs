@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
-        //LoadInstance("BreakableObjects");
+        LoadInstance("Vases");
         SpawnSwordTargets();
         inProgress = false;
     }
@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && !inProgress)
+        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
         {
             SetLevelToNinjaStars();
         }
