@@ -21,6 +21,6 @@ public class AirSlash : MonoBehaviour, Weapon
     public int damage()
     {
         Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-        return Mathf.RoundToInt(velocity.magnitude) * damageMultiplier);
+        return Mathf.RoundToInt(velocity.magnitude) * damageMultiplier;
     }
 }
