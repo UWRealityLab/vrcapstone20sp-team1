@@ -23,7 +23,7 @@ public class WispAnimation : MonoBehaviour
         float parentSpeed = Mathf.Sqrt(deltaPos.x * deltaPos.x + deltaPos.z * deltaPos.z);
         sinedValue += Time.deltaTime * (2 + (parentSpeed * 500));
 
-        Debug.Log((2 + (parentSpeed * 500)));
+        //Debug.Log((2 + (parentSpeed * 500)));
 
         transform.position = new Vector3(transform.position.x,
             GetComponentInParent<Transform>().position.y + ((float)Mathf.Sin(sinedValue) * floatStrength),

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6193982347253718227}
   - component: {fileID: 6193982347238513043}
   - component: {fileID: 6193982347238481971}
+  - component: {fileID: 1882761201123813026}
   m_Layer: 0
   m_Name: NinjaStarPoof
   m_TagString: Untagged
@@ -4727,3 +4728,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1882761201123813026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193982347254071539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ef94fc9eba9a5469872e47282e5154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 4

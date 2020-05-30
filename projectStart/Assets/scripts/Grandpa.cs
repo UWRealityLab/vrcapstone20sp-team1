@@ -107,18 +107,18 @@ public class Grandpa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time % 1500 == 0 && manager.GetLevel() == "Intro" && !manager.InProgress())
+        if (time % 1500 == 0 && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
         {
             IntroAction();
         }else if (manager.InProgress())
         {
             time = 0;
         }
-        if (time % 1000 == 0 && manager.GetLevel() == "end" && !manager.InProgress())
+        if (time % 1000 == 0 && manager.GetLevel() == GameManager.LEVEL.END && !manager.InProgress())
         {
             EndAction();
         }
-        if (time == 1000 && manager.GetLevel() == "breakObjects" && !manager.InProgress())
+        if (time == 1000 && manager.GetLevel() == GameManager.LEVEL.BREAK_OBJECTS && !manager.InProgress())
         {
            AudioClip n = end = Resources.Load<AudioClip>("n");
            GetComponent<AudioSource>().PlayOneShot(n);

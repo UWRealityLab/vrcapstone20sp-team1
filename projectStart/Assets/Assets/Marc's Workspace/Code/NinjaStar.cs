@@ -37,6 +37,11 @@ public class NinjaStar : MonoBehaviour, Weapon
 
     void OnCollisionEnter(Collision collision)
     {
+        destroyStar();
+    }
+
+    public void destroyStar()
+    {
         /* code to disappear on collision */
         Instantiate(poof, transform.position, transform.rotation);
         Destroy(this.gameObject);

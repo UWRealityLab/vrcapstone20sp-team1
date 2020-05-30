@@ -9,9 +9,23 @@ public class GameManager : MonoBehaviour
     //this script will have all information stored about the game and game state
     public StandingTargetSystem[] standingTargetSystems;
     public GameObject breakableObjects;
+    public Transform dragonSpawnPoint;
+    public Dragon boss;
     private static GameManager instance; //Singelton pattern
-    private string _currentLevel = string.Empty;
-    private readonly string[] LEVELS = { "Intro", "ninjaStars", "breakObjects", "fightMonsters", "final", "end" };
+    public enum LEVEL
+    {
+        INTRO,
+        BREAK_OBJECTS,
+        NINJA_STARS,
+        FIGHT_MONSTERS,
+        DRAGON_BOSS,
+        FINAL,
+        END
+
+    }
+    private LEVEL _currentLevel;
+
+
     private int attackWave = 0; //which attackWave is currently active
     private bool inProgress = false;
     private bool manual = false;
@@ -28,7 +42,7 @@ public class GameManager : MonoBehaviour
         return attackWave;
     }
 
-    public string GetLevel()
+    public LEVEL GetLevel()
     {
         return _currentLevel;
     }
@@ -43,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelIntro()
     {
-        _currentLevel = LEVELS[0];
+        _currentLevel = LEVEL.INTRO;
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
@@ -58,7 +72,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadLevelNinjaStars()
     {
         yield return new WaitForSeconds(3.0f);
-        _currentLevel = LEVELS[1];
+        _currentLevel = LEVEL.NINJA_STARS;
         LoadInstance("Targets");
         Debug.Log(_currentLevel);
         inProgress = false;
@@ -77,9 +91,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("break was called");
         yield return new WaitForSeconds(3.0f);
-        _currentLevel = LEVELS[2];
+        _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
-        //LoadInstance("BreakableObjects");
+        LoadInstance("Vases");
         SpawnSwordTargets();
         inProgress = false;
     }
@@ -97,13 +111,32 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadLevelFightMonsters()
     {
         yield return new WaitForSeconds(3.0f);
-        _currentLevel = LEVELS[3];
+        _currentLevel = LEVEL.FIGHT_MONSTERS;
         attackWave++;
         Debug.Log(_currentLevel);
         inProgress = false;
         //call up monsters
 
     }
+
+    public void SetLevelDragonBoss()
+    {
+        inProgress = true;
+        if (!manual)
+        {
+            grandpa.FinalAction();
+        }
+        StartCoroutine(LoadLevelDragonBoss());
+    }
+    IEnumerator LoadLevelDragonBoss()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _currentLevel = LEVEL.DRAGON_BOSS;
+        Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
+        Debug.Log(_currentLevel);
+        inProgress = false;
+    }
+
     public void SetLevelFinal()
     {
         inProgress = true;
@@ -116,15 +149,15 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelFinal()
     {
-        yield return new WaitForSeconds(3.0f);
-        _currentLevel = LEVELS[4];
+        yield return new WaitForSeconds(5.0f);
+        _currentLevel = LEVEL.FINAL;
        // LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);
         inProgress = false;
     }
     public void SetLevelEnd()
     {
-        _currentLevel = LEVELS[5];
+        _currentLevel = LEVEL.END;
         Debug.Log(_currentLevel);
         //the end
     }
@@ -172,8 +205,9 @@ public class GameManager : MonoBehaviour
     {
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
-       
-        SetLevelIntro();
+
+         SetLevelIntro();
+        //SetLevelFightMonsters();
         Debug.Log(_currentLevel);
     }
 
@@ -184,18 +218,18 @@ public class GameManager : MonoBehaviour
         {
             manual = !manual;
         }
-        if (_currentLevel.Equals(LEVELS[0]) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakObjects();
-        } else if (_currentLevel.Equals(LEVELS[1]) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0 && !inProgress)
+        } else if (_currentLevel.Equals(LEVEL.NINJA_STARS) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0 && !inProgress)
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVELS[2]) && SwordTargetsCleared() && !inProgress)
+        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
         {
             SetLevelToNinjaStars();
         }
-        else if (_currentLevel.Equals(LEVELS[3]) && !inProgress)
+        else if (_currentLevel.Equals(LEVEL.FIGHT_MONSTERS) && !inProgress)
         {
             if (attackWave == 1 && GameObject.FindGameObjectsWithTag("monster1").Length == 0)
             {
@@ -210,8 +244,12 @@ public class GameManager : MonoBehaviour
             else if (attackWave == 3 && GameObject.FindGameObjectsWithTag("monster3").Length == 0)
             {
 
-                SetLevelFinal();
+                SetLevelDragonBoss();
             }
+        }
+        else if (_currentLevel.Equals(LEVEL.DRAGON_BOSS) && GameObject.FindGameObjectsWithTag("dragon").Length == 0  && !inProgress)
+        {
+            SetLevelFinal();
         }
     }
 }
