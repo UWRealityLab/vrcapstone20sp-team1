@@ -7,30 +7,47 @@ public class SpawnRailingTarget : MonoBehaviour
 
     public Transform targetSpawnPoint;
     public Transform targetDestroyPoint;
+    public Vector3 start, end;
     public RailingTarget target;
     public float spawnPeriodSeconds;
 
-    private float lastSpawn;
+    private int activeTargets;
+
     // Start is called before the first frame update
     void Start()
     {
-        lastSpawn = Time.time;
-        RailingTarget t = Instantiate(target, targetSpawnPoint.position, targetSpawnPoint.rotation);
-        t.velocityFunc = () => Vector3.Normalize(targetDestroyPoint.position - targetSpawnPoint.position);
-        float destroyTime = Time.time + 10;
-        t.destroyConditionFunc = () =>  Time.time > destroyTime;
+        start = targetSpawnPoint.position;
+        end = targetDestroyPoint.position;
+        StartCoroutine(Spawn3Targets());
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Time.time - lastSpawn >= spawnPeriodSeconds)
+        if(activeTargets == 0)
         {
-            lastSpawn = Time.time;
-            RailingTarget t = Instantiate(target, targetSpawnPoint.position, targetSpawnPoint.rotation);
-            t.velocityFunc = () => Vector3.Normalize(targetDestroyPoint.position - targetSpawnPoint.position);
-            float destroyTime = Time.time + 10;
-            t.destroyConditionFunc = () => Time.time > destroyTime;
+            StartCoroutine(Spawn3Targets());
         }
+    }
+    IEnumerator Spawn3Targets()
+    {
+        activeTargets = 3;
+        SpawnTarget(1, 3);
+        yield return new WaitForSeconds(1);
+        SpawnTarget(2, 3);
+        yield return new WaitForSeconds(1);
+        SpawnTarget(3, 3);
+    }
+
+    private void SpawnTarget(int thisNumber, int total)
+    {
+        int spacing = total + 1;
+        RailingTarget t = Instantiate(target, targetSpawnPoint.position, targetSpawnPoint.rotation);
+        t.velocityFunc = () => Mathf.Abs((t.GetAnchor().GetComponent<Transform>().position - ((end - start) * (spacing - thisNumber) / (spacing) + start)).magnitude) > 0.1f ? Vector3.Normalize(targetDestroyPoint.position - targetSpawnPoint.position) * 3 : Vector3.zero;
+        t.targetSystem = this;
+    }
+
+    public void DecrementActiveTargets()
+    {
+        activeTargets--;
+        Debug.Log("targets left: " + activeTargets);
     }
 }

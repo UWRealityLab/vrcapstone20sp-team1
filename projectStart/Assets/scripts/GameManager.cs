@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
-        LoadInstance("Vases");
         SpawnSwordTargets();
         inProgress = false;
     }
@@ -206,8 +205,9 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-         SetLevelIntro();
+        //SetLevelIntro();
         //SetLevelFightMonsters();
+        SetLevelDragonBoss();
         Debug.Log(_currentLevel);
     }
 
@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
+        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && SwordTargetsCleared() && !inProgress)
         {
             SetLevelToNinjaStars();
         }

@@ -8,8 +8,8 @@ public class RailingTarget : MonoBehaviour
     public GameObject destructable;
     public Rigidbody anchor;
 
-    public Func<bool> destroyConditionFunc { get; set; } = null;
     public Func<Vector3> velocityFunc {get; set;} = null;
+    public SpawnRailingTarget targetSystem;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +22,15 @@ public class RailingTarget : MonoBehaviour
         if(velocityFunc != null)
             anchor.velocity = velocityFunc();
 
-        if (destroyConditionFunc != null && destroyConditionFunc())
+        if(GetDestructable() == null)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        targetSystem.DecrementActiveTargets();
     }
 
     public GameObject GetDestructable()
