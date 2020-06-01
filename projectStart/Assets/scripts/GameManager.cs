@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
-        LoadInstance("Vases");
+       // LoadInstance("Vases");
         inProgress = false;
 
     }
