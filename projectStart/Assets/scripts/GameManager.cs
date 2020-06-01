@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         LoadInstance("Vases");
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelFightMonsters()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.FIGHT_MONSTERS;
         attackWave++;
         Debug.Log(_currentLevel);
@@ -124,13 +124,13 @@ public class GameManager : MonoBehaviour
         inProgress = true;
         if (!manual)
         {
-            grandpa.FinalAction();
+            grandpa.DragonAction();
         }
         StartCoroutine(LoadLevelDragonBoss());
     }
     IEnumerator LoadLevelDragonBoss()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
         Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
         Debug.Log(_currentLevel);
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelFinal()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.FINAL;
        // LoadInstance("RewardFinal");
         Debug.Log(_currentLevel);

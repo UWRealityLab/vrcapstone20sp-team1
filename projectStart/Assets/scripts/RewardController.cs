@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
@@ -13,6 +12,7 @@ namespace Valve.VR.InteractionSystem
         GameManager manager;
         public GameObject player;
         private GameObject effectsObject = null;
+        int time = -1;
 
         //public final position;
         // Start is called before the first frame update
@@ -36,6 +36,16 @@ namespace Valve.VR.InteractionSystem
             {
                 effectsObject = manager.LoadInstance("Effects");
             }
+            else if(manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
+            {
+                time++;
+                if(time == 400)
+                {
+                    manager.SetLevelEnd();
+                    Destroy(gameObject);
+
+                }
+            }
         }
         void onDestroy()
         {
@@ -45,7 +55,6 @@ namespace Valve.VR.InteractionSystem
             }
             Destroy(effectsObject);
 
-            manager.SetLevelEnd();
         }
         /*[EnumFlags]
         public Hand.AttachmentFlags attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand;
