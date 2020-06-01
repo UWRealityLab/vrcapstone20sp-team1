@@ -100,7 +100,9 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
+        LoadInstance("Vases");
         inProgress = false;
+
     }
     public void SetLevelFightMonsters()
     {
@@ -212,11 +214,11 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        //SetLevelIntro();
+        SetLevelIntro();
         //SetLevelFightMonsters();
         //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
-        SetLevelToBreakObjects();
+        //SetLevelToBreakObjects();
         Debug.Log(_currentLevel);
     }
 

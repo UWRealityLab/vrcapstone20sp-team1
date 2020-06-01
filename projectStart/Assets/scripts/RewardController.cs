@@ -27,7 +27,7 @@ namespace Valve.VR.InteractionSystem
             Vector3 other = player.transform.position - transform.position;
             other.y = 0;
             other.x = 0;
-            Vector3 v = new Vector3(0, -0.2f, -1); //calculate position of the player
+            Vector3 v = new Vector3(0, -0.1f, -1); //calculate position of the player
             if (Vector3.Magnitude(other) > 1 && manager.GetLevel() == GameManager.LEVEL.FINAL)
             {
                 //Debug.Log(transform.position);
