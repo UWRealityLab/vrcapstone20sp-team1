@@ -9,6 +9,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
     public GameObject starSpawn;
     public Hand hand;
     public string[] enemyTags;
+    public AudioClip throwStarSound;
 
     [Tooltip("Scalar value defining how aggressive the assist is, higher means more assist")]
     public float aimAssistValue;
@@ -78,7 +79,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
             Debug.Log("aim assist applied, velocity: " + handVelocity.magnitude);
             ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
         }
-        ns.setThrowTime(Time.time);
+        GetComponent<AudioSource>().PlayOneShot(throwStarSound);
         star = null;
     }
 

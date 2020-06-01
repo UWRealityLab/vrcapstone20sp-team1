@@ -38,10 +38,13 @@ public class Destructable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ((destroyers.Contains(other.gameObject.tag) || other  == null) && !destroyed)
+        if (!destroyed)
         {
-            ShatterObject();
-            destroyed = true;
+            if (other == null || destroyers.Contains(other.gameObject.tag))
+            {
+                ShatterObject();
+                destroyed = true;
+            }
         }
     }
 

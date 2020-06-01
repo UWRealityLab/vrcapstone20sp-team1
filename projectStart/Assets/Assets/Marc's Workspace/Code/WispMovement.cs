@@ -14,8 +14,16 @@ public class WispMovement : MonoBehaviour
     private Vector3 hoverPos;
     private float hoverRadius;
     private GameObject target;
+    private MovementType movementType;
+
+    public enum MovementType
+    {
+        ROTATE_AROUND,
+        BOB_NEXT_TO
+    }
     void Start()
     {
+        movementType = MovementType.ROTATE_AROUND;
     }
 
     // Update is called once per frame
@@ -33,21 +41,32 @@ public class WispMovement : MonoBehaviour
                 transform.position = Vector3.SmoothDamp(transform.position, hoverPos, ref velocity, followSpeed, maxSpeed);
             } else
             {
-                transform.RotateAround(hoverPos, Vector3.up, 360 * Time.deltaTime);
+                if (movementType == MovementType.ROTATE_AROUND)
+                {
+                    transform.RotateAround(hoverPos, Vector3.up, 180 * Time.deltaTime);
+                } else if(movementType == MovementType.BOB_NEXT_TO)
+                {
+
+                }
             }
         }
 
         
     }
 
-    public void setTarget(GameObject target)
+    public void SetMovementType(MovementType type)
+    {
+        movementType = type;
+    }
+
+    public void SetTarget(GameObject target)
     {
         this.target = target;
         this.hoverPos = this.target.GetComponent<Transform>().position + new Vector3(0, this.target.GetComponent<Renderer>().bounds.size.y / 2 + 0.75f, 0);
         this.hoverRadius = (this.target.GetComponent<Renderer>().bounds.size.x / 2) + 0.25f;
     }
 
-    public void unsetTarget()
+    public void UnsetTarget()
     {
         this.target = null;
         this.hoverPos = Vector3.zero;

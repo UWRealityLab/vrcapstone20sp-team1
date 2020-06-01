@@ -16,6 +16,9 @@ public class Sword : MonoBehaviour, Weapon
     public GameObject slash;
     public Hand hand;
     public Camera cam;
+    public AudioClip airSlashSound;
+    public AudioClip hitTargetSound;
+    public AudioClip hitEnemySound;
 
     public float slashSpeedThreshold = 8f;
     public float slashDurationThreshold = 10f; // how many calls to fixedupdate (called 90 times per second)
@@ -50,15 +53,29 @@ public class Sword : MonoBehaviour, Weapon
         SpawnFadeIn();
     }
 
-    private short i = 0;
     void FixedUpdate()
     {
         AirSlashLogic();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
+    {
+        OnTriggerEnter(collision.collider);
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         hand.TriggerHapticPulse(65535);
+        if (other.material.name.Equals("Wood (Instance)"))
+        {
+            Debug.Log("wood sound played");
+            GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+        }
+        else
+        {
+            Debug.Log("default sound played: " + other.material.name);
+            GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
+        }
     }
 
     public int damage()
@@ -125,6 +142,7 @@ public class Sword : MonoBehaviour, Weapon
                 slsh.GetComponent<Transform>().localScale = new Vector3((tip.transform.position - startTipPos).magnitude, 0.01f, 0.01f);
                 slsh.GetComponent<Rigidbody>().AddForce(direction * 800);
 
+                GetComponent<AudioSource>().PlayOneShot(airSlashSound);
 
                 Debug.Log("SLASH! " + count);
                 Debug.Log("tiparccenter: " + tipArcCenter +

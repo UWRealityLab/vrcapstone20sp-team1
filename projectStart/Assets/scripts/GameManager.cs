@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public StandingTargetSystem[] standingTargetSystems;
     public SpawnRailingTarget railingTargetSystem;
     public WispMovement wisp;
+    public GameObject introObject;
     public Transform dragonSpawnPoint;
     public Dragon boss;
     private static GameManager instance; //Singelton pattern
@@ -59,6 +60,8 @@ public class GameManager : MonoBehaviour
     public void SetLevelIntro()
     {
         _currentLevel = LEVEL.INTRO;
+        wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
+        wisp.SetTarget(introObject);
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
@@ -75,7 +78,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVEL.NINJA_STARS;
         StartCoroutine(railingTargetSystem.Spawn3Targets());
-        wisp.setTarget(railingTargetSystem.gameObject);
+        wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
+        wisp.SetTarget(railingTargetSystem.gameObject);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -105,7 +109,7 @@ public class GameManager : MonoBehaviour
         {
             grandpa.FightAction();
         }
-        wisp.unsetTarget();
+        wisp.UnsetTarget();
         StartCoroutine(LoadLevelFightMonsters());
         //call up monsters
 
@@ -208,10 +212,11 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        SetLevelIntro();
+        //SetLevelIntro();
         //SetLevelFightMonsters();
         //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
+        SetLevelToBreakObjects();
         Debug.Log(_currentLevel);
     }
 
