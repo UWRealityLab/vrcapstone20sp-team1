@@ -18,16 +18,11 @@ public class SpawnRailingTarget : MonoBehaviour
     {
         start = targetSpawnPoint.position;
         end = targetDestroyPoint.position;
-        StartCoroutine(Spawn3Targets());
     }
     void Update()
     {
-        if(activeTargets == 0)
-        {
-            StartCoroutine(Spawn3Targets());
-        }
     }
-    IEnumerator Spawn3Targets()
+    public IEnumerator Spawn3Targets()
     {
         activeTargets = 3;
         SpawnTarget(1, 3);
@@ -49,5 +44,10 @@ public class SpawnRailingTarget : MonoBehaviour
     {
         activeTargets--;
         Debug.Log("targets left: " + activeTargets);
+    }
+
+    public int ActiveTargets()
+    {
+        return activeTargets;
     }
 }
