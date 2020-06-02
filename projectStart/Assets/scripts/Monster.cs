@@ -8,12 +8,15 @@ public class Monster : MonoBehaviour
 {
     public int health = 100;
     public AudioClip[] noise;
+
+    public Animator animator;
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.GetComponent<Weapon>() != null)
         {
             Weapon w = collider.gameObject.GetComponent<Weapon>();
             health -= w.damage();
+            Debug.Log("health: " + health);
             if (w.damage() > 5)
             {
                 HitReaction();
@@ -35,14 +38,23 @@ public class Monster : MonoBehaviour
 
     public virtual void Death()
     {
-        Destroy(gameObject);
+        StartCoroutine("Die", 0f);
+        //Destroy(gameObject);
     }
 
     public virtual void HitReaction()
     {
         float knockback = 2f;
         NavMeshAgent a = gameObject.GetComponent<NavMeshAgent>();
-        a.Move(transform.forward * -1 * knockback);
+        a.Move(transform.forward * -0.5f * knockback);
+        //animator.SetBool("Hit", true);
+    }
+
+    public IEnumerator Die()
+    {
+        animator.SetBool("Die", true);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 
     public virtual void Attack(string attackType)

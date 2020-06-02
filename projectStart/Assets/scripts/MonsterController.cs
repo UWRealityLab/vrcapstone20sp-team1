@@ -34,7 +34,7 @@ public class MonsterController : MonoBehaviour
         {
             if(Vector3.Distance(transform.position, player.transform.position) < range)
             {
-                Debug.Log("stopped");
+                //Debug.Log("stopped");
                 agent.SetDestination(transform.position);
             }
             else

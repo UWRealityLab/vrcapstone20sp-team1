@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject introObject;
     public Transform dragonSpawnPoint;
     public Dragon boss;
+    public GameObject breakableCeiling;
+    public GameObject regularCeiling;
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
     {
@@ -140,7 +142,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
+        regularCeiling.SetActive(false);
         Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
+        breakableCeiling.SetActive(true);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -214,8 +218,8 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        SetLevelIntro();
-        //SetLevelFightMonsters();
+        //SetLevelIntro();
+        SetLevelFightMonsters();
         //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
         //SetLevelToBreakObjects();
