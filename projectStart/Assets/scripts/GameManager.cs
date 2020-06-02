@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 
     //this script will have all information stored about the game and game state
     public StandingTargetSystem[] standingTargetSystems;
-    public GameObject breakableObjects;
+    public SpawnRailingTarget railingTargetSystem;
+    public WispMovement wisp;
+    public GameObject introObject;
     public Transform dragonSpawnPoint;
     public Dragon boss;
     private static GameManager instance; //Singelton pattern
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour
     public void SetLevelIntro()
     {
         _currentLevel = LEVEL.INTRO;
+        wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
+        wisp.SetTarget(introObject);
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
@@ -73,7 +77,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVEL.NINJA_STARS;
-        LoadInstance("Targets");
+        StartCoroutine(railingTargetSystem.Spawn3Targets());
+        wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
+        wisp.SetTarget(railingTargetSystem.gameObject);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -93,9 +99,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
-        LoadInstance("Vases");
         SpawnSwordTargets();
+       // LoadInstance("Vases");
         inProgress = false;
+
     }
     public void SetLevelFightMonsters()
     {
@@ -104,6 +111,7 @@ public class GameManager : MonoBehaviour
         {
             grandpa.FightAction();
         }
+        wisp.UnsetTarget();
         StartCoroutine(LoadLevelFightMonsters());
         //call up monsters
 
@@ -206,8 +214,11 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-         SetLevelIntro();
+        SetLevelIntro();
         //SetLevelFightMonsters();
+        //SetLevelDragonBoss();
+        //SetLevelToNinjaStars();
+        //SetLevelToBreakObjects();
         Debug.Log(_currentLevel);
     }
 
@@ -221,11 +232,11 @@ public class GameManager : MonoBehaviour
         if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakObjects();
-        } else if (_currentLevel.Equals(LEVEL.NINJA_STARS) && GameObject.FindGameObjectsWithTag("ninjaStarTarget").Length == 0 && !inProgress)
+        } else if (_currentLevel.Equals(LEVEL.NINJA_STARS) && railingTargetSystem.ActiveTargets() == 0 && !inProgress)
         {
             SetLevelFightMonsters();
         }
-        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
+        else if (_currentLevel.Equals(LEVEL.BREAK_OBJECTS) && SwordTargetsCleared() && SwordTargetsCleared() && !inProgress)
         {
             SetLevelToNinjaStars();
         }

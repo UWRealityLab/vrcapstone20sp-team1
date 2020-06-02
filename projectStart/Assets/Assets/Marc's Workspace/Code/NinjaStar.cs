@@ -8,12 +8,12 @@ public class NinjaStar : MonoBehaviour, Weapon
     public float damageMultiplier;
     public float durationBeforeVanishSeconds;
     public GameObject poof;
+    public AudioClip hitTargetSound;
+    public AudioClip hitEnemySound;
 
     private GameObject targetEnemy;
     private float aimAssistVelocity;
     private Vector3 velocity = Vector3.zero;
-
-    private float throwTime = float.MaxValue;
 
     void Update()
     {
@@ -37,14 +37,24 @@ public class NinjaStar : MonoBehaviour, Weapon
 
     void OnCollisionEnter(Collision collision)
     {
-        destroyStar();
+        destroyStar(collision.collider.material.name);
     }
 
-    public void destroyStar()
+    public void destroyStar(string matName = "default")
     {
+
+        if (matName.Equals("Wood (Instance)"))
+        {
+            GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+        }
+        else
+        {
+            GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
+        }
         /* code to disappear on collision */
         Instantiate(poof, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        this.GetComponent<MeshRenderer>().enabled = false;
+        Destroy(this.gameObject,0.2f);
     }
     public int damage()
     {
@@ -58,8 +68,4 @@ public class NinjaStar : MonoBehaviour, Weapon
         this.aimAssistVelocity = aimAssistVelocity;
     }
 
-    public void setThrowTime(float time)
-    {
-        this.throwTime = time;
-    }
 }
