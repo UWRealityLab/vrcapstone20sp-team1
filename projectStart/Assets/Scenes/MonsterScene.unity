@@ -1714,7 +1714,6 @@ GameObject:
   - component: {fileID: 140088484}
   - component: {fileID: 140088483}
   - component: {fileID: 140088482}
-  - component: {fileID: 140088481}
   m_Layer: 0
   m_Name: Ground (1)
   m_TagString: Untagged
@@ -1722,18 +1721,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &140088481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140088480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &140088482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2539,7 +2526,6 @@ GameObject:
   - component: {fileID: 187071066}
   - component: {fileID: 187071065}
   - component: {fileID: 187071064}
-  - component: {fileID: 187071068}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2622,18 +2608,6 @@ Transform:
   m_Father: {fileID: 958846194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &187071068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187071063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &191665325
 GameObject:
   m_ObjectHideFlags: 0
@@ -6809,7 +6783,6 @@ GameObject:
   - component: {fileID: 490859239}
   - component: {fileID: 490859238}
   - component: {fileID: 490859237}
-  - component: {fileID: 490859236}
   m_Layer: 0
   m_Name: Ground (4)
   m_TagString: Untagged
@@ -6817,18 +6790,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &490859236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490859235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &490859237
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7357,7 +7318,6 @@ GameObject:
   - component: {fileID: 525758230}
   - component: {fileID: 525758229}
   - component: {fileID: 525758228}
-  - component: {fileID: 525758227}
   m_Layer: 0
   m_Name: Ground (3)
   m_TagString: Untagged
@@ -7365,18 +7325,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &525758227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525758226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &525758228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17441,7 +17389,6 @@ GameObject:
   - component: {fileID: 1418728987}
   - component: {fileID: 1418728986}
   - component: {fileID: 1418728985}
-  - component: {fileID: 1418728984}
   m_Layer: 0
   m_Name: Ground (5)
   m_TagString: Untagged
@@ -17449,18 +17396,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &1418728984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418728983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1418728985
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22967,7 +22902,6 @@ GameObject:
   - component: {fileID: 1913192143}
   - component: {fileID: 1913192142}
   - component: {fileID: 1913192141}
-  - component: {fileID: 1913192140}
   m_Layer: 0
   m_Name: Ground (2)
   m_TagString: Untagged
@@ -22975,18 +22909,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &1913192140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913192139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea75418cdfc5d4aadd2cf5180b7242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1913192141
 MeshCollider:
   m_ObjectHideFlags: 0
