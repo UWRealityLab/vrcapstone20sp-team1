@@ -28,8 +28,8 @@ public class DoorInteraction : MonoBehaviour
         {
             Debug.Log("door hit");
             //collider.isTrigger = false;
+            this.GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce(this.transform.forward * 300, ForceMode.Impulse);
-            //collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<Rigidbody>().useGravity = true;
         }
     }
