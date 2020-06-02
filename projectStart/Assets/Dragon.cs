@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon :  Monster
+public class Dragon : Monster
 {
     // Start is called before the first frame update
     public Animation anim;
+    public AudioClip roar;
 
     private bool isDying = false;
     void Start()
     {
         anim.Play("birth");
+        this.GetComponent<AudioSource>().PlayOneShot(roar);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!anim.isPlaying)
+        if (!anim.isPlaying)
         {
-            if(isDying)
+            if (isDying)
             {
                 Destroy(this.gameObject);
             }
             anim.Play("attack2");
-        } 
+        }
     }
 
     public override void Death()
@@ -35,7 +37,8 @@ public class Dragon :  Monster
     {
     }
 
-    public virtual void PlayHitAudio()
+    public override void PlayHitAudio()
     {
     }
+
 }

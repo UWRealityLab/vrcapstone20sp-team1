@@ -14,6 +14,7 @@ public class Monster : MonoBehaviour
         {
             Weapon w = collider.gameObject.GetComponent<Weapon>();
             health -= w.damage();
+            Debug.Log("health: " + health);
             if (w.damage() > 5)
             {
                 HitReaction();
