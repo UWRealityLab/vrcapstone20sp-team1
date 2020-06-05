@@ -6,6 +6,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     public HashSet<string> destroyers;
+    public GameObject otherDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +30,11 @@ public class DoorInteraction : MonoBehaviour
             Debug.Log("door hit");
             //collider.isTrigger = false;
             this.GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<Rigidbody>().AddForce(this.transform.forward * 300, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce((this.transform.forward * 450), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
+            otherDoor.GetComponent<Rigidbody>().isKinematic = false;
+            otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 450), ForceMode.Impulse);
+            otherDoor.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 }
