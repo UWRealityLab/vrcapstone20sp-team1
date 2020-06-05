@@ -5333,7 +5333,7 @@ PrefabInstance:
     - target: {fileID: 8097530384957951772, guid: b4c9ecd274e45114ca33114829a5fcda,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 8097530384957951772, guid: b4c9ecd274e45114ca33114829a5fcda,
         type: 3}
@@ -6788,6 +6788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 912280872}
 --- !u!54 &629805956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7463,6 +7464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 0}
 --- !u!54 &688608577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9746,6 +9748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 629805954}
 --- !u!1001 &914452739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10565,6 +10568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 2014891521}
 --- !u!54 &963029272
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12462,6 +12466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 1339923385}
 --- !u!1001 &1173105172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12591,6 +12596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 0}
 --- !u!54 &1173105176
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14131,6 +14137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 1159744285}
 --- !u!54 &1339923387
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16299,6 +16306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 0}
 --- !u!4 &1519973673 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069053307398178034, guid: 87a254a143db3c24cb97a3ddddd5787a,
@@ -20187,7 +20195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.45
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -20973,6 +20981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68343e9fe149b8458d0e49222a3173b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherDoor: {fileID: 963029270}
 --- !u!54 &2014891523
 Rigidbody:
   m_ObjectHideFlags: 0
