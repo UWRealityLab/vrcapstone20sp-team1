@@ -7,6 +7,8 @@ public class DoorInteraction : MonoBehaviour
 {
     public HashSet<string> destroyers;
     public GameObject otherDoor;
+    public AudioSource audio;
+    public AudioClip clip;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class DoorInteraction : MonoBehaviour
         {
             Debug.Log("door hit");
             //collider.isTrigger = false;
+            audio.PlayOneShot(Resources.Load<AudioClip>("BreakingDoorDown"));
             this.GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce((this.transform.forward * 450), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;

@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void SetLevelIntro()
     {
         _currentLevel = LEVEL.INTRO;
+        audioManager.PlayIntro();
         wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
         wisp.SetTarget(introObject);
         Debug.Log(_currentLevel);
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadLevelFightMonsters()
     {
         Debug.Log("MARC LOG: LoadLevelFightMonsters CALLED");
+        audioManager.PlayFight();
         yield return new WaitForSeconds(10f);
         _currentLevel = LEVEL.FIGHT_MONSTERS;
         LoadWave(attackWave);
