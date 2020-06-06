@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.projectstart.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "D:\\capstone\\official\\vrcapstone20sp-team1\\projectStart\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\zhaod\\Git\\vrcapstone20sp-team1\\projectStart\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "projectStart [Testing]"

@@ -6,6 +6,8 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     public HashSet<string> destroyers;
+    public AudioClip spawnAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,7 @@ public class DoorInteraction : MonoBehaviour
         destroyers.Add("monsknlnter1");
         destroyers.Add("monsknlter2");
         destroyers.Add("monstlkler3");
+        spawnAudio = Resources.Load<AudioClip>("Spawn_Target_Sounds/falling_door"); ;
     }
 
     // Update is called once per frame
@@ -31,6 +34,12 @@ public class DoorInteraction : MonoBehaviour
             this.GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce(this.transform.forward * 300, ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
+            PlaySpawnAudio();
         }
+    }
+
+    public virtual void PlaySpawnAudio()
+    {
+        GetComponent<AudioSource>().PlayOneShot(spawnAudio);
     }
 }
