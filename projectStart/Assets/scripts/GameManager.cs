@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelDragonBoss()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
         regularCeiling.SetActive(false);
         Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
