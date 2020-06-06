@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Valve.VR.InteractionSystem;
 
 public class MonsterController : MonoBehaviour
 {
     public float speed = 4;
-    public int wave = 1;
     public float range = 2;
-    public Camera cam;
     public NavMeshAgent agent;
-    public GameObject player;
-    GameManager manager;
-    Grandpa grandpa;
-
-
+    public Player player;
+    private GameManager manager;
+    private Grandpa grandpa;
     // Start is called before the first frame update
     void Start()
     {
         manager = GameManager.GetInstance();
         grandpa = Grandpa.GetInstance();
+        player = Player.instance;
         if (agent == null || manager == null)
         {
             Debug.Log("something is wrong");
@@ -30,28 +28,18 @@ public class MonsterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.GetAttackWave() >= wave && manager.GetLevel().Equals(GameManager.LEVEL.FIGHT_MONSTERS))
-        {
             if(Vector3.Distance(transform.position, player.transform.position) < range)
             {
-                Debug.Log("stopped");
+                //Debug.Log("stopped");
                 agent.SetDestination(transform.position);
             }
             else
             {               
                 agent.SetDestination(player.transform.position);
-            }
-
-            //follow the Player!!
-        }        
-        
+            }        
     }
     void OnDestroy()
     {
-        if(this.wave < 3)
-        {
-            grandpa.onMonsterDeath();
-        }
+        grandpa.onMonsterDeath();
     }
-
 }

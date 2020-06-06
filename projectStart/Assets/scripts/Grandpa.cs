@@ -62,7 +62,8 @@ public class Grandpa : MonoBehaviour
     public void DragonAction()
     {
         Debug.Log("Intro Action called");
-        GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Voice_Lines/its_a_dragon"));
+        //GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Voice_Lines/its_a_dragon"));
+        StartCoroutine(audioPlayWait(Resources.Load<AudioClip>("Voice_Lines/its_a_dragon"), 3.0f));
     }
     public void BreakObjectsAction()
     {

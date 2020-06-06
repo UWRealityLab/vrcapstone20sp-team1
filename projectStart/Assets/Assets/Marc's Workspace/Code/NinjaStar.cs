@@ -54,7 +54,10 @@ public class NinjaStar : MonoBehaviour, Weapon
         /* code to disappear on collision */
         Instantiate(poof, transform.position, transform.rotation);
         this.GetComponent<MeshRenderer>().enabled = false;
-        Destroy(this.gameObject,0.2f);
+        this.GetComponent<Collider>().enabled = false;
+        this.GetComponent<Rigidbody>().detectCollisions = false;
+
+        Destroy(this.gameObject,0.1f);
     }
     public int damage()
     {
