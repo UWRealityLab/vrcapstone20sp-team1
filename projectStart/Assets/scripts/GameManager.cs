@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
         //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
         //SetLevelToBreakObjects();
+        //SetLevelFinal();
         Debug.Log(_currentLevel);
     }
 
