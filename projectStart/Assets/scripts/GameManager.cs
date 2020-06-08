@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(13.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
