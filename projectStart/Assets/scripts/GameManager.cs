@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Dragon boss;
     public GameObject breakableCeiling;
     public GameObject regularCeiling;
+    public Wave[] waves;
+
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
     {
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void SetLevelIntro()
     {
         _currentLevel = LEVEL.INTRO;
+        audioManager.PlayIntro();
         wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
         wisp.SetTarget(introObject);
         Debug.Log(_currentLevel);
@@ -108,6 +111,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelFightMonsters()
     {
+        Debug.Log("MARC LOG: SetLevelFightMonsters CALLED");
         inProgress = true;
         if (!manual)
         {
@@ -115,18 +119,22 @@ public class GameManager : MonoBehaviour
         }
         wisp.UnsetTarget();
         StartCoroutine(LoadLevelFightMonsters());
-        //call up monsters
-
     }
     IEnumerator LoadLevelFightMonsters()
     {
-        yield return new WaitForSeconds(10.0f);
+        Debug.Log("MARC LOG: LoadLevelFightMonsters CALLED");
+        audioManager.PlayFight();
+        yield return new WaitForSeconds(10f);
         _currentLevel = LEVEL.FIGHT_MONSTERS;
-        attackWave++;
+        LoadWave(attackWave);
         Debug.Log(_currentLevel);
         inProgress = false;
-        //call up monsters
+    }
 
+    public void LoadWave(int waveNum)
+    {
+        Debug.Log("MARC LOG: LoadWave CALLED" + waveNum);
+        waves[waveNum].SpawnEnemies();
     }
 
     public void SetLevelDragonBoss()
@@ -140,7 +148,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelDragonBoss()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
         regularCeiling.SetActive(false);
         Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
@@ -218,8 +226,8 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        //SetLevelIntro();
-        SetLevelFightMonsters();
+        SetLevelIntro();
+        //SetLevelFightMonsters();
         //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
         //SetLevelToBreakObjects();
@@ -246,20 +254,18 @@ public class GameManager : MonoBehaviour
         }
         else if (_currentLevel.Equals(LEVEL.FIGHT_MONSTERS) && !inProgress)
         {
-            if (attackWave == 1 && GameObject.FindGameObjectsWithTag("monster1").Length == 0)
+            Debug.Log("MARC LOG: Update CALLED");
+            if (waves[attackWave].EnemiesLeft() == 0)
             {
                 attackWave++;
-                Debug.Log(attackWave);
-            }
-            else if (attackWave == 2 && GameObject.FindGameObjectsWithTag("monster2").Length == 0)
-            {
-                attackWave++;
-                Debug.Log(attackWave);
-            }
-            else if (attackWave == 3 && GameObject.FindGameObjectsWithTag("monster3").Length == 0)
-            {
-
-                SetLevelDragonBoss();
+                if(attackWave < waves.Length)
+                {
+                    LoadWave(attackWave);
+                }
+                else
+                {
+                    SetLevelDragonBoss();
+                }
             }
         }
         else if (_currentLevel.Equals(LEVEL.DRAGON_BOSS) && GameObject.FindGameObjectsWithTag("dragon").Length == 0  && !inProgress)

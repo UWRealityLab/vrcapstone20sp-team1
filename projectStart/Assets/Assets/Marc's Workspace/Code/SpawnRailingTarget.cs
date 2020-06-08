@@ -10,6 +10,7 @@ public class SpawnRailingTarget : MonoBehaviour
     public Vector3 start, end;
     public RailingTarget target;
     public float spawnPeriodSeconds;
+    public AudioClip spawnAudio;
 
     private int activeTargets;
 
@@ -18,6 +19,7 @@ public class SpawnRailingTarget : MonoBehaviour
     {
         start = targetSpawnPoint.position;
         end = targetDestroyPoint.position;
+        spawnAudio = Resources.Load<AudioClip>("Spawn_Target_Sounds/target2"); ;
     }
     void Update()
     {
@@ -38,6 +40,7 @@ public class SpawnRailingTarget : MonoBehaviour
         RailingTarget t = Instantiate(target, targetSpawnPoint.position, targetSpawnPoint.rotation);
         t.velocityFunc = () => Mathf.Abs((t.GetAnchor().GetComponent<Transform>().position - ((end - start) * (spacing - thisNumber) / (spacing) + start)).magnitude) > 0.1f ? Vector3.Normalize(targetDestroyPoint.position - targetSpawnPoint.position) * 3 : Vector3.zero;
         t.targetSystem = this;
+        PlaySpawnAudio();
     }
 
     public void DecrementActiveTargets()
@@ -49,5 +52,10 @@ public class SpawnRailingTarget : MonoBehaviour
     public int ActiveTargets()
     {
         return activeTargets;
+    }
+
+    public virtual void PlaySpawnAudio()
+    {
+        GetComponent<AudioSource>().PlayOneShot(spawnAudio);
     }
 }
