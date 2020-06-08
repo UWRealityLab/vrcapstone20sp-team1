@@ -19713,6 +19713,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6869255853200960830, guid: 77e4690254483fb4e8ea01e690ad1c18,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869255853200960830, guid: 77e4690254483fb4e8ea01e690ad1c18,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6869255853340527786, guid: 77e4690254483fb4e8ea01e690ad1c18,
         type: 3}
       propertyPath: m_IsActive
