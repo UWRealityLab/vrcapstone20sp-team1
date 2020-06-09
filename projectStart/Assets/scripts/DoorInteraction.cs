@@ -9,6 +9,8 @@ public class DoorInteraction : MonoBehaviour
     public GameObject otherDoor;
     public AudioSource audio;
     public AudioClip clip;
+    public int seconds = 3;
+    bool c = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +35,25 @@ public class DoorInteraction : MonoBehaviour
             //collider.isTrigger = false;
             audio.PlayOneShot(Resources.Load<AudioClip>("BreakingDoorDown"));
             this.GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<Rigidbody>().AddForce((this.transform.forward * 450), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce((this.transform.forward * 300), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
             otherDoor.GetComponent<Rigidbody>().isKinematic = false;
-            otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 450), ForceMode.Impulse);
+            otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 250), ForceMode.Impulse);
             otherDoor.GetComponent<Rigidbody>().useGravity = true;
+            if (c)
+            {
+                c = false;
+                StartCoroutine(ExampleCoroutine());
+            }
         }
+    }
+    IEnumerator ExampleCoroutine()
+    {
+
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(seconds);
+        Destroy(otherDoor);
+        Destroy(gameObject);
     }
 }
