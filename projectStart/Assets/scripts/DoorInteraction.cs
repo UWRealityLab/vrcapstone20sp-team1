@@ -6,7 +6,6 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     public HashSet<string> destroyers;
-
     public GameObject otherDoor;
     public AudioSource audio;
     public AudioClip clip;
@@ -36,11 +35,9 @@ public class DoorInteraction : MonoBehaviour
             this.GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce((this.transform.forward * 450), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
-
             otherDoor.GetComponent<Rigidbody>().isKinematic = false;
             otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 450), ForceMode.Impulse);
             otherDoor.GetComponent<Rigidbody>().useGravity = true;
         }
     }
-
 }

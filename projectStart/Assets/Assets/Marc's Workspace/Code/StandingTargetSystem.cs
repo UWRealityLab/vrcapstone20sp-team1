@@ -8,8 +8,6 @@ public class StandingTargetSystem : MonoBehaviour
     public Transform targetDestroyPoint;
     public GameObject targetObject;
     public float spawnPeriodSeconds;
-    public AudioClip spawnAudio;
-
 
     public bool autoSpawn;
 
@@ -17,8 +15,7 @@ public class StandingTargetSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnAudio = Resources.Load<AudioClip>("Spawn_Target_Sounds/target1"); ;
-        if (autoSpawn) 
+        if(autoSpawn) 
             SpawnTarget();
     }
 
@@ -31,9 +28,7 @@ public class StandingTargetSystem : MonoBehaviour
         }
 
         if (autoSpawn && currentTarget == null)
-        {
             SpawnTarget();
-        }
     }
 
     public bool SpawnTarget()
@@ -42,7 +37,6 @@ public class StandingTargetSystem : MonoBehaviour
         {
             currentTarget = Instantiate(targetObject, targetSpawnPoint.position, targetSpawnPoint.rotation);
             currentTarget.GetComponentInChildren<Rigidbody>().velocity = new Vector3(0, 2, 0);
-            PlaySpawnAudio();
             return true;
         }
 
@@ -52,10 +46,5 @@ public class StandingTargetSystem : MonoBehaviour
     public bool HasTarget()
     {
         return currentTarget != null;
-    }
-
-    public virtual void PlaySpawnAudio()
-    {
-        GetComponent<AudioSource>().PlayOneShot(spawnAudio);
     }
 }
