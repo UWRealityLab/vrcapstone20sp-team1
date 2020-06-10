@@ -34,7 +34,7 @@ namespace Valve.VR.InteractionSystem
                 transform.Translate(v * Time.deltaTime * speed);
             }else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
             {
-                effectsObject = manager.LoadInstance("Effects");
+                effectsObject = manager.LoadInstance("EndEffects");
             }
             else if(manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
             {
