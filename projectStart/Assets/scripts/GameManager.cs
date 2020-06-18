@@ -111,7 +111,6 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelFightMonsters()
     {
-        Debug.Log("MARC LOG: SetLevelFightMonsters CALLED");
         inProgress = true;
         if (!manual)
         {
@@ -122,7 +121,6 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelFightMonsters()
     {
-        Debug.Log("MARC LOG: LoadLevelFightMonsters CALLED");
         audioManager.PlayFight();
         yield return new WaitForSeconds(10f);
         _currentLevel = LEVEL.FIGHT_MONSTERS;
@@ -133,7 +131,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadWave(int waveNum)
     {
-        Debug.Log("MARC LOG: LoadWave CALLED" + waveNum);
         waves[waveNum].SpawnEnemies();
     }
 
@@ -226,9 +223,9 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        SetLevelIntro();
+        //SetLevelIntro();
         //SetLevelFightMonsters();
-        //SetLevelDragonBoss();
+        SetLevelDragonBoss();
         //SetLevelToNinjaStars();
         //SetLevelToBreakObjects();
         //SetLevelFinal();
@@ -255,7 +252,6 @@ public class GameManager : MonoBehaviour
         }
         else if (_currentLevel.Equals(LEVEL.FIGHT_MONSTERS) && !inProgress)
         {
-            Debug.Log("MARC LOG: Update CALLED");
             if (waves[attackWave].EnemiesLeft() == 0)
             {
                 attackWave++;
