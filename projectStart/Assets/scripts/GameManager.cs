@@ -223,9 +223,9 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        //SetLevelIntro();
+        SetLevelIntro();
         //SetLevelFightMonsters();
-        SetLevelDragonBoss();
+        //SetLevelDragonBoss();
         //SetLevelToNinjaStars();
         //SetLevelToBreakObjects();
         //SetLevelFinal();
