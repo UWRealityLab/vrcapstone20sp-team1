@@ -6189,6 +6189,7 @@ MonoBehaviour:
   audio: {fileID: 1589451634}
   clip: {fileID: 0}
   seconds: 3
+  left: 0
 --- !u!54 &629805956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9098,6 +9099,7 @@ MonoBehaviour:
   audio: {fileID: 1589451634}
   clip: {fileID: 0}
   seconds: 3
+  left: 1
 --- !u!1 &918251352
 GameObject:
   m_ObjectHideFlags: 0
@@ -9819,6 +9821,7 @@ MonoBehaviour:
   audio: {fileID: 702558579}
   clip: {fileID: 0}
   seconds: 3
+  left: 1
 --- !u!54 &963029272
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11715,6 +11718,7 @@ MonoBehaviour:
   audio: {fileID: 1440146195}
   clip: {fileID: 0}
   seconds: 3
+  left: 0
 --- !u!1 &1182868750
 GameObject:
   m_ObjectHideFlags: 0
@@ -13109,6 +13113,7 @@ MonoBehaviour:
   audio: {fileID: 1440146195}
   clip: {fileID: 0}
   seconds: 3
+  left: 1
 --- !u!54 &1339923387
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13117,9 +13122,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339923385}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 4
+  m_AngularDrag: 0.5
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -19875,6 +19880,7 @@ MonoBehaviour:
   audio: {fileID: 702558579}
   clip: {fileID: 0}
   seconds: 3
+  left: 0
 --- !u!54 &2014891523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22036,7 +22042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6273546137542368938}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.96, y: 2.41, z: -3.52}
+  m_LocalPosition: {x: 0.96, y: 1.74, z: -0.67}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2560085706947710439}
