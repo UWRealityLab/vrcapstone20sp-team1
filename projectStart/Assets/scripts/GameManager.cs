@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public enum LEVEL
     {
         INTRO,
+        BREAK_VASES,
         BREAK_OBJECTS,
         NINJA_STARS,
         FIGHT_MONSTERS,
@@ -88,12 +89,31 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentLevel);
         inProgress = false;
     }
-    public void SetLevelToBreakObjects()
+    public void SetLevelToBreakVases()
     {
         inProgress = true;
         if (!manual)
         {
             grandpa.BreakObjectsAction();
+        }
+        StartCoroutine(LoadBreakVasesScene());
+    }
+    IEnumerator LoadBreakVasesScene()
+    {
+        Debug.Log("break was called");
+        yield return new WaitForSeconds(13.0f);
+        _currentLevel = LEVEL.BREAK_VASES;
+        Debug.Log(_currentLevel);
+        LoadInstance("Vases");
+        inProgress = false;
+
+    }
+    public void SetLevelToBreakObjects()
+    {
+        inProgress = true;
+        if (!manual)
+        {
+            grandpa.AirSlashAction();
         }
         StartCoroutine(LoadBreakObjectsScene());
         //make boxes appear
@@ -101,7 +121,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-        yield return new WaitForSeconds(13.0f);
+        yield return new WaitForSeconds(3.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
@@ -224,11 +244,6 @@ public class GameManager : MonoBehaviour
         audioManager = AudioManager.GetInstance();
 
         SetLevelIntro();
-        //SetLevelFightMonsters();
-        //SetLevelDragonBoss();
-        //SetLevelToNinjaStars();
-        //SetLevelToBreakObjects();
-        //SetLevelFinal();
         Debug.Log(_currentLevel);
     }
 
@@ -240,6 +255,9 @@ public class GameManager : MonoBehaviour
             manual = !manual;
         }
         if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        {
+            SetLevelToBreakVases();
+        } else if (_currentLevel.Equals(LEVEL.BREAK_VASES) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
         {
             SetLevelToBreakObjects();
         } else if (_currentLevel.Equals(LEVEL.NINJA_STARS) && railingTargetSystem.ActiveTargets() == 0 && !inProgress)

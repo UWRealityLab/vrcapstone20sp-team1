@@ -65,7 +65,7 @@ public class Fracture : MonoBehaviour {
                 part.gameObject.GetComponent<MeshCollider>().convex = true;
             }
 
-            float time = Random.Range(5f, 30f);
+            float time = Random.Range(1f, 6f);
             Destroy(part.gameObject, time);
         }
 
