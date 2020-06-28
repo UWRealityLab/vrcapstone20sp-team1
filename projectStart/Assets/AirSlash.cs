@@ -6,16 +6,23 @@ public class AirSlash : MonoBehaviour, Weapon
 {
 
     public int damageMultiplier = 5;
+    public float duration = 2.5f;
+    
+    private float spawnTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnTime = Time.time;    
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Time.time - spawnTime >= duration)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public int damage()
