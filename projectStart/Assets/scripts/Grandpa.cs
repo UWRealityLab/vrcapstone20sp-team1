@@ -13,8 +13,9 @@ public class Grandpa : MonoBehaviour
     public AudioClip fight;
     public AudioClip final;
     public AudioClip end;
-    public AudioClip[] fighting; 
-    
+    public AudioClip[] fighting;
+    private float startTime = 0;
+    private float len = 0;
     private long time;
     GameManager manager;
     public static Grandpa GetInstance()
@@ -52,7 +53,7 @@ public class Grandpa : MonoBehaviour
     public void IntroAction()
     {
         Debug.Log("Intro Action called");
-        if(intro == null)
+        if (intro == null)
         {
             intro = Resources.Load<AudioClip>("Voice_Lines/lets_get_started");
         }
@@ -75,7 +76,16 @@ public class Grandpa : MonoBehaviour
         }
         GetComponent<AudioSource>().PlayOneShot(introObject);
         StartCoroutine(audioPlayWait(breakObjects, introObject.length));
-       
+
+    }
+    public void AirSlashAction()
+    {
+        Debug.Log("Intro Action called");
+        if (breakObjects == null)
+        {
+            breakObjects = Resources.Load<AudioClip>("Voice_Lines/cut_all_these_logs");
+        }
+        GetComponent<AudioSource>().PlayOneShot(breakObjects);
     }
     public void NinjaStarsAction()
     {
@@ -95,19 +105,19 @@ public class Grandpa : MonoBehaviour
         AudioClip a2 = Resources.Load<AudioClip>("Voice_Lines/are_you_ready");
         GetComponent<AudioSource>().PlayOneShot(fight);
         StartCoroutine(audioPlayWait(a1, fight.length));
-        StartCoroutine(audioPlayWait(a2, fight.length+a1.length));
+        StartCoroutine(audioPlayWait(a2, fight.length + a1.length));
     }
     public void FinalAction()
     {
         if (final == null)
         {
-             final = Resources.Load<AudioClip>("Voice_Lines/stone_of_life_isnt_safe_here");
+            final = Resources.Load<AudioClip>("Voice_Lines/stone_of_life_isnt_safe_here");
         }
         AudioClip a1 = Resources.Load<AudioClip>("Voice_Lines/bring_it_back_to_our_world");
         AudioClip a2 = Resources.Load<AudioClip>("Voice_Lines/its_safer_with_you");
         GetComponent<AudioSource>().PlayOneShot(final);
         StartCoroutine(audioPlayWait(a1, final.length));
-        StartCoroutine(audioPlayWait(a2, final.length+a1.length));
+        StartCoroutine(audioPlayWait(a2, final.length + a1.length));
     }
     public void EndAction()
     {
@@ -117,19 +127,30 @@ public class Grandpa : MonoBehaviour
         }
         GetComponent<AudioSource>().PlayOneShot(end);
     }
-    
+
     public void onMonsterDeath()
     {
-        GetComponent<AudioSource>().PlayOneShot(fighting[Random.Range(0, fighting.Length)]);
+        if(!isPlaying()){
+            AudioClip a = fighting[Random.Range(0, fighting.Length)];
+            GetComponent<AudioSource>().PlayOneShot(a);
+            startTime = Time.time;
+            len = a.length;
+        }
     }
     IEnumerator audioPlayWait(AudioClip clip, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         GetComponent<AudioSource>().PlayOneShot(clip);
     }
+    public bool isPlaying()
+    {
+        if ((Time.time - startTime) >= len)
+            return false;
+        return true;
+    }
 
-    // Update is called once per frame
-    void Update()
+// Update is called once per frame
+void Update()
     {
         if (time % 900 == 0 && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
         {
@@ -138,7 +159,7 @@ public class Grandpa : MonoBehaviour
         {
             time = 0;
         }
-        if ((time % 1000 == 0 || time  == 0 ) && manager.GetLevel() == GameManager.LEVEL.END && !manager.InProgress())
+        if ((time % 150 == 0 || time  == 10 ) && manager.GetLevel() == GameManager.LEVEL.END && !manager.InProgress())
         {
             EndAction();
         }

@@ -10,6 +10,7 @@ public class DoorInteraction : MonoBehaviour
     public AudioSource audio;
     public AudioClip clip;
     public int seconds = 3;
+    public bool left = true;
     bool c = true;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,15 @@ public class DoorInteraction : MonoBehaviour
             GetComponent<Rigidbody>().AddForce((this.transform.forward * 300), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
             otherDoor.GetComponent<Rigidbody>().isKinematic = false;
-            otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 250), ForceMode.Impulse);
+            if (left)
+            {
+                otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 250+ otherDoor.transform.right*(-80)), ForceMode.Impulse);
+            }
+            else
+            {
+                otherDoor.GetComponent<Rigidbody>().AddForce((otherDoor.transform.forward * 250 + otherDoor.transform.right * (100)), ForceMode.Impulse);
+
+            }
             otherDoor.GetComponent<Rigidbody>().useGravity = true;
             if (c)
             {

@@ -8,6 +8,7 @@ public class DestroySoundEffect : MonoBehaviour {
 	void Start () {
         if (GetComponent<AudioSource>())
         {
+            Debug.Log("this component " + this.ToString());
             GetComponent<AudioSource>().pitch = 1 + Random.value * 0.2f;
             GetComponent<AudioSource>().clip = sounds[Random.Range(0, sounds.Length)];
             GetComponent<AudioSource>().Play();

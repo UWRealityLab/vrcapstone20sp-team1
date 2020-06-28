@@ -131,7 +131,7 @@ public class Sword : MonoBehaviour, Weapon
             {
                 Vector3 tipArcCenter = ((0.5f * startTipPos) + (1.5f*tip.transform.position)) / 2;
                 Vector3 hiltArcCenter = ((startHiltPos * 0.5f) + (hilt.transform.position) * 1.5f) / 2;
-                Vector3 direction = Vector3.Normalize(tipArcCenter - hiltArcCenter + cam.transform.forward * 1.5f);
+                Vector3 direction = Vector3.Normalize(tipArcCenter - hiltArcCenter + cam.transform.forward * 3f);
 
                 hand.TriggerHapticPulse(65535);
 
