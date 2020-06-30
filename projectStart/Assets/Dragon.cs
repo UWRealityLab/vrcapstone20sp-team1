@@ -7,6 +7,7 @@ public class Dragon : Monster
     // Start is called before the first frame update
     public Animation anim;
     public AudioClip roar;
+    public AudioClip death;
 
     private bool isDying = false;
     void Start()
@@ -25,12 +26,14 @@ public class Dragon : Monster
                 Destroy(this.gameObject);
             }
             anim.Play("attack2");
+            GetComponent<AudioSource>().PlayOneShot(roar);
         }
     }
 
     public override void Death()
     {
         anim.Play("die");
+        GetComponent<AudioSource>().PlayOneShot(death);
         isDying = true;
     }
     public override void HitReaction()
@@ -39,6 +42,7 @@ public class Dragon : Monster
 
     public override void PlayHitAudio()
     {
+        //GetComponent<AudioSource>().PlayOneShot(roar);
     }
 
 }
