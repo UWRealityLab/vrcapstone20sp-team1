@@ -25,6 +25,11 @@ public class AirSlash : MonoBehaviour, Weapon
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        this.GetComponent<Collider>().enabled = false;
+    }
+
     public int damage()
     {
         Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
