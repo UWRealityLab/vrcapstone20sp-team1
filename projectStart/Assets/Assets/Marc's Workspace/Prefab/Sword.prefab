@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4915676614332943724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -369,6 +369,9 @@ MonoBehaviour:
   slash: {fileID: 3680243439878741246, guid: 53deac79df45ce84c936b5c7136fe6f5, type: 3}
   hand: {fileID: 0}
   cam: {fileID: 0}
+  airSlashSound: {fileID: 0}
+  hitTargetSound: {fileID: 0}
+  hitEnemySound: {fileID: 0}
   slashSpeedThreshold: 8
   slashDurationThreshold: 10
 --- !u!1 &7962097362027248457
@@ -420,7 +423,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7962097362027248457}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

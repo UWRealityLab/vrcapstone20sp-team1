@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject breakableCeiling;
     public GameObject regularCeiling;
     public Wave[] waves;
+    public GameObject reward;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -67,7 +68,10 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.INTRO;
         audioManager.PlayIntro();
         wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
-        wisp.SetTarget(introObject);
+        wisp.SetTarget(
+            introObject,
+            new Vector3(0, introObject.GetComponentInChildren<Renderer>().bounds.size.y / 2 + 0.75f, 0),
+            introObject.GetComponentInChildren<Renderer>().bounds.size.x / 2 + 0.25f);
         Debug.Log(_currentLevel);
     }
     public void SetLevelToNinjaStars()
@@ -85,7 +89,10 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.NINJA_STARS;
         StartCoroutine(railingTargetSystem.Spawn3Targets());
         wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
-        wisp.SetTarget(railingTargetSystem.gameObject);
+        wisp.SetTarget(
+            railingTargetSystem.gameObject,
+            new Vector3(0, railingTargetSystem.gameObject.GetComponentInChildren<Renderer>().bounds.size.y / 2 + 0.75f, 0),
+            railingTargetSystem.gameObject.GetComponentInChildren<Renderer>().bounds.size.x / 2 + 0.25f);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -188,7 +195,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.FINAL;
-       // LoadInstance("RewardFinal");
+        //LoadInstance("RewardFinal");
+        wisp.SetMovementType(WispMovement.MovementType.STILL);
+        wisp.SetTarget(reward, new Vector3(0.5f, 0, -0.25f), 0.5f);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -243,7 +252,7 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
 
-        SetLevelIntro();
+        SetLevelToNinjaStars();
         Debug.Log(_currentLevel);
     }
 
