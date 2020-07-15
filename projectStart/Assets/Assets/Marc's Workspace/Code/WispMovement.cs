@@ -9,9 +9,10 @@ public class WispMovement : MonoBehaviour
     public Camera playerCamera;
     public float followSpeed = 0.1f;
     public float maxSpeed = 10;
+    public WispAnimation animation;
 
     private Vector3 velocity = Vector3.zero;
-    private Vector3 hoverPos;
+    private Vector3 hoverOffset;
     private float hoverRadius;
     private GameObject target;
     private MovementType movementType;
@@ -19,11 +20,11 @@ public class WispMovement : MonoBehaviour
     public enum MovementType
     {
         ROTATE_AROUND,
-        BOB_NEXT_TO
+        BOB_NEXT_TO,
+        STILL
     }
     void Start()
     {
-        movementType = MovementType.ROTATE_AROUND;
     }
 
     // Update is called once per frame
@@ -36,6 +37,8 @@ public class WispMovement : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, loc, ref velocity, followSpeed, maxSpeed);
         } else
         {
+
+            Vector3 hoverPos = this.target.GetComponent<Transform>().position + hoverOffset;
             if ((hoverPos - this.transform.position).magnitude > hoverRadius)
             {
                 transform.position = Vector3.SmoothDamp(transform.position, hoverPos, ref velocity, followSpeed, maxSpeed);
@@ -44,9 +47,9 @@ public class WispMovement : MonoBehaviour
                 if (movementType == MovementType.ROTATE_AROUND)
                 {
                     transform.RotateAround(hoverPos, Vector3.up, 180 * Time.deltaTime);
-                } else if(movementType == MovementType.BOB_NEXT_TO)
+                } else if(movementType == MovementType.STILL)
                 {
-
+                    animation.floatStrength = 0;
                 }
             }
         }
@@ -56,20 +59,21 @@ public class WispMovement : MonoBehaviour
 
     public void SetMovementType(MovementType type)
     {
+        Debug.Log("SetMovementType called with type: " + type);
         movementType = type;
     }
 
-    public void SetTarget(GameObject target)
+    public void SetTarget(GameObject target, Vector3 hoverOffset, float hoverRadius = 0.5f)
     {
         this.target = target;
-        this.hoverPos = this.target.GetComponent<Transform>().position + new Vector3(0, this.target.GetComponent<Renderer>().bounds.size.y / 2 + 0.75f, 0);
-        this.hoverRadius = (this.target.GetComponent<Renderer>().bounds.size.x / 2) + 0.25f;
+        this.hoverOffset = hoverOffset;
+        this.hoverRadius = hoverRadius;
     }
 
     public void UnsetTarget()
     {
         this.target = null;
-        this.hoverPos = Vector3.zero;
+        this.hoverOffset = Vector3.zero;
         this.hoverRadius = 0;
     }
 }
