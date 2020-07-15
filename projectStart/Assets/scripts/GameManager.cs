@@ -251,8 +251,8 @@ public class GameManager : MonoBehaviour
     {
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
-
-        SetLevelToNinjaStars();
+        SetLevelIntro();
+       // SetLevelToNinjaStars();
         Debug.Log(_currentLevel);
     }
 

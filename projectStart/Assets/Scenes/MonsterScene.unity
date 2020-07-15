@@ -17544,6 +17544,7 @@ GameObject:
   - component: {fileID: 1866657266}
   - component: {fileID: 1866657267}
   - component: {fileID: 1866657268}
+  - component: {fileID: 1866657269}
   m_Layer: 0
   m_Name: AudioGamager
   m_TagString: Untagged
@@ -17677,6 +17678,29 @@ MonoBehaviour:
   final: {fileID: 0}
   fight: {fileID: 0}
   begin: {fileID: 0}
+--- !u!114 &1866657269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866657265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5e1719799ca4f9b9f5db81449517ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
+  directivityAlpha: 0
+  directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
+  gainDb: 0
+  nearFieldEffectEnabled: 0
+  nearFieldEffectGain: 1
+  occlusionEnabled: 0
+  occlusionIntensity: 1
+  quality: 2
 --- !u!1 &1877550789
 GameObject:
   m_ObjectHideFlags: 0
