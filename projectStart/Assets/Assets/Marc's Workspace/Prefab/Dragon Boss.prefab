@@ -1533,6 +1533,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   anim: {fileID: 5564084065201548089}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
+  death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
 --- !u!114 &6099277752906900728
 MonoBehaviour:
   m_ObjectHideFlags: 0
