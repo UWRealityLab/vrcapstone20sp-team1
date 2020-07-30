@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
@@ -13,6 +12,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject player;
         private GameObject effectsObject = null;
         int time = -1;
+        bool d = true;
 
         //public final position;
         // Start is called before the first frame update
@@ -25,24 +25,30 @@ namespace Valve.VR.InteractionSystem
         void Update()
         {
             Vector3 other = player.transform.position - transform.position;
-            other.y = 0;
-            other.x = 0;
-            Vector3 v = new Vector3(0, -0.1f, -1); //calculate position of the player
-            if (Vector3.Magnitude(other) > 1 && manager.GetLevel() == GameManager.LEVEL.FINAL)
+            //Debug.Log("other vector: " + other);
+            Vector3 v1 = new Vector3(0, -0.3f, 0); //calculate position of the player
+            Vector3 v2 = new Vector3(0, 0, -1f); //calculate position of the player
+            if ((Mathf.Abs(other.y) > 1 || Mathf.Abs(other.z) > 1) && manager.GetLevel() == GameManager.LEVEL.FINAL)
             {
-                //Debug.Log(transform.position);
-                transform.Translate(v * Time.deltaTime * speed);
-            }else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
+                if (Mathf.Abs(other.y) > 1 )
+                {
+                    transform.Translate(v1 * Time.deltaTime * speed);
+                } if (Mathf.Abs(other.z) > 1)
+                {
+                    transform.Translate(v2 * Time.deltaTime * speed);
+                }
+            }
+            else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
             {
                 effectsObject = manager.LoadInstance("EndEffects");
             }
-            else if(manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
+            else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
             {
                 time++;
-                if(time == 400)
+                if (time == 50)
                 {
                     manager.SetLevelEnd();
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
 
                 }
             }

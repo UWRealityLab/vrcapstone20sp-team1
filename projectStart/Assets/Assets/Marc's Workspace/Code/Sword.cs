@@ -66,7 +66,8 @@ public class Sword : MonoBehaviour, Weapon
     void OnTriggerEnter(Collider other)
     {
         hand.TriggerHapticPulse(65535);
-        if (other.material.name.Equals("Wood (Instance)"))
+        Debug.Log("other name: " + other.name);
+        if (other.material.name.Equals("Wood (Instance)") || other.name == "Floor")
         {
             Debug.Log("wood sound played");
             GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
