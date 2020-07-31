@@ -10,6 +10,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject[] effects;
         GameManager manager;
         public GameObject player;
+        public GameObject cam;
         private GameObject effectsObject = null;
         int time = -1;
         bool d = true;
@@ -24,16 +25,16 @@ namespace Valve.VR.InteractionSystem
         // Update is called once per frame
         void Update()
         {
-            Vector3 other = player.transform.position - transform.position;
+            Vector3 other = transform.position - cam.transform.position;
             //Debug.Log("other vector: " + other);
-            Vector3 v1 = new Vector3(0, -0.3f, 0); //calculate position of the player
+            Vector3 v1 = new Vector3(0, -0.15f, 0); //calculate position of the player
             Vector3 v2 = new Vector3(0, 0, -1f); //calculate position of the player
-            if ((Mathf.Abs(other.y) > 1 || Mathf.Abs(other.z) > 1) && manager.GetLevel() == GameManager.LEVEL.FINAL)
+            if ((other.y > 1 || other.z > 1) && manager.GetLevel() == GameManager.LEVEL.FINAL)
             {
-                if (Mathf.Abs(other.y) > 1 )
+                if (other.y > 0.1 )
                 {
                     transform.Translate(v1 * Time.deltaTime * speed);
-                } if (Mathf.Abs(other.z) > 1)
+                } if (other.z > 1)
                 {
                     transform.Translate(v2 * Time.deltaTime * speed);
                 }

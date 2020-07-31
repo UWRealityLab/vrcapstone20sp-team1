@@ -14275,6 +14275,12 @@ MonoBehaviour:
   occlusionEnabled: 0
   occlusionIntensity: 1
   quality: 2
+--- !u!1 &1442238894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1982055068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1443221982
 GameObject:
   m_ObjectHideFlags: 0
@@ -18372,6 +18378,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1982055069}
+    - target: {fileID: 6869255853194906197, guid: 77e4690254483fb4e8ea01e690ad1c18,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1442238894}
     - target: {fileID: 6869255853194906199, guid: 77e4690254483fb4e8ea01e690ad1c18,
         type: 3}
       propertyPath: m_Name
