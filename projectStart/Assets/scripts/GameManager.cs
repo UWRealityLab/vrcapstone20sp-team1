@@ -205,6 +205,7 @@ public class GameManager : MonoBehaviour
     {
         _currentLevel = LEVEL.END;
         Debug.Log(_currentLevel);
+        //grandpa.EndAction();
         //the end
     }
     public GameObject LoadInstance(string prefabN)
@@ -252,7 +253,8 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
         SetLevelIntro();
-       // SetLevelToNinjaStars();
+        //SetLevelFinal();
+        //SetLevelToNinjaStars();
         Debug.Log(_currentLevel);
     }
 

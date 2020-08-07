@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
 
 namespace Valve.VR.InteractionSystem
@@ -11,8 +10,10 @@ namespace Valve.VR.InteractionSystem
         public GameObject[] effects;
         GameManager manager;
         public GameObject player;
+        public GameObject cam;
         private GameObject effectsObject = null;
         int time = -1;
+        bool d = true;
 
         //public final position;
         // Start is called before the first frame update
@@ -24,25 +25,31 @@ namespace Valve.VR.InteractionSystem
         // Update is called once per frame
         void Update()
         {
-            Vector3 other = player.transform.position - transform.position;
-            other.y = 0;
-            other.x = 0;
-            Vector3 v = new Vector3(0, -0.1f, -1); //calculate position of the player
-            if (Vector3.Magnitude(other) > 1 && manager.GetLevel() == GameManager.LEVEL.FINAL)
+            Vector3 other = transform.position - cam.transform.position;
+            //Debug.Log("other vector: " + other);
+            Vector3 v1 = new Vector3(0, -0.15f, 0); //calculate position of the player
+            Vector3 v2 = new Vector3(0, 0, -1f); //calculate position of the player
+            if ((other.y > 1 || other.z > 1) && manager.GetLevel() == GameManager.LEVEL.FINAL)
             {
-                //Debug.Log(transform.position);
-                transform.Translate(v * Time.deltaTime * speed);
-            }else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
+                if (other.y > 0.1 )
+                {
+                    transform.Translate(v1 * Time.deltaTime * speed);
+                } if (other.z > 1)
+                {
+                    transform.Translate(v2 * Time.deltaTime * speed);
+                }
+            }
+            else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
             {
                 effectsObject = manager.LoadInstance("EndEffects");
             }
-            else if(manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
+            else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject != null)
             {
                 time++;
-                if(time == 400)
+                if (time == 50)
                 {
                     manager.SetLevelEnd();
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
 
                 }
             }
