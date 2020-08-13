@@ -27,7 +27,8 @@ public class AirSlash : MonoBehaviour, Weapon
 
     private void OnTriggerEnter(Collider other)
     {
-        this.GetComponent<Collider>().enabled = false;
+        //Debug.Log("MARC DEBUG LINE: Triggered");
+        //this.GetComponent<Collider>().enabled = false;
     }
 
     public int damage()

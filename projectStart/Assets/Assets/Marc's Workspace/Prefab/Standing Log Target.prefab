@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4965548824285608864}
   - component: {fileID: 4965548824285608878}
   - component: {fileID: 4965548824285608877}
+  - component: {fileID: 2498655983651157608}
   m_Layer: 0
   m_Name: Standing Log Target
   m_TagString: enemy
@@ -92,7 +93,7 @@ MeshCollider:
   m_GameObject: {fileID: 4965548824285608865}
   m_Material: {fileID: 13400000, guid: 0151b31279cbbe64db23577e9163731a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 30
@@ -140,3 +141,17 @@ MonoBehaviour:
   shatteredversion: {fileID: 6193982347254071539, guid: f9f70ae200a6d4246b0a49666e688e85,
     type: 3}
   scalar: 0
+--- !u!136 &2498655983651157608
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965548824285608865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8466607
+  m_Height: 6.413406
+  m_Direction: 1
+  m_Center: {x: -0.0071045775, y: -0.00131917, z: 0.14910889}
