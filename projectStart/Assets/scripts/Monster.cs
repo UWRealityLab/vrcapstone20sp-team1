@@ -10,10 +10,19 @@ public class Monster : MonoBehaviour
     public AudioClip[] noise;
 
     public Animator animator;
+
+    private HashSet<GameObject> hitBy;
+
+    void Start()
+    {
+        hitBy = new HashSet<GameObject>();
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.GetComponent<Weapon>() != null)
+        if (collider.gameObject.GetComponent<Weapon>() != null && !hitBy.Contains(collider.gameObject))
         {
+            hitBy.Add(collider.gameObject);
             Weapon w = collider.gameObject.GetComponent<Weapon>();
             health -= w.damage();
             Debug.Log("health: " + health);
