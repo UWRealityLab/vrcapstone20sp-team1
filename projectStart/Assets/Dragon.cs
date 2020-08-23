@@ -38,6 +38,7 @@ public class Dragon : Monster
     }
     public override void HitReaction()
     {
+        Debug.Log("hit");
     }
 
     public override void PlayHitAudio()

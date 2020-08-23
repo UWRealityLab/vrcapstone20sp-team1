@@ -7010,8 +7010,8 @@ MonoBehaviour:
   introObject: {fileID: 1999298420}
   dragonSpawnPoint: {fileID: 1994138055}
   boss: {fileID: 5853743393489000682, guid: f51b9a40f14a099429dd14e4142a3ff9, type: 3}
-  breakableCeiling: {fileID: 0}
-  regularCeiling: {fileID: 0}
+  breakableCeiling: {fileID: 1865893613}
+  regularCeiling: {fileID: 1252975957}
   waves:
   - {fileID: 103406039}
   - {fileID: 574380423}
