@@ -1359,6 +1359,7 @@ GameObject:
   - component: {fileID: 7289089505965472951}
   - component: {fileID: 5853743393489000682}
   - component: {fileID: 6099277752906900728}
+  - component: {fileID: 5594351556992435828}
   m_Layer: 0
   m_Name: Dragon Boss
   m_TagString: dragon
@@ -1557,6 +1558,21 @@ MonoBehaviour:
   occlusionEnabled: 0
   occlusionIntensity: 1
   quality: 2
+--- !u!114 &5594351556992435828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528665017109549833}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200df95d6f6f8dc42b863c532a4d77c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  noise: []
+  animator: {fileID: 0}
 --- !u!1 &5528670189803684987
 GameObject:
   m_ObjectHideFlags: 0

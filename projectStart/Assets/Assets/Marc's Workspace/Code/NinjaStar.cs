@@ -40,6 +40,7 @@ public class NinjaStar : MonoBehaviour, Weapon
         destroyStar(collision.collider.material.name);
     }
 
+
     public void destroyStar(string matName = "default")
     {
 

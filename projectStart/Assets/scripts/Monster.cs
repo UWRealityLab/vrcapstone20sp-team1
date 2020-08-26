@@ -13,13 +13,18 @@ public class Monster : MonoBehaviour
 
     private HashSet<GameObject> hitBy;
 
-    void Start()
+    void Awake()
     {
         hitBy = new HashSet<GameObject>();
     }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        OnTriggerEnter(collision.collider);
+    }
     private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("something");
+
         if (collider.gameObject.GetComponent<Weapon>() != null && !hitBy.Contains(collider.gameObject))
         {
             hitBy.Add(collider.gameObject);
@@ -32,10 +37,12 @@ public class Monster : MonoBehaviour
             }
             if (collider.gameObject.GetComponent<NinjaStar>() != null)
                 {
+                Debug.Log("ninja star hit");
                     collider.gameObject.GetComponent<NinjaStar>().destroyStar();
                 }
             if (health <= 0)
             {
+                Debug.Log("dragon death");
                 Death();
             }
             else
