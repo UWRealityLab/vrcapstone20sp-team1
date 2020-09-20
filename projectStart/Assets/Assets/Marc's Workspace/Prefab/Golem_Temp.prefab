@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 1321130352955834678}
   - component: {fileID: 1321130352955834674}
   - component: {fileID: 8706085046547139981}
+  - component: {fileID: 7163435540398834738}
   m_Layer: 0
   m_Name: Golem_Temp
   m_TagString: monster1
@@ -1182,6 +1183,28 @@ MonoBehaviour:
   occlusionEnabled: 0
   occlusionIntensity: 1
   quality: 2
+--- !u!114 &7163435540398834738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321130351407555700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d23bc78a8be8ea469dcc6546f86814e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noise:
+  - {fileID: 8300000, guid: 23e93af78441e8a4ab8fdacd967903c1, type: 3}
+  - {fileID: 8300000, guid: 284cd8ae635aa6a4e91135bca52d7ccf, type: 3}
+  - {fileID: 8300000, guid: 6686b5ca50f1e9247a8526ce79361b03, type: 3}
+  - {fileID: 8300000, guid: ac3362b78864c8541b423a1004d40db6, type: 3}
+  - {fileID: 8300000, guid: 9d75c506d55a10f458574188c632f5c8, type: 3}
+  - {fileID: 8300000, guid: 2f8c6db45cea2cb45ac71f5777537d93, type: 3}
+  - {fileID: 8300000, guid: b5b71bbbce613ed48b4cbe9ede509bd0, type: 3}
+  - {fileID: 8300000, guid: 39eabd185d1a5b24c82cb0cd5c5216c2, type: 3}
+  entries: []
 --- !u!1 &1321130351407555702
 GameObject:
   m_ObjectHideFlags: 0
