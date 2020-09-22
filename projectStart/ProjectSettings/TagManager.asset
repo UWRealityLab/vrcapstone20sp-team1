@@ -20,6 +20,7 @@ TagManager:
   - airSlash
   - door
   - dragon
+  - entry
   layers:
   - Default
   - TransparentFX

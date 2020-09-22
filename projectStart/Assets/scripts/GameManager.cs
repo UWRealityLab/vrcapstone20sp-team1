@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject regularCeiling;
     public Wave[] waves;
     public GameObject reward;
+    public AudioClip[] noise;
+    public GameObject[] playPoints;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -144,6 +147,7 @@ public class GameManager : MonoBehaviour
             grandpa.FightAction();
         }
         wisp.UnsetTarget();
+        playRandomMonsterSound();
         StartCoroutine(LoadLevelFightMonsters());
     }
     IEnumerator LoadLevelFightMonsters()
@@ -212,6 +216,21 @@ public class GameManager : MonoBehaviour
     {
         GameObject instance = Instantiate(Resources.Load<GameObject>(prefabN));
         return instance;
+    }
+    IEnumerator audioPlayWait(AudioClip clip, float waitTime, GameObject p)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("clip played");
+        p.GetComponent<AudioSource>().PlayOneShot(clip);
+    }
+    public void playRandomMonsterSound()
+    {
+        foreach (GameObject p in playPoints){
+            StartCoroutine(audioPlayWait(noise[Random.Range(0, noise.Length)], Random.Range(13, 25), p));
+            StartCoroutine(audioPlayWait(noise[Random.Range(0, noise.Length)], Random.Range(5,12), p));
+            StartCoroutine(audioPlayWait(noise[Random.Range(0, noise.Length)], Random.Range(0, 4), p));
+            
+        }
     }
 
     private void SpawnSwordTargets()
