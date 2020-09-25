@@ -14,6 +14,13 @@ public class Dragon : Monster
     {
         anim.Play("birth");
         this.GetComponent<AudioSource>().PlayOneShot(roar);
+
+        /*foreach (GameObject env in GameObject.FindGameObjectsWithTag("DestructEnv"))
+        {
+            Rigidbody rb = env.AddComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.useGravity = true;*/
+       // }
     }
 
     // Update is called once per frame
@@ -45,5 +52,22 @@ public class Dragon : Monster
     {
         //GetComponent<AudioSource>().PlayOneShot(roar);
     }
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("DestructEnv"))
+        {
+            Rigidbody rb = collision.gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = true;
+            rb.isKinematic = false;
 
+            /*
+            Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            Debug.Log("Collision");
+            
+        }
+    }
+    */
 }
