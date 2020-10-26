@@ -47,12 +47,6 @@ public class Sword : MonoBehaviour, Weapon
         prevTipPos = tip.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        SpawnFadeIn();
-    }
-
     void FixedUpdate()
     {
         AirSlashLogic();
@@ -93,17 +87,6 @@ public class Sword : MonoBehaviour, Weapon
     public void SetCamera(Camera cam)
     {
         this.cam = cam;
-    }
-
-    private void SpawnFadeIn()
-    {
-        Material[] materials = gameObject.GetComponent<MeshRenderer>().materials;
-        for (int i = 0; i < materials.Length; i++)
-        {
-            materials[i].color = new Color(materials[i].color.r, materials[i].color.g, materials[i].color.b, originalColors[i].a * ((Mathf.Min(1, Time.time - initTime) / fadeInDurationinS)));
-        }
-
-        prevHandPos = transform.parent.position;
     }
 
     private void AirSlashLogic()
