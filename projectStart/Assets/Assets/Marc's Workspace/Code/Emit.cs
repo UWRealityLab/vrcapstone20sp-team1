@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Emit : MonoBehaviour
 {
-    ParticleSystem ps;
+    //ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
-        ps = GetComponentInChildren<ParticleSystem>();
-        ps.Stop();
+        //ps = GetComponentInChildren<ParticleSystem>();
+        //ps.Stop();
     }
 
     // Update is called once per frame
