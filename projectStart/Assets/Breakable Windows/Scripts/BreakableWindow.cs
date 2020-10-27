@@ -46,6 +46,8 @@ public class BreakableWindow : MonoBehaviour {
     private bool allreadyCalculated = false;
     private GameObject splinterParent;
     int[] tris;
+    public GameObject BrokenCeiling;
+    public GameObject SkyLights;
 
     void Start()
     {
@@ -246,9 +248,14 @@ public class BreakableWindow : MonoBehaviour {
                 {
                     health = 0;
                     breakWindow();
+                    SpawnBrokenCeiling();
                 }
             }
-            else breakWindow();
+            else
+            {
+                breakWindow();
+                SpawnBrokenCeiling();
+            }
         }        
     }
 
@@ -258,6 +265,13 @@ public class BreakableWindow : MonoBehaviour {
 
         {
             breakWindow();
+            SpawnBrokenCeiling();
         }
+    }
+
+    void SpawnBrokenCeiling()
+    {
+        BrokenCeiling.SetActive(true);
+        SkyLights.SetActive(false);
     }
 }

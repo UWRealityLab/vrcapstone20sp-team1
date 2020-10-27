@@ -21,10 +21,8 @@ public class Monster : MonoBehaviour
     {
         OnTriggerEnter(collision.collider);
     }
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("something");
-
         if (collider.gameObject.GetComponent<Weapon>() != null && !hitBy.Contains(collider.gameObject))
         {
             hitBy.Add(collider.gameObject);
