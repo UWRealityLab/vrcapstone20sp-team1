@@ -25,7 +25,7 @@ public class Dragon : Monster
             {
                 Destroy(this.gameObject);
             }
-            anim.Play("attack2");
+            anim.Play("Take 001");
             GetComponent<AudioSource>().PlayOneShot(roar);
         }
     }
