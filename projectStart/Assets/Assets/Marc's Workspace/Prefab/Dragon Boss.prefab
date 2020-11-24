@@ -1624,13 +1624,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5526533060298130755}
-  - component: {fileID: 5564084065201548089}
   - component: {fileID: 5529539972556375941}
   - component: {fileID: 7289089505965472951}
   - component: {fileID: 5853743393489000682}
   - component: {fileID: 6099277752906900728}
   - component: {fileID: 6876686419262466854}
   - component: {fileID: 6195543581787405765}
+  - component: {fileID: 411908280840467080}
   m_Layer: 0
   m_Name: Dragon Boss
   m_TagString: dragon
@@ -1655,28 +1655,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 131.699, z: 0}
---- !u!111 &5564084065201548089
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5528665017109549833}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400002, guid: a7a451f72fdad624abe7e762b9109a1a, type: 3}
-  m_Animations:
-  - {fileID: 7400002, guid: a7a451f72fdad624abe7e762b9109a1a, type: 3}
-  - {fileID: 7400002, guid: 1b951a3db9d051c47adda549b5f825f8, type: 3}
-  - {fileID: 7400000, guid: bd5ae170c98b8d84a8535ad3a425f0c1, type: 3}
-  - {fileID: 7400000, guid: 1b46fb6a76639854e83eb7dbe5b870cf, type: 3}
-  - {fileID: 7400000, guid: 51323a36b605bbf4ea61e5e541f904fb, type: 3}
-  - {fileID: 7400000, guid: c50ad91d8342ece4b84eb106f4119216, type: 3}
-  - {fileID: 7400000, guid: 406b7c24e66b82d448ec245b41bbd8e1, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!136 &5529539972556375941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1802,10 +1780,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   noise: []
-  animator: {fileID: 0}
-  anim: {fileID: 5564084065201548089}
+  animator: {fileID: 411908280840467080}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
+  yelp: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
 --- !u!114 &6099277752906900728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,6 +1839,25 @@ MonoBehaviour:
   leftFoot: {fileID: 3968961857052914377}
   footstep1: {fileID: 8300000, guid: 3a970c46f7b1ac647b2862443c742ca2, type: 3}
   footstep2: {fileID: 8300000, guid: 8226ce5cd99a7be4bad4e15a9f072770, type: 3}
+--- !u!95 &411908280840467080
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528665017109549833}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e1d3376d109c784e95577d79e052d4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5528670189803684987
 GameObject:
   m_ObjectHideFlags: 0
