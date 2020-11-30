@@ -36,11 +36,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 240
   noise: []
-  animator: {fileID: 0}
+  animator: {fileID: 1151433727798047331}
   speed: 4
   range: 2
   agent: {fileID: 1234662164071270981}
-  anim: {fileID: 5150510779484089298}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
   player: {fileID: 0}
@@ -51,6 +50,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 411908280840467080, guid: f51b9a40f14a099429dd14e4142a3ff9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 90ef751262adc574292890ad2148af55, type: 2}
     - target: {fileID: 5526533060298130755, guid: f51b9a40f14a099429dd14e4142a3ff9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -127,8 +131,9 @@ PrefabInstance:
       value: DragonSmall1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 5594351556992435828, guid: f51b9a40f14a099429dd14e4142a3ff9, type: 3}
+    - {fileID: 0}
     - {fileID: 5853743393489000682, guid: f51b9a40f14a099429dd14e4142a3ff9, type: 3}
+    - {fileID: 6195543581787405765, guid: f51b9a40f14a099429dd14e4142a3ff9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f51b9a40f14a099429dd14e4142a3ff9, type: 3}
 --- !u!1 &5112730390577435618 stripped
 GameObject:
@@ -136,9 +141,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 742481209091145963}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &5150510779484089298 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 5564084065201548089, guid: f51b9a40f14a099429dd14e4142a3ff9,
+--- !u!95 &1151433727798047331 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 411908280840467080, guid: f51b9a40f14a099429dd14e4142a3ff9,
     type: 3}
   m_PrefabInstance: {fileID: 742481209091145963}
   m_PrefabAsset: {fileID: 0}

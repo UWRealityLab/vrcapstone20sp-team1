@@ -8,7 +8,6 @@ public class SmallDragonScript : Monster
     public float speed = 4;
     public float range = 3;
     public NavMeshAgent agent;
-    public Animation anim;
     public AudioClip roar;
     public AudioClip death;
     public Player player;
@@ -17,7 +16,8 @@ public class SmallDragonScript : Monster
     // Start is called before the first frame update
     private bool isDying = false;
     private bool first = true;
-    
+    float destroyDelay = 3;
+
     void Start()
     {
         int diff = Random.Range(213, 333);
@@ -31,39 +31,45 @@ public class SmallDragonScript : Monster
             Debug.Log("something is wrong");
         }
         GetComponent<AudioSource>().PlayOneShot(roar);
-        anim.Play("run");
+        animator.SetBool("Run", true);
+        //animator.SetTrigger("Run2");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDying)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
-                Destroy(this.gameObject);
+            StartCoroutine(DestroyDelay(destroyDelay));
         }
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
             Debug.Log("Dragon stopped");
             agent.SetDestination(transform.position);
+            animator.SetBool("Run", false);
             playAttack();
         }
         else
         {
             Debug.Log("dragon run");
             agent.SetDestination(player.transform.position);
-            playAnimation("run");
-
+            animator.SetBool("Run", true);
+           /* if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                animator.SetTrigger("Run2");
+            }*/
         }
     }
     public override void Death()
     {
-        anim.Play("die");
         GetComponent<AudioSource>().PlayOneShot(death);
-        isDying = true;
+        animator.SetBool("Run", false);
+        animator.SetBool("Dying", true);
     }
     public override void HitReaction()
     {
         Debug.Log(" dragon hit");
+        animator.SetTrigger("Flinch");
     }
 
     public override void PlayHitAudio()
@@ -71,29 +77,28 @@ public class SmallDragonScript : Monster
         //GetComponent<AudioSource>().PlayOneShot(roar);
     }
 
-    private void playAnimation(string animationName)
-    {
-        if (!anim.isPlaying)
-        {
-            anim.Play(animationName);
-        }
-    }
     private void playAttack()
     {
-        if (!anim.isPlaying || first)
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
         {
             Debug.Log("dragon animation");
-            first = false;
             int attackNumber = Random.Range(1, 4);
-            anim.Play("attack" + attackNumber);
-            if(attackNumber == 1)
+            string attackS = "Attack" + attackNumber;
+            Debug.Log(attackS);
+            animator.SetTrigger(attackS);
+            if (attackNumber == 1)
             {
-                GetComponent<AudioSource>().PlayOneShot(roar);
+               // GetComponent<AudioSource>().PlayOneShot(roar);
             }
         }
     }
-    void OnDestroy()
+
+    private IEnumerator DestroyDelay(float t)
     {
+        yield return new WaitForSeconds(t);
         grandpa.onMonsterDeath();
+        Destroy(gameObject);
     }
+
 }

@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 1140431412161213012}
   - component: {fileID: 5643191218628166873}
   - component: {fileID: 3568250721115732247}
+  - component: {fileID: 8258853960817685563}
   m_Layer: 0
   m_Name: DragonSmall
   m_TagString: dragon
@@ -802,7 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   noise: []
-  animator: {fileID: 0}
+  animator: {fileID: 8258853960817685563}
   speed: 4
   range: 2
   agent: {fileID: 5643191218628166873}
@@ -810,6 +811,25 @@ MonoBehaviour:
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
   player: {fileID: 0}
+--- !u!95 &8258853960817685563
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018885888825952891}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e1d3376d109c784e95577d79e052d4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2018887519869250867
 GameObject:
   m_ObjectHideFlags: 0
