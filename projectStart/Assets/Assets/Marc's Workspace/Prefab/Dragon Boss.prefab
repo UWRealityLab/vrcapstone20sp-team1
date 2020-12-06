@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8371257c1c4b4a91e332df0fce14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 120
   noise: []
   animator: {fileID: 411908280840467080}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}

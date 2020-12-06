@@ -587,15 +587,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043e4506363c2364494df688c424c1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 240
+  health: 100
   noise: []
   animator: {fileID: 1784171121145644471}
-  speed: 4
   range: 2
   agent: {fileID: 7434276148644812695}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
   player: {fileID: 0}
+  mid: 1
 --- !u!195 &7434276148644812695
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3.5
+  m_Speed: 1.2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

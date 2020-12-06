@@ -5,7 +5,6 @@ using UnityEngine.AI;
 using Valve.VR.InteractionSystem;
 public class SmallDragonScript : Monster
 {
-    public float speed = 4;
     public float range = 3;
     public NavMeshAgent agent;
     public AudioClip roar;
@@ -17,6 +16,7 @@ public class SmallDragonScript : Monster
     private bool isDying = false;
     private bool first = true;
     float destroyDelay = 3;
+    public bool mid = false;
 
     void Start()
     {
@@ -41,6 +41,7 @@ public class SmallDragonScript : Monster
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             StartCoroutine(DestroyDelay(destroyDelay));
+            agent.SetDestination(player.transform.position);
         }
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
@@ -79,17 +80,19 @@ public class SmallDragonScript : Monster
 
     private void playAttack()
     {
-        Debug.Log(animator.GetCurrentAnimatorStateInfo(0));
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             Debug.Log("dragon animation");
             int attackNumber = Random.Range(1, 4);
             string attackS = "Attack" + attackNumber;
             Debug.Log(attackS);
-            animator.SetTrigger(attackS);
-            if (attackNumber == 1)
+            if(mid)
             {
-               // GetComponent<AudioSource>().PlayOneShot(roar);
+                animator.SetTrigger("Attack3");
+            }
+            else
+            {
+                animator.SetTrigger("Attack1");
             }
         }
     }
