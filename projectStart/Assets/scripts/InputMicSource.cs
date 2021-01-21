@@ -78,13 +78,11 @@ public class InputMicSource : MonoBehaviour
 
     public void SelectMic(int micNumber)
     {
-        Debug.Log("New Mic Selected" + dropdown.value);
         activeMic = micList[dropdown.value];
     }
 
     void StartSource()
     {
-        Debug.Log(maxFreq);
         Microphone.GetDeviceCaps(activeMic, out minFreq, out maxFreq);
         audioSource.clip = Microphone.Start(activeMic, true, 20, maxFreq);
         while(!(Microphone.GetPosition(activeMic) > 0)){ }

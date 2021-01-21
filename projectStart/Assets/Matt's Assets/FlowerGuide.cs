@@ -4,47 +4,54 @@ using UnityEngine;
 
 public class FlowerGuide : MonoBehaviour
 {
-    public bool toggleLight;
-    //public float blinkDuration;
+    float maxLightIntensity;
+    float maxHaloIntensity;
     public float blinkFrequency;
+    public float fadeTime = 1;
     public GameObject[] flowers;
     bool guidanceOn = false;
     float timer;
     GameObject activeFlower1;
     GameObject activeFlower2;
     int arrayCounter;
-    Component halo;
+    
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        StartFlowerGuidance();
+        //fadeTime = blinkFrequency;
+        maxLightIntensity = flowers[0].GetComponent<Light>().intensity;
+        maxHaloIntensity = flowers[0].transform.Find("Halo").GetComponent<Light>().intensity;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     IEnumerator StartGuiding()
     {
+        
         foreach (GameObject f in flowers)
         {
-            DeactivateFlower(f);
+            f.GetComponent<FlowerFade>().Off();
+            
         }
+
         activeFlower1 = flowers[0];
         activeFlower2 = flowers[1];
-        while(guidanceOn == true)
+        activeFlower1.GetComponent<FlowerFade>().FadeIn(maxHaloIntensity, maxLightIntensity, fadeTime);
+        activeFlower2.GetComponent<FlowerFade>().FadeIn(maxHaloIntensity, maxLightIntensity, fadeTime);
+        while (guidanceOn == true)
         {
             timer += Time.deltaTime;
             if (timer >= blinkFrequency)
             {
-                DeactivateFlower(activeFlower1);
-                DeactivateFlower(activeFlower2);
+
+               // activeFlower1.GetComponent<FlowerFade>().FadeOut(maxHaloIntensity, maxLightIntensity, fadeTime);
+                //activeFlower2.GetComponent<FlowerFade>().FadeOut(maxHaloIntensity, maxLightIntensity, fadeTime);
                 GetNextFlowers();
-                ActivateFlower(activeFlower1);
-                ActivateFlower(activeFlower2);
+                activeFlower1.GetComponent<FlowerFade>().FadeIn(maxHaloIntensity, maxLightIntensity, fadeTime);
+                activeFlower2.GetComponent<FlowerFade>().FadeIn(maxHaloIntensity, maxLightIntensity, fadeTime);
+
                 timer = 0;
             }
             yield return new WaitForEndOfFrame();
@@ -63,26 +70,7 @@ public class FlowerGuide : MonoBehaviour
         activeFlower1 = flowers[arrayCounter];
         activeFlower2 = flowers[arrayCounter + 1];
     }
-    void ActivateFlower(GameObject f)
-    {
-        if (toggleLight == true)
-        {
-            f.GetComponent<Light>().enabled = true;
-        }
-        //f.GetComponent<Halo>().enabled = false;
-        halo = f.GetComponent("Halo");
-        halo.GetType().GetProperty("enabled").SetValue(halo, true, null);
-    }
-    void DeactivateFlower(GameObject f)
-    {
-        if (toggleLight == true)
-        {
-            f.GetComponent<Light>().enabled = false;
-        }
-        //f.GetComponent<Halo>().enabled = false;
-        halo = f.GetComponent("Halo");
-        halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
-    }
+
     public void StartFlowerGuidance()
     {
         guidanceOn = true;
@@ -93,7 +81,8 @@ public class FlowerGuide : MonoBehaviour
         guidanceOn = false;
         foreach (GameObject f in flowers)
         {
-            ActivateFlower(f);
+            f.GetComponent<FlowerFade>().On(maxHaloIntensity, maxLightIntensity);
         }
     }
+    
 }

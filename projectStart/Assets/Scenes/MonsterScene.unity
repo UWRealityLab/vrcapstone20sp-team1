@@ -7875,8 +7875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548309ef19490c48b3c8c9b4b3af334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleLight: 0
   blinkFrequency: 0.25
+  fadeTime: 0.75
   flowers:
   - {fileID: 422385791}
   - {fileID: 899664878}
