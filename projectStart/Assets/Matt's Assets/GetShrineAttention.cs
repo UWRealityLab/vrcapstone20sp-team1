@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowerGuide : MonoBehaviour
+public class GetShrineAttention : MonoBehaviour
 {
     float maxLightIntensity;
     float maxHaloIntensity;
     public float blinkFrequency;
     public float fadeTime = 1;
     public GameObject[] flowers;
+    public Light emerald;
+    public float lightRange = 10.0f;
+    float originalRange;
     bool guidanceOn = false;
     float timer;
     GameObject activeFlower1;
@@ -24,6 +27,7 @@ public class FlowerGuide : MonoBehaviour
         //fadeTime = blinkFrequency;
         maxLightIntensity = flowers[0].GetComponent<Light>().intensity;
         maxHaloIntensity = flowers[0].transform.Find("Halo").GetComponent<Light>().intensity;
+        originalRange = emerald.range;
 
     }
 
@@ -71,14 +75,16 @@ public class FlowerGuide : MonoBehaviour
         activeFlower2 = flowers[arrayCounter + 1];
     }
 
-    public void StartFlowerGuidance()
+    public void StartGuidance()
     {
         guidanceOn = true;
+        emerald.range = lightRange;
         StartCoroutine(StartGuiding());
     }
-    public void StopFlowerGuidance()
+    public void StopGuidance()
     {
         guidanceOn = false;
+        emerald.range = originalRange;
         foreach (GameObject f in flowers)
         {
             f.GetComponent<FlowerFade>().On(maxHaloIntensity, maxLightIntensity);
