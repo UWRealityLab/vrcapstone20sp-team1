@@ -2654,6 +2654,7 @@ MonoBehaviour:
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
   player: {fileID: 0}
+  mid: 0
 --- !u!195 &1872405802255632815
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2664,7 +2665,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 1
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 80
