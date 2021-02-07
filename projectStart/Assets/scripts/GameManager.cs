@@ -273,7 +273,7 @@ public class GameManager : MonoBehaviour
         audioManager = AudioManager.GetInstance();
         SetLevelIntro();
         //SetLevelFinal();
-      //  SetLevelToNinjaStars();
+        // SetLevelToNinjaStars();
         //SetLevelDragonBoss();
         Debug.Log(_currentLevel);
     }

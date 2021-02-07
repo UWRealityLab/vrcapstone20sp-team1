@@ -38,8 +38,7 @@ public class SmallDragonScript : Monster
     // Update is called once per frame
     void Update()
     {
-        
-        if()
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             StartCoroutine(DestroyDelay(destroyDelay));
@@ -51,7 +50,7 @@ public class SmallDragonScript : Monster
             agent.SetDestination(transform.position);
             animator.SetBool("Run", false);
             playAttack();
-        } else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        } else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
             agent.SetDestination(transform.position);
         } else

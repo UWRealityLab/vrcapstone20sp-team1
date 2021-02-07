@@ -17,14 +17,17 @@ public class GetShrineAttention : MonoBehaviour
     GameObject activeFlower1;
     GameObject activeFlower2;
     int arrayCounter;
-    
+    GameManager manager;
+    private bool started = false;
 
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         //fadeTime = blinkFrequency;
+        manager = GameManager.GetInstance();
         maxLightIntensity = flowers[0].GetComponent<Light>().intensity;
         maxHaloIntensity = flowers[0].transform.Find("Halo").GetComponent<Light>().intensity;
         originalRange = emerald.range;
@@ -90,5 +93,13 @@ public class GetShrineAttention : MonoBehaviour
             f.GetComponent<FlowerFade>().On(maxHaloIntensity, maxLightIntensity);
         }
     }
-    
+
+    void Update()
+    {
+        if(manager.GetLevel() == GameManager.LEVEL.DRAGON_BOSS && manager.InProgress() && !started)
+        {
+            started = true;
+            StartGuidance();
+        }
+    }
 }
