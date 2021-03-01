@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelNinjaStars()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(10.0f);
         _currentLevel = LEVEL.NINJA_STARS;
         StartCoroutine(railingTargetSystem.Spawn3Targets());
         wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakVasesScene()
     {
         Debug.Log("break was called");
-        yield return new WaitForSeconds(13.0f);
+        yield return new WaitForSeconds(9.0f);
         _currentLevel = LEVEL.BREAK_VASES;
         Debug.Log(_currentLevel);
         LoadInstance("Vases");
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LoadBreakObjectsScene()
     {
         Debug.Log("break was called");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(7.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
