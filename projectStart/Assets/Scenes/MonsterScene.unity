@@ -31126,6 +31126,11 @@ PrefabInstance:
       propertyPath: highlightOnHover
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2914135778469929406, guid: 69b5206cd95072e47afdacf45d55d1dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5029318385864220764, guid: 69b5206cd95072e47afdacf45d55d1dc,
         type: 3}
       propertyPath: m_Name

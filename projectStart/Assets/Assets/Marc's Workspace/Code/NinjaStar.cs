@@ -10,6 +10,8 @@ public class NinjaStar : MonoBehaviour, Weapon
     public GameObject poof;
     public AudioClip hitTargetSound;
     public AudioClip hitEnemySound;
+    public AudioClip hitWoodSound;
+    public AudioClip hitWaterSound;
 
     private GameObject targetEnemy;
     private float aimAssistVelocity;
