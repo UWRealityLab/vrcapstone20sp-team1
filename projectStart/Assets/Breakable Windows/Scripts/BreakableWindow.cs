@@ -223,7 +223,8 @@ public class BreakableWindow : MonoBehaviour {
             Destroy(GetComponent<MeshRenderer>());
             Destroy(GetComponent<MeshFilter>());
 
-            isBroken = true;            
+            isBroken = true;
+            SkyLights.SetActive(false);
         }
 
         if (breakingSound != null)
@@ -272,6 +273,5 @@ public class BreakableWindow : MonoBehaviour {
     void SpawnBrokenCeiling()
     {
         BrokenCeiling.SetActive(true);
-        SkyLights.SetActive(false);
     }
 }
