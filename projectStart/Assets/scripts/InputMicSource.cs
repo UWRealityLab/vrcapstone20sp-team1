@@ -70,7 +70,6 @@ public class InputMicSource : MonoBehaviour
         foreach (string mic in Microphone.devices)
         {
             micList.Add(mic);
-            Debug.Log("Mic: " + mic);
         }
         dropdown.AddOptions(micList);
         previousMicCount = Microphone.devices.Length;

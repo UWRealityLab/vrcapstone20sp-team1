@@ -29,7 +29,7 @@ public class DoorInteraction : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         
-        Debug.Log("collision!!!!");
+
         if (collider.gameObject.tag == "monster1" || collider.gameObject.tag == "monster2" || collider.gameObject.tag == "monster3")
         {
             Debug.Log("door hit");

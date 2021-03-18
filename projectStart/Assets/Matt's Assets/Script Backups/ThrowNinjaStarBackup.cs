@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class ThrowNinjaStarVR : MonoBehaviour
+public class ThrowNinjaStarBackup : MonoBehaviour
 {
     public GameObject starObject;
     public GameObject starSpawn;
-    public Hand leftHand;
-    public Hand rightHand;
-    Hand hand;
-    bool rightHandActive = true;
+    public Hand hand;
     public string[] enemyTags;
     public AudioClip throwStarSound;
 
@@ -25,20 +22,19 @@ public class ThrowNinjaStarVR : MonoBehaviour
     void Start()
     {
         isActive = true;
-        hand = rightHand;
     }
 
     void Update()
     {
-        if(hand.GetGrabStarting() == GrabTypes.Pinch && isActive)
+        if (hand.GetGrabStarting() == GrabTypes.Pinch && isActive)
         {
             hand.TriggerHapticPulse(2000);
             SpawnStar();
-        } 
-        else if (hand.GetGrabEnding() == GrabTypes.Pinch && isActive) 
+        }
+        else if (hand.GetGrabEnding() == GrabTypes.Pinch && isActive)
         {
             Throw();
-            hand.TriggerHapticPulse(2000); 
+            hand.TriggerHapticPulse(2000);
         }
         prevHandPos = hand.transform.position;
     }
@@ -71,14 +67,14 @@ public class ThrowNinjaStarVR : MonoBehaviour
             float angle = Vector3.Angle(handVelocity, handToTarget);
 
             if (smallestAngle.CompareTo(angle) > 0)
-                {
-                    smallestAngle = angle;
-                    target = enemy;
-                }
+            {
+                smallestAngle = angle;
+                target = enemy;
+            }
         }
-        
 
-        if (smallestAngle< aimAssistConeAngle)
+
+        if (smallestAngle < aimAssistConeAngle)
         {
             Debug.Log("aim assist applied, velocity: " + handVelocity.magnitude);
             ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
@@ -96,21 +92,10 @@ public class ThrowNinjaStarVR : MonoBehaviour
     private List<GameObject> CollectEnemies()
     {
         List<GameObject> enemies = new List<GameObject>();
-        foreach(string tag in enemyTags) {
+        foreach (string tag in enemyTags)
+        {
             enemies.AddRange(GameObject.FindGameObjectsWithTag(tag));
         }
         return enemies;
-    }
-    public void SwapActive()
-    {
-        rightHandActive = !rightHandActive;
-        if (rightHandActive)
-        {
-            hand = rightHand;
-        }
-        else
-        {
-            hand = leftHand;
-        }
     }
 }
