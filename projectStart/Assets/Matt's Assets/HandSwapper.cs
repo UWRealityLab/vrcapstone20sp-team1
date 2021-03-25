@@ -7,16 +7,24 @@ public class HandSwapper : MonoBehaviour
 {
     public SteamVR_Action_Boolean trigger;
     bool inRighthand = false;
-    public Transform rightHand;
-    public Transform leftHand;
+    public Transform rightHandAttach;
+    public Transform leftHandAttach;
     public Transform sword;
+    public Transform swordPoof;
     public ThrowNinjaStarVR throwStar;
     bool listening;
+    Vector3 swordAttachRotation;
+    Vector3 starAttachRotation;
+    Vector3 swordAttachPosition;
+    Vector3 starAttachPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        swordAttachRotation = leftHandAttach.localEulerAngles;
+        swordAttachPosition = leftHandAttach.localPosition;
+        starAttachRotation = rightHandAttach.localEulerAngles;
+        starAttachPosition = rightHandAttach.localPosition;
     }
 
     // Update is called once per frame
@@ -67,16 +75,30 @@ public class HandSwapper : MonoBehaviour
         inRighthand = !inRighthand;
         if (inRighthand)
         {
-            transform.SetParent(rightHand);
-            sword.SetParent(rightHand);
+            transform.SetParent(leftHandAttach);
+            leftHandAttach.localEulerAngles = starAttachRotation;
+            leftHandAttach.localPosition = starAttachPosition;
+            sword.SetParent(rightHandAttach);
+            rightHandAttach.localEulerAngles = swordAttachRotation;
+            rightHandAttach.localPosition = swordAttachPosition;
+            swordPoof.SetParent(rightHandAttach);
         }
         else
         {
-            transform.SetParent(leftHand);
-            sword.SetParent(rightHand);
+            transform.SetParent(rightHandAttach);
+            rightHandAttach.localEulerAngles = starAttachRotation;
+            rightHandAttach.localPosition = starAttachPosition;
+            sword.SetParent(leftHandAttach);
+            leftHandAttach.localEulerAngles = swordAttachRotation;
+            leftHandAttach.localPosition = swordAttachPosition;
+            swordPoof.SetParent(leftHandAttach);
         }
         sword.localPosition = new Vector3(0, 0, 0);
         sword.localEulerAngles = new Vector3(0, 0, 0);
+        swordPoof.localPosition = new Vector3(0, 0, 0);
+        swordPoof.localEulerAngles = new Vector3(0, 180, 0);
+        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localEulerAngles = new Vector3(0, 0, 0);
         throwStar.SwapActive();
     }
     private void OnTriggerEnter(Collider other)
