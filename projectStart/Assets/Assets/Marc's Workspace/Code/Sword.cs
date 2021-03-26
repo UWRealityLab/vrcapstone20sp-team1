@@ -92,6 +92,7 @@ public class Sword : MonoBehaviour, Weapon
 
     private void AirSlashLogic()
     {
+        
         Vector3 bladeDirection = this.transform.right;
         Vector3 swordVelocity = CalculateTipVelocity();
 
@@ -143,7 +144,10 @@ public class Sword : MonoBehaviour, Weapon
     }
     private Vector3 CalculateTipVelocity()
     {
+       // Debug.Log(tip.transform.position);
+        //Debug.Log(prevTipPos);
         Vector3 velocity = (tip.transform.position - prevTipPos) / Time.deltaTime;
+        //Debug.Log(velocity);
         prevTipPos = tip.transform.position;
         return velocity;
     }
