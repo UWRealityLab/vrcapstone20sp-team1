@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="16_data" version="1.3.0" audacityversion="2.4.2" sel0="10.7868183595" sel1="10.7868183595" vpos="0" h="0.0000000000" zoom="62.6690816021" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="ARTIST" value="Adam Pesch"/>
+	</tags>
+	<wavetrack name="Mix" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="490476">
+				<waveblock start="0">
+					<simpleblockfile filename="e08086bf.au" len="245255" min="-0.280548" max="0.267656" rms="0.034595"/>
+				</waveblock>
+				<waveblock start="245255">
+					<simpleblockfile filename="e08086c7.au" len="245221" min="-0.203812" max="0.209052" rms="0.026975"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mix" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="490476">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808fb8.au" len="245255" min="-0.267003" max="0.267589" rms="0.034611"/>
+				</waveblock>
+				<waveblock start="245255">
+					<simpleblockfile filename="e080891e.au" len="245221" min="-0.203811" max="0.209566" rms="0.026893"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
