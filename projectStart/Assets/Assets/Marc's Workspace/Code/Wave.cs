@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 public class Wave : MonoBehaviour
 {
     public Transform[] waveSpawnPoints;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
 
     private GameObject[] enemies;
 
@@ -16,7 +16,7 @@ public class Wave : MonoBehaviour
         enemies = new GameObject[waveSpawnPoints.Length];
         for (int i = 0; i < waveSpawnPoints.Length; i++)
         {
-            enemies[i] = Instantiate(enemyPrefab, waveSpawnPoints[i]);
+            enemies[i] = Instantiate(enemyPrefab[i], waveSpawnPoints[i]);
 
             Debug.Log("MARC LOG: enemy: " + enemies[i]);
         }

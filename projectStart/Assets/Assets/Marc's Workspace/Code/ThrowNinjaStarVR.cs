@@ -7,7 +7,10 @@ public class ThrowNinjaStarVR : MonoBehaviour
 {
     public GameObject starObject;
     public GameObject starSpawn;
-    public Hand hand;
+    public Hand leftHand;
+    public Hand rightHand;
+    Hand hand;
+    bool rightHandActive = true;
     public string[] enemyTags;
     public AudioClip throwStarSound;
 
@@ -22,6 +25,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
     void Start()
     {
         isActive = true;
+        hand = rightHand;
     }
 
     void Update()
@@ -96,5 +100,17 @@ public class ThrowNinjaStarVR : MonoBehaviour
             enemies.AddRange(GameObject.FindGameObjectsWithTag(tag));
         }
         return enemies;
+    }
+    public void SwapActive()
+    {
+        rightHandActive = !rightHandActive;
+        if (rightHandActive)
+        {
+            hand = rightHand;
+        }
+        else
+        {
+            hand = leftHand;
+        }
     }
 }
