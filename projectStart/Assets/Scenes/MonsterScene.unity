@@ -15366,24 +15366,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 641500973dc2fa6459adaccb790756b2, type: 3}
-  - {fileID: 8300000, guid: e571df5e129190740ad8228f9b3f0aa4, type: 3}
-  - {fileID: 8300000, guid: 90849f30e623bd040bb710258a3182ec, type: 3}
-  - {fileID: 8300000, guid: a3edd8fa132a8964980597f436dab223, type: 3}
-  - {fileID: 8300000, guid: 884b402a69d3efe4b9ae986acb0bda78, type: 3}
-  - {fileID: 8300000, guid: 45bae2f567625134987fccb97d2f92f3, type: 3}
-  - {fileID: 8300000, guid: 344b665975c381a41b4a7e895f06b656, type: 3}
-  - {fileID: 8300000, guid: 842d3816f8aceed4fa24389b0f719e86, type: 3}
-  - {fileID: 8300000, guid: 27d807987caa20b45afa61b5e0a755be, type: 3}
-  - {fileID: 8300000, guid: a2f0bc6c090148a40b7281756416c1c4, type: 3}
-  - {fileID: 8300000, guid: 82776a2e2d6a77e4f81c4063030b1cf5, type: 3}
-  - {fileID: 8300000, guid: 150caa79fea20b7419ea2f504762bc24, type: 3}
-  - {fileID: 8300000, guid: a14eda76e21199e4592af81b42e10b1f, type: 3}
-  - {fileID: 8300000, guid: b4ad629f79c5fe54ca5b6317ff3e3f0a, type: 3}
-  - {fileID: 8300000, guid: e1ad644afadd37b43b7e453c43030311, type: 3}
-  - {fileID: 8300000, guid: dbd40b8e1f83def43a524e83e6c4f837, type: 3}
-  - {fileID: 8300000, guid: c020ac833c72607439e39192501e108b, type: 3}
-  intro: {fileID: 8300000, guid: 641500973dc2fa6459adaccb790756b2, type: 3}
+  - {fileID: 8300000, guid: 7ef9e8247ecaa2b47951900e2d0f84f4, type: 3}
+  - {fileID: 8300000, guid: dce3dd984f28bdc4d97b8c62ef9a77b5, type: 3}
+  - {fileID: 8300000, guid: 80aa89e77d8cbfc49903ffd7b64e7cc7, type: 3}
+  - {fileID: 8300000, guid: 6eead8486ece0924ead38592de68bf4a, type: 3}
+  - {fileID: 8300000, guid: 7de3006bdb9f43c43ace8487a3e0eaf5, type: 3}
+  - {fileID: 8300000, guid: 4694ec3dee89a174fb5da2b864f632b9, type: 3}
+  - {fileID: 8300000, guid: 5d78d9fbfad703b49a097c6190942a74, type: 3}
+  - {fileID: 8300000, guid: d4cb8a6ee7ac62046b927cce9bfd5275, type: 3}
+  - {fileID: 8300000, guid: f27dcfd2f57346546bb14b9b3a32c644, type: 3}
+  - {fileID: 8300000, guid: 87df0bd74e9b7ce468b79e70b983fd95, type: 3}
+  - {fileID: 8300000, guid: d402908f9678b314d98b13a959d17bd5, type: 3}
+  - {fileID: 8300000, guid: 522c693e10489d74688a6d97d2dc50a6, type: 3}
+  - {fileID: 8300000, guid: be75eb73c82dc2f49a6d7452951b5de9, type: 3}
+  - {fileID: 8300000, guid: 0aeb7cc0ab1af59409c62c6d4af86754, type: 3}
+  - {fileID: 8300000, guid: d5cb4a2b1ccbbbf48af2f3f63f920c9e, type: 3}
+  - {fileID: 8300000, guid: 9d7fffe334e55d747b863b5c93fbf074, type: 3}
+  - {fileID: 8300000, guid: 743c80463c776744ea2cec6bbf5252ec, type: 3}
+  intro: {fileID: 8300000, guid: 7ef9e8247ecaa2b47951900e2d0f84f4, type: 3}
   introObject: {fileID: 0}
   breakObjects: {fileID: 0}
   ninjaStars: {fileID: 0}
@@ -15391,18 +15391,18 @@ MonoBehaviour:
   final: {fileID: 0}
   end: {fileID: 8300000, guid: c020ac833c72607439e39192501e108b, type: 3}
   fighting:
-  - {fileID: 8300000, guid: 1085b82d11c106d439b56c659a340540, type: 3}
-  - {fileID: 8300000, guid: dd8f9113914fb8d4ca32bb18e59918ff, type: 3}
-  - {fileID: 8300000, guid: 55255b8523f967e478ec5d9546561033, type: 3}
-  - {fileID: 8300000, guid: 2f2762f65a8286042a5eeb6d422494c5, type: 3}
-  - {fileID: 8300000, guid: d83061e41717932499b457e63662617e, type: 3}
-  - {fileID: 8300000, guid: a4aae0c82a071c5429a59e685653dfaf, type: 3}
-  - {fileID: 8300000, guid: f7d75c6fc6cfb3741a311d8d3c363188, type: 3}
-  - {fileID: 8300000, guid: 5c9f8751f0db32f49b17e47fa1108859, type: 3}
-  - {fileID: 8300000, guid: c0f21573e3ab83843a1d2aa43ecda2f9, type: 3}
-  - {fileID: 8300000, guid: 8f2cb25c058575a4caee4936c751d820, type: 3}
-  - {fileID: 8300000, guid: a3f376dee3848ab4b88d4f9e204f27aa, type: 3}
-  - {fileID: 8300000, guid: cf117d55b0a1f6146a756ea14df36e73, type: 3}
+  - {fileID: 8300000, guid: 845381e9c4a60ad4c93d54c622edd507, type: 3}
+  - {fileID: 8300000, guid: 0dc0d39e04aac7e4cacd4858fddff1a5, type: 3}
+  - {fileID: 8300000, guid: d204fb20b259f754ebdb8e0a2044c706, type: 3}
+  - {fileID: 8300000, guid: 66b40c3b34a178c4ba6bd3b59874be17, type: 3}
+  - {fileID: 8300000, guid: 1bdd116c64929bd42b12d098b8b64ca5, type: 3}
+  - {fileID: 8300000, guid: 9295467358f40b1408cf976be977a6f8, type: 3}
+  - {fileID: 8300000, guid: b4c7b504f2d07494095a79a1f1673ade, type: 3}
+  - {fileID: 8300000, guid: 0136b691be84a1641bf80d0a64deaea5, type: 3}
+  - {fileID: 8300000, guid: 5f34e4ae4c5ccb4438864265a7437990, type: 3}
+  - {fileID: 8300000, guid: b1345620fa6b42e439c7a0c3b26c793a, type: 3}
+  - {fileID: 8300000, guid: e050db92f74de5a4298cf3867f4feeb6, type: 3}
+  - {fileID: 8300000, guid: b99b7e5102c1c0047be169a0360b3eff, type: 3}
 --- !u!114 &651880052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54064,9 +54064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d85c8fa057ac92479edbd5e2e1097ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  final: {fileID: 0}
-  fight: {fileID: 0}
-  begin: {fileID: 0}
+  final: {fileID: 8300000, guid: 43292d67299051947962c086d0828d4c, type: 3}
+  fight: {fileID: 8300000, guid: 688ae203ecfbb044ab67a34ccb120aa4, type: 3}
+  begin: {fileID: 8300000, guid: 688ae203ecfbb044ab67a34ccb120aa4, type: 3}
 --- !u!114 &1866657269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56410,6 +56410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019539978542750152, guid: 4c55f2e28010b4e44becdaf4f3a2d05b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c55f2e28010b4e44becdaf4f3a2d05b, type: 3}
