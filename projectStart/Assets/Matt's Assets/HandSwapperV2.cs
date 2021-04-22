@@ -60,13 +60,14 @@ public class HandSwapperV2 : MonoBehaviour
             leftHand.DetachObject(sword);
             rightHand.AttachObject(sword, GrabTypes.Pinch, Hand.AttachmentFlags.ParentToHand);
             transform.SetParent(leftHand.transform);
-            
+            sword.GetComponent<Sword>().SetHand(rightHand);
         }
         else
         {
             rightHand.DetachObject(sword);
             leftHand.AttachObject(sword, GrabTypes.Pinch, Hand.AttachmentFlags.ParentToHand);
             transform.SetParent(rightHand.transform);
+            sword.GetComponent<Sword>().SetHand(leftHand);
         }
         swordPoof.SetParent(sword.transform.parent);
         swordPoof.localPosition = new Vector3(0, 0, 0);

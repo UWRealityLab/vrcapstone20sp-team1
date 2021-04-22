@@ -129,12 +129,13 @@ public class Sword : MonoBehaviour, Weapon
                 slsh.GetComponent<Rigidbody>().AddForce(direction * 800);
 
                 GetComponent<AudioSource>().PlayOneShot(airSlashSound);
-
+                /*
                 Debug.Log("SLASH! " + count);
                 Debug.Log("tiparccenter: " + tipArcCenter +
                             "\nhiltarccenter: " + hiltArcCenter);
                 Debug.Log("\ndirection: " + direction);
                 Debug.Log("\nfromto: " + (tip.transform.position - startTipPos));
+                */
 
                 slashThresholdsMet = false;
             }
@@ -144,11 +145,12 @@ public class Sword : MonoBehaviour, Weapon
     }
     private Vector3 CalculateTipVelocity()
     {
-       // Debug.Log(tip.transform.position);
+        // Debug.Log(tip.transform.position);
         //Debug.Log(prevTipPos);
-        Vector3 velocity = (tip.transform.position - prevTipPos) / Time.deltaTime;
+        Vector3 currentPosition = tip.transform.position;
+        Vector3 velocity = (currentPosition - prevTipPos) / Time.deltaTime;
         //Debug.Log(velocity);
-        prevTipPos = tip.transform.position;
+        prevTipPos = currentPosition;
         return velocity;
     }
 }

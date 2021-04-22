@@ -23,7 +23,10 @@ public class InitiateSword : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        hand.AttachObject(sword, GrabTypes.None);
+        if (sword != null && sword.activeInHierarchy == true)
+        {
+            hand.AttachObject(sword, GrabTypes.None);
+        }
     }
 
     IEnumerator Delay()
