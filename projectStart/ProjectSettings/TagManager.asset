@@ -21,6 +21,7 @@ TagManager:
   - door
   - dragon
   - entry
+  - Water
   layers:
   - Default
   - TransparentFX

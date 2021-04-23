@@ -36,8 +36,9 @@ public class Monster : MonoBehaviour
             if (collider.gameObject.GetComponent<NinjaStar>() != null)
                 {
                 Debug.Log("ninja star hit");
-                    collider.gameObject.GetComponent<NinjaStar>().destroyStar();
-                }
+                //collider.gameObject.GetComponent<NinjaStar>().destroyStar();
+                collider.gameObject.GetComponent<NinjaStar>().destroyStar(gameObject);
+            }
             if (health <= 0)
             {
                 Debug.Log("dragon death");

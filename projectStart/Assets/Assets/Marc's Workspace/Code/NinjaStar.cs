@@ -39,26 +39,53 @@ public class NinjaStar : MonoBehaviour, Weapon
 
     void OnCollisionEnter(Collision collision)
     {
-        destroyStar(collision.collider.material.name);
+        //destroyStar(collision.collider.material.name);
+        destroyStar(collision.gameObject);
     }
 
 
-    public void destroyStar(string matName = "default")
+    //public void destroyStar(string matName = "default")
+    public void destroyStar(GameObject hitObject)
     {
-
-        if (matName.Equals("Wood (Instance)"))
+        bool destroyWithPoof = true;
+        if (hitObject.name == "Standing Log Target(Clone)")
         {
-            GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+            GetComponent<AudioSource>().PlayOneShot(hitWoodSound);
         }
-        else
+        else if (hitObject.tag == "monster" || hitObject.tag == "monster1" || hitObject.tag == "monster2" || hitObject.tag == "monster3" || hitObject.tag == "dragon" || hitObject.tag == "enemy")
         {
             GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
         }
-        /* code to disappear on collision */
-        Instantiate(poof, transform.position, transform.rotation);
-        this.GetComponent<MeshRenderer>().enabled = false;
-        this.GetComponent<Collider>().enabled = false;
-        this.GetComponent<Rigidbody>().detectCollisions = false;
+        else if (hitObject.tag == "ninjaStarTarget")
+        {
+            GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+        }
+        else if (hitObject.tag == "Water")
+        {
+            destroyWithPoof = false;
+            GetComponent<AudioSource>().PlayOneShot(hitWaterSound);
+        }
+        else 
+        {
+            GetComponent<AudioSource>().PlayOneShot(hitWoodSound);
+        }
+            /*
+            if (matName.Equals("Wood (Instance)"))
+            {
+                GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+            }
+            else
+            {
+                GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
+            }
+            */
+            /* code to disappear on collision */
+            if (destroyWithPoof == true) {
+                Instantiate(poof, transform.position, transform.rotation);
+                this.GetComponent<MeshRenderer>().enabled = false;
+                this.GetComponent<Collider>().enabled = false;
+                this.GetComponent<Rigidbody>().detectCollisions = false;
+            }
 
         Destroy(this.gameObject,0.1f);
     }
