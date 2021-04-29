@@ -16,8 +16,9 @@ public class Sword : MonoBehaviour, Weapon
     public GameObject slash;
     public Hand hand;
     public Camera cam;
+    public AudioSource source;
     public AudioClip airSlashSound;
-    public AudioClip hitTargetSound;
+    public AudioClip hitWoodSound;
     public AudioClip hitEnemySound;
 
     public float slashSpeedThreshold = 8f;
@@ -61,16 +62,13 @@ public class Sword : MonoBehaviour, Weapon
     void OnTriggerEnter(Collider other)
     {
         hand.TriggerHapticPulse(65535);
-        Debug.Log("other name: " + other.name);
-        if (other.material.name.Equals("Wood (Instance)") || other.name == "Floor")
+        if (other.tag == "monster" || other.tag == "monster1" || other.tag == "monster2" || other.tag == "monster3" || other.tag == "dragon" || other.tag == "enemy")
         {
-            Debug.Log("wood sound played");
-            GetComponent<AudioSource>().PlayOneShot(hitTargetSound);
+            source.PlayOneShot(hitEnemySound);
         }
-        else
+        else if (other.tag == "Ground")
         {
-            Debug.Log("default sound played: " + other.material.name);
-            GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
+            source.PlayOneShot(hitWoodSound);
         }
     }
 
@@ -128,7 +126,7 @@ public class Sword : MonoBehaviour, Weapon
                 slsh.GetComponent<Transform>().localScale = new Vector3((tip.transform.position - startTipPos).magnitude, 0.01f, 0.01f);
                 slsh.GetComponent<Rigidbody>().AddForce(direction * 800);
 
-                GetComponent<AudioSource>().PlayOneShot(airSlashSound);
+               //source.PlayOneShot(airSlashSound);
                 /*
                 Debug.Log("SLASH! " + count);
                 Debug.Log("tiparccenter: " + tipArcCenter +

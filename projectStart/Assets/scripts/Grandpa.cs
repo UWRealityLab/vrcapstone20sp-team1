@@ -131,7 +131,7 @@ public class Grandpa : MonoBehaviour
 // Update is called once per frame
 void FixedUpdate()
     {
-        if (time % 600 == 0 && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
+        if (time % 1800 == 0 && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
         {
             IntroAction();
         }else if (manager.InProgress())

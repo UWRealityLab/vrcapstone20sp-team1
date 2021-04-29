@@ -7,18 +7,23 @@ using Valve.VR.InteractionSystem.Sample;
 
 public class Testing : MonoBehaviour
 {
-    public SkeletonUIOptions skelOptions;
+    public string printStatement;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        skelOptions.ShowController();
     }
 
-
-    private void OnDisable()
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
+        Debug.Log("Trigger: " + printStatement);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision: " + printStatement);
+    }
+
 
 }

@@ -22,7 +22,6 @@ public class AirSlash : MonoBehaviour, Weapon
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetComponent<Rigidbody>().velocity.magnitude);
         if(Time.time - spawnTime >= duration)
         {
             Destroy(this.gameObject);
@@ -33,7 +32,10 @@ public class AirSlash : MonoBehaviour, Weapon
     {
         //Debug.Log("MARC DEBUG LINE: Triggered");
         //this.GetComponent<Collider>().enabled = false;
-        StartCoroutine(DestroySelf());
+        if (other.name != "Sword")
+        {
+            StartCoroutine(DestroySelf());
+        }
     }
 
     public int damage()
