@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
+using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 public class Sword : MonoBehaviour, Weapon
@@ -34,6 +35,11 @@ public class Sword : MonoBehaviour, Weapon
     private float initTime;
 
     private Vector3 prevHandPos;
+
+    public SteamVR_Action_Vibration vibration;
+    float hapticDuration = .1f;
+    float frequency = 160;
+    float intensity = .5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +67,8 @@ public class Sword : MonoBehaviour, Weapon
 
     void OnTriggerEnter(Collider other)
     {
-        hand.TriggerHapticPulse(65535);
+        //hand.TriggerHapticPulse(ushort.MaxValue);
+        vibration.Execute(0, hapticDuration, frequency, intensity, hand.handType);
         if (other.tag == "monster" || other.tag == "monster1" || other.tag == "monster2" || other.tag == "monster3" || other.tag == "dragon" || other.tag == "enemy")
         {
             source.PlayOneShot(hitEnemySound);
