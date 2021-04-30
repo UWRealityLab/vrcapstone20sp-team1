@@ -46,6 +46,7 @@ public class AirSlash : MonoBehaviour, Weapon
     IEnumerator DestroySelf()
     {
         yield return new WaitForSeconds(destroyDelay);
+        transform.Find("Audio Source").parent = null;
         Destroy(gameObject);
     }
 }
