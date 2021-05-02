@@ -18,6 +18,7 @@ public class Grandpa : MonoBehaviour
     private float startTime = 0;
     private float len = 0;
     private long time;
+    private int random = -1;
     GameManager manager;
     public static Grandpa GetInstance()
     {
@@ -39,13 +40,6 @@ public class Grandpa : MonoBehaviour
     void Start()
     {
         manager = GameManager.GetInstance();
-        /*intro = Resources.Load<AudioClip>("Voice_Lines/lets_get_started");
-        introObject = Resources.Load<AudioClip>("Voice_Lines/its_me_grandpa_1");
-        breakObjects = Resources.Load<AudioClip>("Voice_Lines/cut_all_these_logs");
-        ninjaStars = Resources.Load<AudioClip>("Voice_Lines/throw_and_hit_those_targets");
-        fight = Resources.Load<AudioClip>("Voice_Lines/do_you_hear_that");
-        final = Resources.Load<AudioClip>("Voice_Lines/stone_of_life_isnt_safe_here");
-        end = Resources.Load<AudioClip>("Voice_Lines/remove_the_spirit_link");*/
         time = 1;
 
     }
@@ -109,10 +103,15 @@ public class Grandpa : MonoBehaviour
     public void onMonsterDeath()
     {
         if(!isPlaying()){
-            AudioClip a = fighting[Random.Range(0, fighting.Length)];
-            GetComponent<AudioSource>().PlayOneShot(a);
-            startTime = Time.time;
-            len = a.length;
+            int random2 = Random.Range(0, fighting.Length);
+            if(random != random2)
+            {
+                AudioClip a = fighting[random2];
+                GetComponent<AudioSource>().PlayOneShot(a);
+                startTime = Time.time;
+                len = a.length;
+                random = random2;
+            }           
         }
     }
 
@@ -131,10 +130,10 @@ public class Grandpa : MonoBehaviour
 // Update is called once per frame
 void FixedUpdate()
     {
-        if (time % 1800 == 0 && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
+        if ((time % 2000 == 0 || time == 10) && manager.GetLevel() == GameManager.LEVEL.INTRO && !manager.InProgress())
         {
             IntroAction();
-        }else if (manager.InProgress())
+        }else if (manager.InProgress() || manager.IsManual())
         {
             time = 0;
         }else if ((time % 700 == 0) && manager.GetLevel() == GameManager.LEVEL.END && !manager.InProgress())

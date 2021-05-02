@@ -48,7 +48,7 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = true;
         audioSource.clip = begin;
-        audioSource.volume = 0.05f;
+        audioSource.volume = 0.15f;
         audioSource.Play();
     }
     public void PlayFight()

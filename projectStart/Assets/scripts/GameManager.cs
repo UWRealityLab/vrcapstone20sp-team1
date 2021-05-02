@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
     {
+        SETUP,
         INTRO,
         BREAK_VASES,
         BREAK_OBJECTS,
@@ -68,8 +69,8 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelIntro()
     {
+        introObject = LoadInstance("IntroObject");
         _currentLevel = LEVEL.INTRO;
-        audioManager.PlayIntro();
         wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
         wisp.SetTarget(
             introObject,
@@ -271,10 +272,9 @@ public class GameManager : MonoBehaviour
     {
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
-        SetLevelIntro();
-        //SetLevelFinal();
-        // SetLevelToNinjaStars();
-        //SetLevelDragonBoss();
+        audioManager.PlayIntro();
+        manual = true;
+        _currentLevel = LEVEL.SETUP;
         Debug.Log(_currentLevel);
     }
 
@@ -284,8 +284,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             manual = !manual;
-        }
-        if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+            if (_currentLevel.Equals(LEVEL.SETUP))
+            {
+                SetLevelIntro();
+            }
+           
+        }else if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakVases();
         } else if (_currentLevel.Equals(LEVEL.BREAK_VASES) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
