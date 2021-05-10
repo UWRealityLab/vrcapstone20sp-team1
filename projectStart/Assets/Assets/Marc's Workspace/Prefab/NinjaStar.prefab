@@ -120,7 +120,7 @@ MonoBehaviour:
   durationBeforeVanishSeconds: 1.5
   poof: {fileID: 6193982347254071539, guid: f9f70ae200a6d4246b0a49666e688e85, type: 3}
   hitTargetSound: {fileID: 8300000, guid: a6afa6725bfe29d479ff242775234139, type: 3}
-  hitEnemySound: {fileID: 8300000, guid: c36d8600baebacd45bb433aba3a1332a, type: 3}
+  hitEnemySound: {fileID: 8300000, guid: ac77227506ed6c243be0ad878ab3cbee, type: 3}
   hitWoodSound: {fileID: 8300000, guid: 1e50b269acb12ce48b6366ee8c37e6f1, type: 3}
   hitWaterSound: {fileID: 8300000, guid: d2978bb296f695842889ac4c00023069, type: 3}
 --- !u!64 &6527410739436522888
@@ -279,7 +279,7 @@ AudioSource:
   m_GameObject: {fileID: 965334914612301330}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -8595660322419131938, guid: 248799cb4acba48f7b3ee842a80f788c,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 248799cb4acba48f7b3ee842a80f788c,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
