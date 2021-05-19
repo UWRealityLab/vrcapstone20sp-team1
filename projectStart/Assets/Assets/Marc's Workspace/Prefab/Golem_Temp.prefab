@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200df95d6f6f8dc42b863c532a4d77c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 20
   noise:
   - {fileID: 8300000, guid: 23e93af78441e8a4ab8fdacd967903c1, type: 3}
   - {fileID: 8300000, guid: 9d75c506d55a10f458574188c632f5c8, type: 3}

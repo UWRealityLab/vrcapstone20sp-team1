@@ -10,7 +10,7 @@ using Valve.VR.InteractionSystem;
 public class Sword : MonoBehaviour, Weapon
 {
 
-    public float damageMultiplier;
+    //public float damageMultiplier;
     public float fadeInDurationinS;
     public GameObject tip;
     public GameObject hilt;
@@ -82,7 +82,8 @@ public class Sword : MonoBehaviour, Weapon
     public int damage()
     {
         Vector3 velocity = (prevHandPos - transform.parent.position) / Time.deltaTime;
-        return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
+        //return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
+        return Mathf.RoundToInt(15f + 15f * velocity.magnitude / 30f);
     }
 
     public void SetHand(Hand hand)
@@ -114,6 +115,7 @@ public class Sword : MonoBehaviour, Weapon
             if(count > slashDurationThreshold)
             {
                 slashThresholdsMet = true;
+                Debug.Log("Speed: " + speed);
             }
         }
         else if (speed != 0)
@@ -127,6 +129,7 @@ public class Sword : MonoBehaviour, Weapon
                 hand.TriggerHapticPulse(65535);
 
                 Vector3 slashAngle = (tip.transform.position - startTipPos);
+                
 
                 GameObject slsh = Instantiate(slash, tipArcCenter, Quaternion.FromToRotation(Vector3.right, slashAngle));
 

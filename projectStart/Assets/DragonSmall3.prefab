@@ -2526,7 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043e4506363c2364494df688c424c1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 80
+  health: 20
   noise: []
   animator: {fileID: 7355895252639832975}
   range: 2

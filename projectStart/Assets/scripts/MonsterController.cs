@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 public class MonsterController : MonoBehaviour
 {
     public float speed = 4;
-    public float range = 2;
+    public float range = 1.5f;
     public NavMeshAgent agent;
     public Player player;
     private GameManager manager;

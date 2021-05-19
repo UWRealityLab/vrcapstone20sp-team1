@@ -5,7 +5,8 @@ using UnityEngine;
 public class NinjaStar : MonoBehaviour, Weapon
 {
 
-    public float damageMultiplier;
+    public int damageValue;
+    // public float damageMultiplier;
     public float durationBeforeVanishSeconds;
     public GameObject poof;
     public AudioClip hitTargetSound;
@@ -91,8 +92,9 @@ public class NinjaStar : MonoBehaviour, Weapon
     }
     public int damage()
     {
-        Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-        return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
+        //Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
+        //return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
+        return damageValue;
     }
 
     public void setAimAssist(GameObject target, float aimAssistVelocity)

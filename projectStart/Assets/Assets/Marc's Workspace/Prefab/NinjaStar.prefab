@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9512d54cc19c3e418ae1159afabc540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageMultiplier: 1
+  damageValue: 9
   durationBeforeVanishSeconds: 1.5
   poof: {fileID: 6193982347254071539, guid: f9f70ae200a6d4246b0a49666e688e85, type: 3}
   hitTargetSound: {fileID: 8300000, guid: a6afa6725bfe29d479ff242775234139, type: 3}

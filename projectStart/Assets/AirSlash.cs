@@ -5,7 +5,8 @@ using UnityEngine;
 public class AirSlash : MonoBehaviour, Weapon
 {
 
-    public int damageMultiplier = 5;
+    //public int damageMultiplier = 5;
+    public int damageValue;
     public float range = 25;
     float duration;
     float destroyDelay = .1f;
@@ -40,8 +41,9 @@ public class AirSlash : MonoBehaviour, Weapon
 
     public int damage()
     {
-        Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-        return Mathf.RoundToInt(velocity.magnitude) * damageMultiplier;
+        //Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
+        //return Mathf.RoundToInt(velocity.magnitude) * damageMultiplier;
+        return damageValue;
     }
     IEnumerator DestroySelf()
     {
