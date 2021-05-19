@@ -83,7 +83,7 @@ public class Sword : MonoBehaviour, Weapon
     {
         Vector3 velocity = (prevHandPos - transform.parent.position) / Time.deltaTime;
         //return Mathf.RoundToInt(Mathf.Sqrt((velocity.x * velocity.x) + (velocity.z * velocity.z)) * damageMultiplier);
-        return Mathf.RoundToInt(15f + 15f * velocity.magnitude / 30f);
+        return Mathf.RoundToInt(15f + 15f * (velocity.magnitude - 350) / 30f);
     }
 
     public void SetHand(Hand hand)
@@ -115,7 +115,6 @@ public class Sword : MonoBehaviour, Weapon
             if(count > slashDurationThreshold)
             {
                 slashThresholdsMet = true;
-                Debug.Log("Speed: " + speed);
             }
         }
         else if (speed != 0)

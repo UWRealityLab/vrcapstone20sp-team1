@@ -46,7 +46,6 @@ public class SmallDragonScript : Monster
         }
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
-            Debug.Log("Dragon stopped");
             agent.SetDestination(transform.position);
             animator.SetBool("Run", false);
             playAttack();
@@ -55,7 +54,6 @@ public class SmallDragonScript : Monster
             agent.SetDestination(transform.position);
         } else
         {
-            Debug.Log("dragon run");
             agent.SetDestination(player.transform.position);
             animator.SetBool("Run", true);
            /* if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -72,7 +70,6 @@ public class SmallDragonScript : Monster
     }
     public override void HitReaction()
     {
-        Debug.Log(" dragon hit");
         animator.SetTrigger("Flinch");
     }
 
@@ -85,10 +82,8 @@ public class SmallDragonScript : Monster
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            Debug.Log("dragon animation");
             int attackNumber = Random.Range(1, 4);
             string attackS = "Attack" + attackNumber;
-            Debug.Log(attackS);
             if(mid)
             {
                 animator.SetTrigger("Attack3");

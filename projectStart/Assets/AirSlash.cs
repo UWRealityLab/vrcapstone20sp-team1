@@ -10,6 +10,7 @@ public class AirSlash : MonoBehaviour, Weapon
     public float range = 25;
     float duration;
     float destroyDelay = .1f;
+    bool collided = false;
     
     private float spawnTime;
 
@@ -35,7 +36,11 @@ public class AirSlash : MonoBehaviour, Weapon
         //this.GetComponent<Collider>().enabled = false;
         if (other.name != "Sword")
         {
-            StartCoroutine(DestroySelf());
+            if (collided == false)
+            {
+                collided = true;
+                StartCoroutine(DestroySelf());
+            }
         }
     }
 

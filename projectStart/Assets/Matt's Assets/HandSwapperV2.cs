@@ -18,6 +18,7 @@ public class HandSwapperV2 : MonoBehaviour
     Vector3 starAttachRotation;
     Vector3 swordAttachPosition;
     Vector3 starAttachPosition;
+    bool starTutorial = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,11 @@ public class HandSwapperV2 : MonoBehaviour
             rightHand.AttachObject(sword, GrabTypes.Pinch, Hand.AttachmentFlags.ParentToHand);
             transform.SetParent(leftHand.transform);
             sword.GetComponent<Sword>().SetHand(rightHand);
+            if(starTutorial == true)
+            {
+                ControllerButtonHints.ShowButtonHint(leftHand, leftHand.uiInteractAction);
+                ControllerButtonHints.HideButtonHint(rightHand, rightHand.uiInteractAction);
+            }
         }
         else
         {
@@ -68,6 +74,11 @@ public class HandSwapperV2 : MonoBehaviour
             leftHand.AttachObject(sword, GrabTypes.Pinch, Hand.AttachmentFlags.ParentToHand);
             transform.SetParent(rightHand.transform);
             sword.GetComponent<Sword>().SetHand(leftHand);
+            if (starTutorial == true)
+            {
+                ControllerButtonHints.HideButtonHint(leftHand, leftHand.uiInteractAction);
+                ControllerButtonHints.ShowButtonHint(rightHand, rightHand.uiInteractAction);
+            }
         }
         swordPoof.SetParent(sword.transform.parent);
         swordPoof.localPosition = new Vector3(0, 0, 0);
@@ -91,6 +102,24 @@ public class HandSwapperV2 : MonoBehaviour
         {
             listening = false;
         }
+    }
+    public void StartStarTutorial()
+    {
+        starTutorial = true;
+        if (inRighthand == true)
+        {
+            ControllerButtonHints.ShowButtonHint(leftHand, leftHand.uiInteractAction);
+        }
+        else
+        {
+            ControllerButtonHints.ShowButtonHint(rightHand, rightHand.uiInteractAction);
+        }
+    }
+    public void EndStarTutorial()
+    {
+        starTutorial = false;
+        ControllerButtonHints.HideButtonHint(leftHand, leftHand.uiInteractAction);
+        ControllerButtonHints.HideButtonHint(rightHand, rightHand.uiInteractAction);
     }
     /*
     private void OnDisable()
