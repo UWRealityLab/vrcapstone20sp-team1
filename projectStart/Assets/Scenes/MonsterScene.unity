@@ -7883,7 +7883,6 @@ GameObject:
   - component: {fileID: 333985962}
   - component: {fileID: 333985961}
   - component: {fileID: 333985964}
-  - component: {fileID: 333985963}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7959,19 +7958,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &333985963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333985960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3446f0b8ee9c8fe4587fb88ed0e2bc45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 1989031370}
 --- !u!114 &333985964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30814,7 +30800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1106152291
 Transform:
   m_ObjectHideFlags: 0
@@ -30822,12 +30808,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106152290}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.2, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1252975958}
-  m_RootOrder: 0
+  m_Father: {fileID: 1802412680}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &1106152292
 ParticleSystemRenderer:
@@ -31083,7 +31069,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+      maxColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -31145,7 +31131,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -31461,7 +31447,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 2000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -31836,7 +31822,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1000
+        scalar: 666
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -33045,7 +33031,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -33102,7 +33088,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -0.75
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -33205,7 +33191,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
@@ -39674,7 +39660,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1106152291}
   - {fileID: 2079673008}
   m_Father: {fileID: 1802412680}
   m_RootOrder: 3
@@ -52243,7 +52228,7 @@ Transform:
   - {fileID: 2003626377}
   - {fileID: 1619405540}
   m_Father: {fileID: 1802412680}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1591479247
 GameObject:
@@ -56520,6 +56505,7 @@ Transform:
   - {fileID: 1252975958}
   - {fileID: 1865893612}
   - {fileID: 2290235202706531447}
+  - {fileID: 1106152291}
   - {fileID: 1591460014}
   m_Father: {fileID: 8217090}
   m_RootOrder: 4
@@ -57733,6 +57719,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5678f2e782d110747a204b835805693a, type: 2}
+    - target: {fileID: 23026058275702258, guid: d1c4b4ade0a1b144983fb153ea5a16a6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 65186002966220962, guid: d1c4b4ade0a1b144983fb153ea5a16a6,
         type: 3}
       propertyPath: m_IsTrigger
@@ -57769,6 +57760,16 @@ PrefabInstance:
       propertyPath: SkyLights
       value: 
       objectReference: {fileID: 2079673007}
+    - target: {fileID: 114381180135537044, guid: d1c4b4ade0a1b144983fb153ea5a16a6,
+        type: 3}
+      propertyPath: dustCloud
+      value: 
+      objectReference: {fileID: 1106152290}
+    - target: {fileID: 114381180135537044, guid: d1c4b4ade0a1b144983fb153ea5a16a6,
+        type: 3}
+      propertyPath: regularCeiling
+      value: 
+      objectReference: {fileID: 1252975957}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c4b4ade0a1b144983fb153ea5a16a6, type: 3}
 --- !u!4 &1865893612 stripped
@@ -64681,7 +64682,7 @@ Transform:
   - {fileID: 1356718845}
   - {fileID: 1033287524}
   m_Father: {fileID: 1252975958}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2082191880
 PrefabInstance:

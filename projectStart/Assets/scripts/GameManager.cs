@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
-        regularCeiling.SetActive(false);
+        //regularCeiling.SetActive(false);
         Instantiate(boss, dragonSpawnPoint.position, dragonSpawnPoint.rotation);
         breakableCeiling.SetActive(true);
         Debug.Log(_currentLevel);

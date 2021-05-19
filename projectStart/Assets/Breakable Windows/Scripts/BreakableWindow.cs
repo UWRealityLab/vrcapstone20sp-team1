@@ -48,6 +48,8 @@ public class BreakableWindow : MonoBehaviour {
     int[] tris;
     public GameObject BrokenCeiling;
     public GameObject SkyLights;
+    public GameObject dustCloud;
+    public GameObject regularCeiling;
 
     void Start()
     {
@@ -217,14 +219,16 @@ public class BreakableWindow : MonoBehaviour {
                 bakeVertices();
                 bakeSplinters();
             }
-
+            regularCeiling.SetActive(false);
             Physics.IgnoreLayerCollision(layer.value, layer.value, true);
             Destroy(GetComponent<Collider>());
             Destroy(GetComponent<MeshRenderer>());
             Destroy(GetComponent<MeshFilter>());
+            GetComponent<Renderer>().enabled = true;
 
             isBroken = true;
             SkyLights.SetActive(false);
+            dustCloud.SetActive(true);
         }
 
         if (breakingSound != null)
