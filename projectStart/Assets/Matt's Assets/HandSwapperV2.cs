@@ -14,6 +14,7 @@ public class HandSwapperV2 : MonoBehaviour
     public Transform swordPoof;
     public ThrowNinjaStarVR throwStar;
     bool listening;
+    
     Vector3 swordAttachRotation;
     Vector3 starAttachRotation;
     Vector3 swordAttachPosition;

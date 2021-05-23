@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject reward;
     public AudioClip[] noise;
     public GameObject[] playPoints;
+    public HandSwapperV2 handswapper;
+    public GameObject clue;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -80,7 +82,9 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelToNinjaStars()
     {
+        clue.SetActive(false);
         inProgress = true;
+        handswapper.StartStarTutorial();
         if (!manual)
         {
             grandpa.NinjaStarsAction();
@@ -100,6 +104,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(_currentLevel);
         inProgress = false;
     }
+
     public void SetLevelToBreakVases()
     {
         inProgress = true;
@@ -121,6 +126,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelToBreakObjects()
     {
+        clue.SetActive(true);
         inProgress = true;
         if (!manual)
         {
@@ -131,7 +137,6 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadBreakObjectsScene()
     {
-        Debug.Log("break was called");
         yield return new WaitForSeconds(7.0f);
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
@@ -142,6 +147,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetLevelFightMonsters()
     {
+        handswapper.EndStarTutorial();
         inProgress = true;
         if (!manual)
         {
@@ -281,7 +287,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Jump"))
         {
             manual = !manual;
             if (_currentLevel.Equals(LEVEL.SETUP))

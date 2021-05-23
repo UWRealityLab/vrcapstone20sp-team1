@@ -7944,6 +7944,8 @@ MonoBehaviour:
   - {fileID: 308122717}
   - {fileID: 234805841}
   - {fileID: 805655628}
+  handswapper: {fileID: 1219868034}
+  clue: {fileID: 487992343}
 --- !u!4 &333985962
 Transform:
   m_ObjectHideFlags: 0
