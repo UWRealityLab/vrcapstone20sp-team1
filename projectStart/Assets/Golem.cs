@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golem : MonoBehaviour
+public class Golem : Monster
 {
 
-    public Animation anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +14,21 @@ public class Golem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!anim.isPlaying)
-        {
-            anim.Play("Idle");
-        }
+        
+    }
+    public override void Death()
+    {
+        GetComponent<AudioSource>().PlayOneShot(death);
+        animator.SetBool("Run", false);
+        animator.SetBool("Dying", true);
+    }
+    public override void HitReaction()
+    {
+        animator.SetTrigger("Flinch");
+    }
+
+    public override void PlayHitAudio()
+    {
+        //GetComponent<AudioSource>().PlayOneShot(roar);
     }
 }
