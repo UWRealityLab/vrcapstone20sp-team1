@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Golem : Monster
 {
-
+    public AudioClip pain;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +18,23 @@ public class Golem : Monster
     }
     public override void Death()
     {
-        GetComponent<AudioSource>().PlayOneShot(death);
-        animator.SetBool("Run", false);
-        animator.SetBool("Dying", true);
+        animator.SetBool("Moving", false);
+        animator.SetBool("Die", true);
+        StartCoroutine(Dying());
     }
     public override void HitReaction()
     {
-        animator.SetTrigger("Flinch");
+        animator.SetTrigger("Hit");
+        animator.ResetTrigger("Hit");
     }
 
     public override void PlayHitAudio()
     {
-        //GetComponent<AudioSource>().PlayOneShot(roar);
+        GetComponent<AudioSource>().PlayOneShot(pain);
+    }
+    private IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
         audioManager = AudioManager.GetInstance();
         audioManager.PlayIntro();
         manual = true;
-        _currentLevel = LEVEL.SETUP;
+        _currentLevel = LEVEL.NINJA_STARS;
         Debug.Log(_currentLevel);
     }
 

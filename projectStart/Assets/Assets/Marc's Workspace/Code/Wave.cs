@@ -18,7 +18,6 @@ public class Wave : MonoBehaviour
         {
             enemies[i] = Instantiate(enemyPrefab[i], waveSpawnPoints[i]);
 
-            Debug.Log("MARC LOG: enemy: " + enemies[i]);
         }
 
     }
@@ -31,7 +30,6 @@ public class Wave : MonoBehaviour
             if (enemies[i])
                 left++;
 
-            Debug.Log("MARC LOG: enemy in left: " + enemies[i]);
         }
         return left;
     }

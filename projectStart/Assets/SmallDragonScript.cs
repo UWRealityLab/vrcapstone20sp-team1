@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using Valve.VR.InteractionSystem;
 public class SmallDragonScript : Monster
 {
-    public float range = 3;
+    public float range = 2;
     public NavMeshAgent agent;
     public AudioClip roar;
     public AudioClip death;

@@ -1141,6 +1141,7 @@ MonoBehaviour:
   range: 1.5
   agent: {fileID: 1321130352955834679}
   player: {fileID: 0}
+  anim: {fileID: 1321130351400261578}
 --- !u!114 &1321130352955834674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f394d5d548113f44d809b514c7ef592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1321130352871934020}
+  health: 100
+  noise: []
+  animator: {fileID: 0}
+  pain: {fileID: 0}
 --- !u!1001 &1321130352919848535
 PrefabInstance:
   m_ObjectHideFlags: 0
