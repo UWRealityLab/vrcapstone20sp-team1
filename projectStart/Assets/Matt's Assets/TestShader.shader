@@ -1,4 +1,4 @@
-﻿Shader "Custom/SeeThroughWood"
+﻿Shader "Custom/TestShader"
 {
     Properties
     {
@@ -9,12 +9,10 @@
     }
     SubShader
     {
-        Tags { 
-			"Queue" = "Geometry+3000"
-			//"RenderType"="Opaque+3000" 
-		}
+        Tags { "RenderType"="Opaque" }
         LOD 200
-	    ZTest LEqual
+        ZTest LEqual
+
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows
