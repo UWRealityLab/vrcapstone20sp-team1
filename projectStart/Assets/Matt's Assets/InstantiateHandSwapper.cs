@@ -4,10 +4,10 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class InitiateSword : MonoBehaviour
+public class InstantiateHandSwapper : MonoBehaviour
 {
     public Hand hand;
-    public GameObject sword;
+    public GameObject swapper;
     int childCount;
 
     // Start is called before the first frame update
@@ -15,18 +15,18 @@ public class InitiateSword : MonoBehaviour
     {
         childCount = transform.childCount;
         StartCoroutine(WaitForEnable());
-        
+
     }
     IEnumerator WaitForEnable()
     {
-        while(transform.childCount == childCount)
+        while (transform.childCount == childCount)
         {
             yield return new WaitForEndOfFrame();
         }
-        if (sword != null && sword.activeInHierarchy == true)
+        if (swapper != null && swapper.activeInHierarchy == true)
         {
-            sword.SetActive(true);
-            hand.AttachObject(sword, GrabTypes.None);
+            swapper.SetActive(true);
+            swapper.transform.SetParent(hand.transform);
             StopCoroutine(WaitForEnable());
         }
     }
@@ -34,7 +34,7 @@ public class InitiateSword : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(.5f);
-        hand.AttachObject(sword, GrabTypes.None);
+        swapper.SetActive(true);
+        swapper.transform.SetParent(hand.transform);
     }
-
 }
