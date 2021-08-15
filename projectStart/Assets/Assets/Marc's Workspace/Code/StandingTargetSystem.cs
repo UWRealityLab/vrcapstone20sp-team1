@@ -31,16 +31,15 @@ public class StandingTargetSystem : MonoBehaviour
             SpawnTarget();
     }
 
-    public bool SpawnTarget()
+    public GameObject SpawnTarget()
     {
         if (currentTarget == null)
         {
             currentTarget = Instantiate(targetObject, targetSpawnPoint.position, targetSpawnPoint.rotation);
             currentTarget.GetComponentInChildren<Rigidbody>().velocity = new Vector3(0, 2, 0);
-            return true;
         }
 
-        return false;
+        return currentTarget;
     }
 
     public bool HasTarget()

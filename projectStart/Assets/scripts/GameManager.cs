@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public SpawnRailingTarget railingTargetSystem;
     public WispMovement wisp;
     public GameObject introObject;
+    public GameObject wispStartPoint;
     public Transform dragonSpawnPoint;
     public Dragon boss;
     public GameObject breakableCeiling;
@@ -73,10 +74,12 @@ public class GameManager : MonoBehaviour
     {
         introObject = LoadInstance("IntroObject");
         _currentLevel = LEVEL.INTRO;
-        wisp.SetMovementType(WispMovement.MovementType.BOB_NEXT_TO);
-        wisp.SetTarget(
+        wisp.ClearTargets();
+        wisp.SetMovementType(WispMovement.MovementType.STILL);
+        Debug.Log("setting target to intro object");
+        wisp.AddTarget(
             introObject,
-            new Vector3(0, introObject.GetComponentInChildren<Renderer>().bounds.size.y / 2 + 0.75f, 0),
+            new Vector3(0, introObject.GetComponentInChildren<Renderer>().bounds.size.y + 0.5f, 0),
             introObject.GetComponentInChildren<Renderer>().bounds.size.x / 2 + 0.25f);
         Debug.Log(_currentLevel);
     }
@@ -97,7 +100,7 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.NINJA_STARS;
         StartCoroutine(railingTargetSystem.Spawn3Targets());
         wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
-        wisp.SetTarget(
+        wisp.AddTarget(
             railingTargetSystem.gameObject,
             new Vector3(0, railingTargetSystem.gameObject.GetComponentInChildren<Renderer>().bounds.size.y / 2 + 0.75f, 0),
             railingTargetSystem.gameObject.GetComponentInChildren<Renderer>().bounds.size.x / 2 + 0.25f);
@@ -121,6 +124,12 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.BREAK_VASES;
         Debug.Log(_currentLevel);
         LoadInstance("Vases");
+        GameObject[] vases = GameObject.FindGameObjectsWithTag("breakableItems");
+        wisp.AddTargets(
+            vases,
+            Vector3.up,
+            0.5f);
+        wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
         inProgress = false;
 
     }
@@ -141,7 +150,14 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.BREAK_OBJECTS;
         Debug.Log(_currentLevel);
         SpawnSwordTargets();
-       // LoadInstance("Vases");
+        // LoadInstance("Vases");
+        wisp.ClearTargets();
+        GameObject[] vases = GameObject.FindGameObjectsWithTag("breakableItems");
+        wisp.AddTargets(
+            vases,
+            Vector3.up * 1.75f,
+            0.5f);
+        wisp.SetMovementType(WispMovement.MovementType.ROTATE_AROUND);
         inProgress = false;
 
     }
@@ -153,15 +169,21 @@ public class GameManager : MonoBehaviour
         {
             grandpa.FightAction();
         }
-        wisp.UnsetTarget();
+        //wisp.UnsetTarget();
         playRandomMonsterSound();
         StartCoroutine(LoadLevelFightMonsters());
     }
     IEnumerator LoadLevelFightMonsters()
     {
+        wisp.ClearTargets();
         audioManager.PlayFight();
         yield return new WaitForSeconds(10f);
-        _currentLevel = LEVEL.FIGHT_MONSTERS;
+        _currentLevel = LEVEL.FIGHT_MONSTERS;  
+        wisp.AddTarget(
+            reward,
+            Vector3.zero,
+            0.5f);
+        wisp.SetMovementType(WispMovement.MovementType.STILL);
         LoadWave(attackWave);
         Debug.Log(_currentLevel);
         inProgress = false;
@@ -208,7 +230,7 @@ public class GameManager : MonoBehaviour
         _currentLevel = LEVEL.FINAL;
         //LoadInstance("RewardFinal");
         wisp.SetMovementType(WispMovement.MovementType.STILL);
-        wisp.SetTarget(reward, new Vector3(0.5f, 0, -0.25f), 0.5f);
+        wisp.AddTarget(reward, new Vector3(0.5f, 0, -0.25f), 0.5f);
         Debug.Log(_currentLevel);
         inProgress = false;
     }
@@ -279,8 +301,10 @@ public class GameManager : MonoBehaviour
         grandpa = Grandpa.GetInstance();
         audioManager = AudioManager.GetInstance();
         audioManager.PlayIntro();
+        wisp.SetMovementType(WispMovement.MovementType.STILL);
+        wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.NINJA_STARS;
+        _currentLevel = LEVEL.BREAK_VASES;
         Debug.Log(_currentLevel);
     }
 
