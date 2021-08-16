@@ -23,10 +23,12 @@ public class InstantiateHandSwapper : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        if (swapper != null && swapper.activeInHierarchy == true)
+        if (swapper != null && swapper.activeInHierarchy == false)
         {
             swapper.SetActive(true);
             swapper.transform.SetParent(hand.transform);
+            swapper.transform.localPosition = new Vector3(0, 0, 0);
+            swapper.transform.localEulerAngles = new Vector3(0, 0, 0);
             StopCoroutine(WaitForEnable());
         }
     }

@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 public class HandSwapperV2 : MonoBehaviour
 {
     public SteamVR_Action_Boolean trigger;
-    bool inRighthand = false;
+    bool inRighthand = false; // Refers to sword
     public Hand rightHand;
     public Hand leftHand;
     public GameObject sword;
@@ -94,6 +94,7 @@ public class HandSwapperV2 : MonoBehaviour
         if (other.name == "Sword")
         {
             listening = true;
+            throwStar.Unactivate();
             //StartCoroutine(Listening());
         }
     }
@@ -102,6 +103,7 @@ public class HandSwapperV2 : MonoBehaviour
         if (other.name == "Sword")
         {
             listening = false;
+            throwStar.Activate();
         }
     }
     public void StartStarTutorial()

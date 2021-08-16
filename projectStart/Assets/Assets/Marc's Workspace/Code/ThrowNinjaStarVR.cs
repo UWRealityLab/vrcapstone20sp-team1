@@ -32,6 +32,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
     {
         if(hand.GetGrabStarting() == GrabTypes.Pinch && isActive)
         {
+            Debug.Log("Throwing Star Hand " + hand.gameObject.name);
             hand.TriggerHapticPulse(2000);
             SpawnStar();
         } 

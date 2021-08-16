@@ -23,7 +23,7 @@ public class InitiateSword : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        if (sword != null && sword.activeInHierarchy == true)
+        if (sword != null && sword.activeInHierarchy == false)
         {
             sword.SetActive(true);
             hand.AttachObject(sword, GrabTypes.None);
