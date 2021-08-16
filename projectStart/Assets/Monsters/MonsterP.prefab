@@ -691,10 +691,11 @@ GameObject:
   - component: {fileID: 1069550442885521905}
   - component: {fileID: -2348508579532265929}
   - component: {fileID: -7101640149876358564}
+  - component: {fileID: 4131927363766052413}
   - component: {fileID: 1983093201588795332}
   m_Layer: 0
   m_Name: MonsterP
-  m_TagString: Untagged
+  m_TagString: monster1
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,6 +948,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5b71bbbce613ed48b4cbe9ede509bd0, type: 3}
   - {fileID: 8300000, guid: 39eabd185d1a5b24c82cb0cd5c5216c2, type: 3}
   entries: []
+--- !u!114 &4131927363766052413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626616356796792637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f394d5d548113f44d809b514c7ef592c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  noise: []
+  animator: {fileID: 1983093201588795332}
+  pain: {fileID: 8300000, guid: 7a17e83bd7bd27640b1e56343229e47f, type: 3}
 --- !u!95 &1983093201588795332
 Animator:
   serializedVersion: 3

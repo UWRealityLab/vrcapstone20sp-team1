@@ -30,7 +30,7 @@ public class DoorInteraction : MonoBehaviour
     {
         
 
-        if (collider.gameObject.tag == "monster1" || collider.gameObject.tag == "monster2" || collider.gameObject.tag == "monster3")
+        if (collider.gameObject.tag == "monster1" || collider.gameObject.tag == "monster2" || collider.gameObject.tag == "monster3" || collider.gameObject.tag == "dragon")
         {
             Debug.Log("door hit");
             //collider.isTrigger = false;

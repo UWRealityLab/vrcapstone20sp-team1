@@ -34,6 +34,10 @@ public class Golem : Monster
     }
     private IEnumerator Dying()
     {
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Finish"))
+        {
+            yield return new WaitForEndOfFrame();
+        }
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
