@@ -43,7 +43,8 @@ public class MonsterController : MonoBehaviour
             }
         }
         else
-        {               
+        {
+            attacking = false;
             agent.SetDestination(player.transform.position);
             anim.SetBool("Moving", true);
         }        
@@ -54,7 +55,7 @@ public class MonsterController : MonoBehaviour
         while (attacking == true)
         {
             anim.SetTrigger("Attack");
-            anim.ResetTrigger("Attack");
+            //anim.ResetTrigger("Attack");
             yield return new WaitForSeconds(attackDelay);
         }
     }

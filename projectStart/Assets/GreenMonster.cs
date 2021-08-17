@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golem : Monster
+public class GreenMonster : Monster
 {
     public AudioClip pain;
     // Start is called before the first frame update
@@ -18,6 +18,7 @@ public class Golem : Monster
     }
     public override void Death()
     {
+        Debug.Log("DEAD MONSTER");
         animator.SetBool("Moving", false);
         animator.SetBool("Die", true);
         StartCoroutine(Dying());
@@ -25,7 +26,7 @@ public class Golem : Monster
     public override void HitReaction()
     {
         animator.SetTrigger("Hit");
-        animator.ResetTrigger("Hit");
+        //animator.ResetTrigger("Hit");
     }
 
     public override void PlayHitAudio()
@@ -34,11 +35,13 @@ public class Golem : Monster
     }
     private IEnumerator Dying()
     {
+        /*
         while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Finish"))
         {
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForSeconds(1f);
+        */
+        yield return new WaitForSeconds(2.75f);
         Destroy(gameObject);
     }
 }
