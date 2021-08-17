@@ -40,7 +40,6 @@ public class Monster : MonoBehaviour
             }
             if (health <= 0)
             {
-                Debug.Log("Heath Below Zero: " + health);
                 Death();
             }
             else

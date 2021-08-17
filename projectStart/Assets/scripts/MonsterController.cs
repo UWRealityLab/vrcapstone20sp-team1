@@ -21,6 +21,7 @@ public class MonsterController : MonoBehaviour
         manager = GameManager.GetInstance();
         grandpa = Grandpa.GetInstance();
         player = Player.instance;
+        anim.SetBool("Moving", true);
         if (agent == null || manager == null)
         {
             Debug.Log("something is wrong");
@@ -31,11 +32,16 @@ public class MonsterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < range)
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        {
+            agent.SetDestination(transform.position);
+            Debug.Log(agent.gameObject.name);
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
             //Debug.Log("stopped");
             agent.SetDestination(transform.position);
-            anim.SetBool("Moving", false);
+            //anim.SetBool("Moving", false);
             if (attacking == false)
             {
                 attacking = true;

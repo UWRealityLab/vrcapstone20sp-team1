@@ -903,6 +903,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6686b5ca50f1e9247a8526ce79361b03, type: 3}
   animator: {fileID: 1983093201588795332}
   pain: {fileID: 8300000, guid: 7a17e83bd7bd27640b1e56343229e47f, type: 3}
+  agent: {fileID: 3187974562725851322}
+  player: {fileID: 0}
 --- !u!114 &-2348508579532265929
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ public class ThrowNinjaStarVR : MonoBehaviour
     {
         if(hand.GetGrabStarting() == GrabTypes.Pinch && isActive)
         {
-            Debug.Log("Throwing Star Hand " + hand.gameObject.name);
             hand.TriggerHapticPulse(2000);
             SpawnStar();
         } 
@@ -87,6 +86,7 @@ public class ThrowNinjaStarVR : MonoBehaviour
             ns.setAimAssist(target, handVelocity.magnitude * aimAssistValue);
         }
         GetComponent<AudioSource>().PlayOneShot(throwStarSound);
+        Destroy(star.GetComponent<Throwable>());
         star = null;
     }
 
