@@ -9,13 +9,24 @@ public class Dragon : Monster
     public AudioClip roar;
     public AudioClip death;
     public AudioClip yelp;
+    Wave wave1;
     float destroyDelay = 3;
+
+    public enum PHASE {
+        PHASE1,
+        PHASE2,
+        PHASE3
+    }
+
+    private PHASE currentPhase;
 
     private bool isDying = false;
     void Start()
     {
         //////////anim.Play("birth");
+        currentPhase = PHASE.PHASE1;
         this.GetComponent<AudioSource>().PlayOneShot(roar);
+        wave1 = GameObject.Find("Dragonwave1").GetComponent<Wave>();
     }
 
     // Update is called once per frame
@@ -32,6 +43,9 @@ public class Dragon : Monster
             GetComponent<AudioSource>().PlayOneShot(roar);
         }
         */
+        if (currentPhase == PHASE.PHASE1 && health < 400) {
+            enterPhase2();
+        }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             StartCoroutine(DestroyDelay(destroyDelay));
@@ -64,6 +78,38 @@ public class Dragon : Monster
     {
         yield return new WaitForSeconds(t);
         Destroy(gameObject);
+    }
+
+    private IEnumerator MoveOverSeconds (Vector3 end, float seconds)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = transform.position;
+        while (elapsedTime < seconds)
+        {
+            //Debug.Log("Dragon: Moving... T =" + elapsedTime/seconds + ", position = " + transform.position);
+            transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
+            elapsedTime += Time.deltaTime;
+            yield return null;//new WaitForEndOfFrame();
+        }
+        transform.position = end;
+    }
+
+    private IEnumerator DragonWave() {
+        while (wave1.EnemiesLeft() > 0) {
+            yield return null;
+        }
+        Vector3 end = transform.position + (transform.forward * 10);
+        StartCoroutine(MoveOverSeconds(end, 5f));
+    }
+
+    private void enterPhase2() {
+        Debug.Log("Dragon: Entering Phase 2");
+        currentPhase = PHASE.PHASE2;
+        Vector3 end = transform.position - (transform.forward * 10);
+        StartCoroutine(MoveOverSeconds(end, 5f));
+        wave1.SpawnEnemies();
+
+        Debug.Log("Dragon: Ending Phase 2");
     }
 
 }
