@@ -9,13 +9,15 @@ public class Dragon : Monster
     public AudioClip roar;
     public AudioClip death;
     public AudioClip yelp;
-    Wave wave1;
+    Wave wave;
     float destroyDelay = 3;
+    bool invincible;
 
     public enum PHASE {
         PHASE1,
         PHASE2,
-        PHASE3
+        PHASE3,
+        PHASE4
     }
 
     private PHASE currentPhase;
@@ -26,9 +28,21 @@ public class Dragon : Monster
         //////////anim.Play("birth");
         currentPhase = PHASE.PHASE1;
         this.GetComponent<AudioSource>().PlayOneShot(roar);
-        wave1 = GameObject.Find("Dragonwave1").GetComponent<Wave>();
+        wave = GameObject.Find("Dragonwave").GetComponent<Wave>();
+        invincible = false;
     }
 
+    public void OnTriggerEnter(Collider collider) {
+        if (!invincible) {
+            base.OnTriggerEnter(collider);
+        }
+    }
+    public void OnCollisionEnter(Collision collision) {
+        if (!invincible) {
+            base.OnCollisionEnter(collision);
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +59,12 @@ public class Dragon : Monster
         */
         if (currentPhase == PHASE.PHASE1 && health < 400) {
             enterPhase2();
+        }
+        else if (currentPhase == PHASE.PHASE2 && health < 300) {
+            enterPhase3();
+        }
+        else if (currentPhase == PHASE.PHASE3 && health < 200) {
+            enterPhase4();
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
@@ -94,22 +114,37 @@ public class Dragon : Monster
         transform.position = end;
     }
 
-    private IEnumerator DragonWave() {
-        while (wave1.EnemiesLeft() > 0) {
+    private IEnumerator DragonWave(Wave wave) {
+        Vector3 end = transform.position - (transform.forward * 10);
+        StartCoroutine(MoveOverSeconds(end, 5f));
+        wave.SpawnEnemies();
+        invincible = true;
+        while (wave.EnemiesLeft() > 0) {
             yield return null;
         }
-        Vector3 end = transform.position + (transform.forward * 10);
+        invincible = false;
+        end = transform.position + (transform.forward * 10);
         StartCoroutine(MoveOverSeconds(end, 5f));
     }
 
     private void enterPhase2() {
         Debug.Log("Dragon: Entering Phase 2");
         currentPhase = PHASE.PHASE2;
-        Vector3 end = transform.position - (transform.forward * 10);
-        StartCoroutine(MoveOverSeconds(end, 5f));
-        wave1.SpawnEnemies();
-
+        StartCoroutine(DragonWave(wave));
         Debug.Log("Dragon: Ending Phase 2");
     }
 
+    private void enterPhase3() {
+        Debug.Log("Dragon: Entering Phase 3");
+        currentPhase = PHASE.PHASE3;
+        StartCoroutine(DragonWave(wave));
+        Debug.Log("Dragon: Ending Phase 3");
+    }
+
+    private void enterPhase4() {
+        Debug.Log("Dragon: Entering Phase 4");
+        currentPhase = PHASE.PHASE4;
+        StartCoroutine(DragonWave(wave));
+        Debug.Log("Dragon: Ending Phase 4");
+    }
 }
