@@ -72,7 +72,9 @@ public class Dragon : Monster
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            animator.SetTrigger("Attack");
+            int attackInt = Random.Range(1, 4);
+            animator.SetInteger("Attack 0",attackInt);
+            //animator.SetTrigger("Attack");
         }
     }
 

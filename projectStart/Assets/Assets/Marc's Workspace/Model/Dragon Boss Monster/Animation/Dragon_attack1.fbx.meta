@@ -550,7 +550,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.23283581
+        functionName: Swipe
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 19489f190aae59f439c531354c8ae3a1,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.37910447
+        functionName: Thud1
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 19489f190aae59f439c531354c8ae3a1,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

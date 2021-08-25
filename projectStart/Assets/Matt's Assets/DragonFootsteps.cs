@@ -7,8 +7,12 @@ public class DragonFootsteps : MonoBehaviour
 {
     public AudioSource rightFoot;
     public AudioSource leftFoot;
+    public AudioSource dragon;
+
     public AudioClip footstep1;
     public AudioClip footstep2;
+    public AudioClip swipeGrunt;
+    public AudioClip lungeGrunt;
 
  
 
@@ -19,5 +23,17 @@ public class DragonFootsteps : MonoBehaviour
     void Thud2()
     {
         leftFoot.PlayOneShot(footstep2);
+    }
+    void Swipe()
+    {
+        dragon.PlayOneShot(swipeGrunt);
+    }
+    void Lunge()
+    {
+        dragon.PlayOneShot(lungeGrunt);
+    }
+    void StopAudio()
+    {
+        dragon.Stop();
     }
 }
