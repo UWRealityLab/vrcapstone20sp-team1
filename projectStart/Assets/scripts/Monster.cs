@@ -17,11 +17,11 @@ public class Monster : MonoBehaviour
     {
         hitBy = new HashSet<GameObject>();
     }
-    void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         OnTriggerEnter(collision.collider);
     }
-    void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.GetComponent<Weapon>() != null && !hitBy.Contains(collider.gameObject))
         {
