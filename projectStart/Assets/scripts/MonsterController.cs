@@ -35,7 +35,6 @@ public class MonsterController : MonoBehaviour
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
             agent.SetDestination(transform.position);
-            Debug.Log(agent.gameObject.name);
         }
         else if (Vector3.Distance(transform.position, player.transform.position) < range)
         {

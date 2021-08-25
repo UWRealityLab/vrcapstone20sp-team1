@@ -13,11 +13,9 @@ public class RoarController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("entry start");
 
         if (collider.gameObject.tag == "entry")
         {
-            Debug.Log("entry on");
             PlayHitAudio();
         }
     }

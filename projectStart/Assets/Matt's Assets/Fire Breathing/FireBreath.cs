@@ -79,6 +79,7 @@ public class FireBreath : MonoBehaviour
         }
         if(fireOn == true && previousFireState == false)
         {
+            Debug.Log("Start Coroutine");
             StartCoroutine(StartDelay());
         }
         else if(fireOn == false && previousFireState == true)
@@ -86,11 +87,22 @@ public class FireBreath : MonoBehaviour
             FireStop();
         }
         
-        if (fireAudioSource.isPlaying == false && fireAudioSource.clip.name == fireAudioStart.name)       
+        if (fireAudioSource.isPlaying == false)       
         {
-            fireAudioSource.clip = fireAudioSustain;
-            fireAudioSource.loop = true;
-            fireAudioSource.Play();
+            if (fireAudioSource.clip.name != null)
+            {
+                if (fireAudioSource.clip.name == fireAudioStart.name)
+                {
+                    fireAudioSource.clip = fireAudioSustain;
+                    fireAudioSource.loop = true;
+                    fireAudioSource.Play();
+                }
+            }
+            
+        }
+        if (fireOn == false)
+        {
+            fire.Stop();
         }
 
         //previousTriggerValue = triggerValue;
@@ -99,6 +111,7 @@ public class FireBreath : MonoBehaviour
 
     void FireStart()
     {
+        //Debug.Log("Fire Start");
         // Particle System
         fire.Play();
         // Audio
@@ -113,13 +126,34 @@ public class FireBreath : MonoBehaviour
         fireAudioSource.clip = fireAudioEnd;
         fireAudioSource.loop = false;
     }
+    public void AbruptStop()
+    {
+        Debug.Log("Abrupt Stop");
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Flinch"))
+        {
+            Debug.Log("FLinch");
+        }
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
+        {
+            Debug.Log("Attack3");
+        }
+        StopCoroutine(StartDelay());
+        //fireAudioSource.clip = null;
+        fire.Stop();
+        fireOn = false;
+        previousFireState = false;
+        fireAudioSource.Stop();
+        
+    }
     IEnumerator StartDelay()
     {
+        //Debug.Log("Start Delay");
         fireAudioSource.clip = fireWindup;
         fireAudioSource.loop = false;
         fireAudioSource.Play();
         yield return new WaitForSeconds(delayTime);
         fireAudioSource.Stop();
+        //Debug.Log("About to Start Fire");
         FireStart();
     }
 }

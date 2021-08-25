@@ -27,7 +27,6 @@ public class MistMotion : MonoBehaviour
             wasStill = false;
             particles.Clear();
             //particles.startLifetime = .5f;
-            Debug.Log("Began Motion");
         }
         if (currentPosition == previousPostion)
         {

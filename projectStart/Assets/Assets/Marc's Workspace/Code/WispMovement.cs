@@ -48,7 +48,6 @@ public class WispMovement : MonoBehaviour
     {
         if (targets.Count == 0 && (currentTarget == null || currentTarget.target == null))
         {
-            Debug.Log("no targets, follow gaze");
             Transform camera = playerCamera.GetComponent<Transform>();
             Vector3 loc = playerPosition.position + Vector3.Normalize(camera.forward + (camera.up * 0.65f) + (camera.right * 0.5f)) * 4;
             transform.position = Vector3.SmoothDamp(transform.position, loc, ref velocity, followSpeed, maxSpeed);
@@ -57,7 +56,6 @@ public class WispMovement : MonoBehaviour
         {
             while ((currentTarget == null || currentTarget.target == null) && targets.Count > 0)
             {
-                Debug.Log("no current target, adding one");
                 currentTarget = targets.Pop();
             }
 
@@ -93,7 +91,6 @@ public class WispMovement : MonoBehaviour
 
     public void SetMovementType(MovementType type)
     {
-        Debug.Log("SetMovementType called with type: " + type);
         movementType = type;
     }
 
@@ -111,7 +108,6 @@ public class WispMovement : MonoBehaviour
 
     public void ClearTargets()
     {
-        Debug.Log("Clear targets called");
         this.currentTarget = null;
         this.targets.Clear();
     }
