@@ -304,7 +304,7 @@ public class GameManager : MonoBehaviour
         wisp.SetMovementType(WispMovement.MovementType.STILL);
         wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.BREAK_VASES;
+        _currentLevel = LEVEL.SETUP;
         Debug.Log(_currentLevel);
     }
 
