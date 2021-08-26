@@ -304,13 +304,14 @@ public class GameManager : MonoBehaviour
         wisp.SetMovementType(WispMovement.MovementType.STILL);
         wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.SETUP;
+        _currentLevel = LEVEL.INTRO;
         Debug.Log(_currentLevel);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetButtonDown("Jump"))
         {
             manual = !manual;
@@ -319,7 +320,10 @@ public class GameManager : MonoBehaviour
                 SetLevelIntro();
             }
            
-        }else if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        }
+        */
+        //else if(_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakVases();
         } else if (_currentLevel.Equals(LEVEL.BREAK_VASES) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)

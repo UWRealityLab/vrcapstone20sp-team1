@@ -72,10 +72,18 @@ public class Sword : MonoBehaviour, Weapon
         if (other.tag == "monster" || other.tag == "monster1" || other.tag == "monster2" || other.tag == "monster3" || other.tag == "dragon" || other.tag == "enemy")
         {
             source.PlayOneShot(hitEnemySound);
+            //Debug.Log("SWORD ENTER " + other.gameObject.name);
         }
         else if (other.tag == "Ground")
         {
             source.PlayOneShot(hitWoodSound);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "monster" || other.tag == "monster1" || other.tag == "monster2" || other.tag == "monster3" || other.tag == "dragon" || other.tag == "enemy")
+        {
+            //Debug.Log("Sword Exit " + other.gameObject.name);
         }
     }
 
