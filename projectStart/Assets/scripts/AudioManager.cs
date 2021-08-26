@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
     {
         if(audioSource == null)
         {
-            Debug.Log("audioSource is null");
             audioSource = GetComponent<AudioSource>();
             final = Resources.Load<AudioClip>("Music/InstrumentalJapaneseMusic");
             fight = Resources.Load<AudioClip>("Music/NinjaWishBattleMusic");

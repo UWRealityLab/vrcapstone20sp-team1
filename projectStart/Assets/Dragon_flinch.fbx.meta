@@ -59,10 +59,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.025531905
-        functionName: StopAudio
+      - time: 0
+        functionName: SuddenStop
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 19489f190aae59f439c531354c8ae3a1,
+        objectReferenceParameter: {fileID: 11500000, guid: a9a4df52fb05b71419239c0538f99a64,
           type: 3}
         floatParameter: 0
         intParameter: 0

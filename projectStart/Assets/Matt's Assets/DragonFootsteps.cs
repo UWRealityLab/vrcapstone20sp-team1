@@ -15,7 +15,6 @@ public class DragonFootsteps : MonoBehaviour
     public AudioClip lungeGrunt;
     public AudioClip flinchAudio;
 
-    public FireBreath fire;
 
  
 
@@ -38,7 +37,6 @@ public class DragonFootsteps : MonoBehaviour
     void StopAudio()
     {
         //dragon.Stop();
-        fire.AbruptStop();
-        dragon.PlayOneShot(flinchAudio);
+        //dragon.PlayOneShot(flinchAudio);
     }
 }
