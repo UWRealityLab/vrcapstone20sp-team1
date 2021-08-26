@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] playPoints;
     public HandSwapperV2 handswapper;
     public GameObject clue;
+    public GameObject monsterRabble;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -170,7 +171,9 @@ public class GameManager : MonoBehaviour
             grandpa.FightAction();
         }
         //wisp.UnsetTarget();
-        playRandomMonsterSound();
+        //playRandomMonsterSound();
+        monsterRabble.SetActive(true);
+        
         StartCoroutine(LoadLevelFightMonsters());
     }
     IEnumerator LoadLevelFightMonsters()
@@ -218,6 +221,7 @@ public class GameManager : MonoBehaviour
     {
         inProgress = true;
         audioManager.PlayFinal();
+        monsterRabble.SetActive(false);
         if (!manual)
         {
             grandpa.FinalAction();
