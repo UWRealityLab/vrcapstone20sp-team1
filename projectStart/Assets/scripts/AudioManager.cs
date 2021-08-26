@@ -47,14 +47,14 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = true;
         audioSource.clip = begin;
-        audioSource.volume = 0.15f;
+        audioSource.volume = 0.25f;
         audioSource.Play();
     }
     public void PlayFight()
     {
         audioSource.Stop();
         audioSource.loop = true;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.25f;
         audioSource.clip = fight;
         audioSource.Play();
     }
