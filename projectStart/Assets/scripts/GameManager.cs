@@ -89,10 +89,7 @@ public class GameManager : MonoBehaviour
         clue.SetActive(false);
         inProgress = true;
         handswapper.StartStarTutorial();
-        if (!manual)
-        {
-            grandpa.NinjaStarsAction();
-        }
+        grandpa.NinjaStarsAction();
         StartCoroutine(LoadLevelNinjaStars());
     }
     IEnumerator LoadLevelNinjaStars()
@@ -112,10 +109,7 @@ public class GameManager : MonoBehaviour
     public void SetLevelToBreakVases()
     {
         inProgress = true;
-        if (!manual)
-        {
-            grandpa.BreakObjectsAction();
-        }
+        grandpa.BreakObjectsAction();
         StartCoroutine(LoadBreakVasesScene());
     }
     IEnumerator LoadBreakVasesScene()
@@ -138,10 +132,7 @@ public class GameManager : MonoBehaviour
     {
         clue.SetActive(true);
         inProgress = true;
-        if (!manual)
-        {
-            grandpa.AirSlashAction();
-        }
+        grandpa.AirSlashAction();
         StartCoroutine(LoadBreakObjectsScene());
         //make boxes appear
     }
@@ -166,10 +157,7 @@ public class GameManager : MonoBehaviour
     {
         handswapper.EndStarTutorial();
         inProgress = true;
-        if (!manual)
-        {
-            grandpa.FightAction();
-        }
+        grandpa.FightAction();
         //wisp.UnsetTarget();
         //playRandomMonsterSound();
         monsterRabble.SetActive(true);
@@ -200,10 +188,7 @@ public class GameManager : MonoBehaviour
     public void SetLevelDragonBoss()
     {
         inProgress = true;
-        if (!manual)
-        {
-            grandpa.DragonAction();
-        }
+        grandpa.DragonAction();
         StartCoroutine(LoadLevelDragonBoss());
     }
     IEnumerator LoadLevelDragonBoss()
@@ -221,11 +206,13 @@ public class GameManager : MonoBehaviour
     {
         inProgress = true;
         audioManager.PlayFinal();
+        wisp.AddTarget(
+            reward,
+            Vector3.zero,
+            0.5f);
+        wisp.SetMovementType(WispMovement.MovementType.STILL);
         monsterRabble.SetActive(false);
-        if (!manual)
-        {
-            grandpa.FinalAction();
-        }
+        grandpa.FinalAction();
         StartCoroutine(LoadLevelFinal());
     }
     IEnumerator LoadLevelFinal()
@@ -308,7 +295,7 @@ public class GameManager : MonoBehaviour
         wisp.SetMovementType(WispMovement.MovementType.STILL);
         wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.SETUP;
+        _currentLevel = LEVEL.INTRO;
         Debug.Log(_currentLevel);
     }
 

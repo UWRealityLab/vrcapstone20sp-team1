@@ -57,7 +57,7 @@ public class Grandpa : MonoBehaviour
     }
     public void DragonAction()
     {
-        StartCoroutine(audioPlayWait(audioClips[12], 7.0f));
+        StartCoroutine(audioPlayWait(audioClips[12], 7.5f));
     }
     public void BreakObjectsAction()
     {
