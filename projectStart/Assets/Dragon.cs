@@ -12,6 +12,7 @@ public class Dragon : Monster
     Wave wave;
     float destroyDelay = 3;
     bool invincible;
+    public FireBreath fireBreath;
 
     public enum PHASE {
         PHASE1,
@@ -70,12 +71,16 @@ public class Dragon : Monster
         {
             StartCoroutine(DestroyDelay(destroyDelay));
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             int attackInt = Random.Range(1, 4);
-            animator.SetInteger("Attack 0", 3);
-            //animator.SetInteger("Attack 0", attackInt);
+            //animator.SetInteger("Attack 0", 3);
+            animator.SetInteger("Attack 0", attackInt);
             //animator.SetTrigger("Attack");
+        }
+        else
+        {
+            animator.SetInteger("Attack 0", 0);
         }
     }
 
@@ -90,6 +95,7 @@ public class Dragon : Monster
     {
         ////////////Debug.Log("hit");
         animator.SetTrigger("Flinch");
+        //fireBreath.AbruptStop();
     }
 
     public override void PlayHitAudio()

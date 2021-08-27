@@ -58,17 +58,8 @@ public class FireBreath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         /*
-        triggerValue = trigger.GetAxis(SteamVR_Input_Sources.Any);
-        if (triggerValue >= triggerThreshold && previousTriggerValue < triggerThreshold)
-        {
-            FireStart();
-        }
-        if (triggerValue <= triggerThreshold && previousTriggerValue > triggerThreshold)
-        {
-            FireStop();
-        }
-        */
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
         {
             fireOn = true;
@@ -77,6 +68,7 @@ public class FireBreath : MonoBehaviour
         {
             fireOn = false;
         }
+        
         if(fireOn == true && previousFireState == false)
         {
             Debug.Log("Start Coroutine");
@@ -86,19 +78,13 @@ public class FireBreath : MonoBehaviour
         {
             FireStop();
         }
-        
-        if (fireAudioSource.isPlaying == false)       
+        */
+        /*
+        if (fireAudioSource.isPlaying == false && fireAudioSource.clip.name == fireAudioStart.name)       
         {
-            if (fireAudioSource.clip.name != null)
-            {
-                if (fireAudioSource.clip.name == fireAudioStart.name)
-                {
-                    fireAudioSource.clip = fireAudioSustain;
-                    fireAudioSource.loop = true;
-                    fireAudioSource.Play();
-                }
-            }
-            
+            fireAudioSource.clip = fireAudioSustain;
+            fireAudioSource.loop = true;
+            fireAudioSource.Play();            
         }
         if (fireOn == false)
         {
@@ -107,7 +93,13 @@ public class FireBreath : MonoBehaviour
 
         //previousTriggerValue = triggerValue;
         previousFireState = fireOn;
+        */
     }
+    public void FireDelay()
+    {
+        StartCoroutine(StartDelay());
+    }
+
 
     void FireStart()
     {
@@ -118,33 +110,28 @@ public class FireBreath : MonoBehaviour
         fireAudioSource.clip = fireAudioStart;
         fireAudioSource.loop = false;
         fireAudioSource.Play();
+        StartCoroutine(SwitchToSustainAudio());
     }
 
-    void FireStop()
+    public void FireStop()
     {
         fire.Stop();
+        StopAllCoroutines();
         fireAudioSource.clip = fireAudioEnd;
         fireAudioSource.loop = false;
+        fireAudioSource.PlayOneShot(fireAudioEnd);
     }
     public void AbruptStop()
     {
-        Debug.Log("Abrupt Stop");
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Flinch"))
-        {
-            Debug.Log("FLinch");
-        }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("attack3"))
-        {
-            Debug.Log("Attack3");
-        }
-        StopCoroutine(StartDelay());
+        StopAllCoroutines();
         //fireAudioSource.clip = null;
         fire.Stop();
         fireOn = false;
-        previousFireState = false;
+        previousFireState = true;
         fireAudioSource.Stop();
         
     }
+
     IEnumerator StartDelay()
     {
         //Debug.Log("Start Delay");
@@ -155,5 +142,12 @@ public class FireBreath : MonoBehaviour
         fireAudioSource.Stop();
         //Debug.Log("About to Start Fire");
         FireStart();
+    }
+    IEnumerator SwitchToSustainAudio()
+    {
+        yield return new WaitForSeconds(fireAudioStart.length);
+        fireAudioSource.clip = fireAudioSustain;
+        fireAudioSource.loop = true;
+        fireAudioSource.Play();
     }
 }

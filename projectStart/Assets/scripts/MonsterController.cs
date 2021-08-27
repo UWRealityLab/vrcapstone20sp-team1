@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 public class MonsterController : MonoBehaviour
 {
     public float speed = 4;
-    public float range = 1.5f;
+    public float range = 1.25f;
     public NavMeshAgent agent;
     public Player player;
     private GameManager manager;
@@ -40,6 +40,7 @@ public class MonsterController : MonoBehaviour
         {
             //Debug.Log("stopped");
             agent.SetDestination(transform.position);
+            anim.SetBool("Moving", false);
             //anim.SetBool("Moving", false);
             if (attacking == false)
             {

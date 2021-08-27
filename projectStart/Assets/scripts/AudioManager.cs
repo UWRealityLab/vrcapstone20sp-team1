@@ -39,7 +39,6 @@ public class AudioManager : MonoBehaviour
     {
         if(audioSource == null)
         {
-            Debug.Log("audioSource is null");
             audioSource = GetComponent<AudioSource>();
             final = Resources.Load<AudioClip>("Music/InstrumentalJapaneseMusic");
             fight = Resources.Load<AudioClip>("Music/NinjaWishBattleMusic");
@@ -48,14 +47,14 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = true;
         audioSource.clip = begin;
-        audioSource.volume = 0.15f;
+        audioSource.volume = 0.25f;
         audioSource.Play();
     }
     public void PlayFight()
     {
         audioSource.Stop();
         audioSource.loop = true;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.25f;
         audioSource.clip = fight;
         audioSource.Play();
     }

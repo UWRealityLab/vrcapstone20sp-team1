@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] playPoints;
     public HandSwapperV2 handswapper;
     public GameObject clue;
+    public GameObject monsterRabble;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -170,7 +171,9 @@ public class GameManager : MonoBehaviour
             grandpa.FightAction();
         }
         //wisp.UnsetTarget();
-        playRandomMonsterSound();
+        //playRandomMonsterSound();
+        monsterRabble.SetActive(true);
+        
         StartCoroutine(LoadLevelFightMonsters());
     }
     IEnumerator LoadLevelFightMonsters()
@@ -218,6 +221,7 @@ public class GameManager : MonoBehaviour
     {
         inProgress = true;
         audioManager.PlayFinal();
+        monsterRabble.SetActive(false);
         if (!manual)
         {
             grandpa.FinalAction();
@@ -311,6 +315,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetButtonDown("Jump"))
         {
             manual = !manual;
@@ -319,7 +324,11 @@ public class GameManager : MonoBehaviour
                 SetLevelIntro();
             }
            
-        }else if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        }
+        
+
+        //else if(_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
+        if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
         {
             SetLevelToBreakVases();
         } else if (_currentLevel.Equals(LEVEL.BREAK_VASES) && GameObject.FindGameObjectsWithTag("breakableItems").Length == 0 && !inProgress)
