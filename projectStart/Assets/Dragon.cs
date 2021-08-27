@@ -11,6 +11,7 @@ public class Dragon : Monster
     public AudioClip yelp;
     Wave wave;
     float destroyDelay = 3;
+    Vector3 prevFramePos;
     bool invincible;
     public FireBreath fireBreath;
 
@@ -82,6 +83,10 @@ public class Dragon : Monster
         {
             animator.SetInteger("Attack 0", 0);
         }
+        float movementPerFrame = Vector3.Distance(prevFramePos, transform.position);
+        float speed = movementPerFrame / Time.deltaTime;
+        animator.SetFloat("Speed", speed);
+        prevFramePos = transform.position;
     }
 
     public override void Death()
@@ -125,6 +130,7 @@ public class Dragon : Monster
 
     private IEnumerator DragonWave(Wave wave) {
         Vector3 end = transform.position - (transform.forward * 10);
+        animator.SetBool("isReversing", true);
         StartCoroutine(MoveOverSeconds(end, 5f));
         wave.SpawnEnemies();
         invincible = true;
@@ -133,6 +139,7 @@ public class Dragon : Monster
         }
         invincible = false;
         end = transform.position + (transform.forward * 10);
+        animator.SetBool("isReversing", false);
         StartCoroutine(MoveOverSeconds(end, 5f));
     }
 
