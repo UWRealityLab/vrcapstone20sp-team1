@@ -130,6 +130,7 @@ public class Dragon : Monster
 
     private IEnumerator DragonWave(Wave wave) {
         Vector3 end = transform.position - (transform.forward * 10);
+        fireBreath.AbruptStop();
         animator.SetBool("isReversing", true);
         StartCoroutine(MoveOverSeconds(end, 5f));
         wave.SpawnEnemies();
@@ -139,6 +140,7 @@ public class Dragon : Monster
         }
         invincible = false;
         end = transform.position + (transform.forward * 10);
+        fireBreath.AbruptStop();
         animator.SetBool("isReversing", false);
         StartCoroutine(MoveOverSeconds(end, 5f));
     }
