@@ -62,10 +62,10 @@ public class Dragon : Monster
             GetComponent<AudioSource>().PlayOneShot(roar);
         }
         */
-        if (currentPhase == PHASE.PHASE1 && health < 350) {
+        if (currentPhase == PHASE.PHASE1 && health < 175) {
             enterPhase2();
         }
-        else if (currentPhase == PHASE.PHASE2 && health < 150) {
+        else if (currentPhase == PHASE.PHASE2 && health < 100) {
             enterPhase3();
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))

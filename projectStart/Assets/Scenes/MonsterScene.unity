@@ -11404,6 +11404,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9955062, y: 0.5525255, z: 0.8344406}
   m_Center: {x: -0.0022472902, y: -0.4766984, z: 0.07520485}
+--- !u!1 &522950367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522950368}
+  m_Layer: 0
+  m_Name: Wave9_SpawnPoint6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522950368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522950367}
+  m_LocalRotation: {x: -0, y: 0.08726394, z: -0, w: 0.99618524}
+  m_LocalPosition: {x: -24.32, y: -1, z: -1.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701209362}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &523118568
 GameObject:
   m_ObjectHideFlags: 0
@@ -28125,6 +28155,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1361917974}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &985899372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985899373}
+  m_Layer: 0
+  m_Name: Wave9_SpawnPoint5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &985899373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985899372}
+  m_LocalRotation: {x: -0, y: 0.08726394, z: -0, w: 0.99618524}
+  m_LocalPosition: {x: 20.67, y: -1, z: -1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701209362}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988999942
 GameObject:
@@ -55236,8 +55296,16 @@ MonoBehaviour:
   waveSpawnPoints:
   - {fileID: 1541176114}
   - {fileID: 1822787490}
+  - {fileID: 126391403}
+  - {fileID: 340859146}
+  - {fileID: 985899373}
+  - {fileID: 522950368}
   enemyPrefab:
-  - {fileID: 3394522446268496398, guid: e6d346ace235e2649880dd65f8eca17d, type: 3}
+  - {fileID: 5894087948732572726, guid: e2c8ef6baccf38949a47b400a5cea634, type: 3}
+  - {fileID: 1626616356796792637, guid: 3c63ed5d056b48b41b7f87d414651186, type: 3}
+  - {fileID: 5894087948732572726, guid: e2c8ef6baccf38949a47b400a5cea634, type: 3}
+  - {fileID: 1626616356796792637, guid: 3c63ed5d056b48b41b7f87d414651186, type: 3}
+  - {fileID: 5894087948732572726, guid: e2c8ef6baccf38949a47b400a5cea634, type: 3}
   - {fileID: 1626616356796792637, guid: 3c63ed5d056b48b41b7f87d414651186, type: 3}
 --- !u!4 &1701209362
 Transform:
@@ -55254,6 +55322,8 @@ Transform:
   - {fileID: 1822787490}
   - {fileID: 126391403}
   - {fileID: 340859146}
+  - {fileID: 985899373}
+  - {fileID: 522950368}
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
