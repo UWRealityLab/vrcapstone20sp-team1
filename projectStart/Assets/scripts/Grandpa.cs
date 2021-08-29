@@ -102,16 +102,21 @@ public class Grandpa : MonoBehaviour
 
     public void onMonsterDeath()
     {
-        if(!isPlaying()){
-            int random2 = Random.Range(0, fighting.Length);
-            if(random != random2)
+        int chanceOfPlaying = Random.Range(0, 4);
+        if (chanceOfPlaying == 0)
+        {
+            if (!isPlaying())
             {
-                AudioClip a = fighting[random2];
-                GetComponent<AudioSource>().PlayOneShot(a);
-                startTime = Time.time;
-                len = a.length;
-                random = random2;
-            }           
+                int random2 = Random.Range(0, fighting.Length);
+                if (random != random2)
+                {
+                    AudioClip a = fighting[random2];
+                    GetComponent<AudioSource>().PlayOneShot(a);
+                    startTime = Time.time;
+                    len = a.length;
+                    random = random2;
+                }
+            }
         }
     }
 

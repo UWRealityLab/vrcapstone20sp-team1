@@ -2335,7 +2335,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3394522446268496398}
-  m_LocalRotation: {x: -0, y: 0.9124755, z: -0, w: 0.4091314}
+  m_LocalRotation: {x: 0, y: 0.912474, z: 0, w: 0.4091348}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.25, z: 0.25}
   m_Children:
@@ -2529,7 +2529,7 @@ MonoBehaviour:
   health: 20
   noise: []
   animator: {fileID: 7355895252639832975}
-  range: 2
+  range: 1.35
   agent: {fileID: 1872405802255632815}
   roar: {fileID: 8300000, guid: 38c49a5bd57a5324da197af50ee31863, type: 3}
   death: {fileID: 8300000, guid: c771de370ae23c848acd47a7be3437b4, type: 3}
