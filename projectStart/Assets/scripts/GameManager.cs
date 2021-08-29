@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public HandSwapperV2 handswapper;
     public GameObject clue;
     public GameObject monsterRabble;
+    public ResonanceAudioSource athrielSpatialAudio;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -193,6 +194,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelDragonBoss()
     {
+        athrielSpatialAudio.gainDb = 13.0f;
         yield return new WaitForSeconds(5.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
         //regularCeiling.SetActive(false);
@@ -295,7 +297,7 @@ public class GameManager : MonoBehaviour
         wisp.SetMovementType(WispMovement.MovementType.STILL);
         wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.SETUP;
+        _currentLevel = LEVEL.NINJA_STARS;
         Debug.Log(_currentLevel);
     }
 

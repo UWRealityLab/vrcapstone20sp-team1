@@ -68,13 +68,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fe0f67c5c531fe24d81200ab753ed98a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 1
   SpatializePostEffects: 0
-  Priority: 242
+  Priority: 251
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -169,7 +169,7 @@ MonoBehaviour:
   directivitySharpness: 1
   listenerDirectivityAlpha: 0
   listenerDirectivitySharpness: 1
-  gainDb: 0
+  gainDb: -1.7
   nearFieldEffectEnabled: 0
   nearFieldEffectGain: 1
   occlusionEnabled: 0
