@@ -9,17 +9,18 @@ public class Dragon : Monster
     public AudioClip roar;
     public AudioClip death;
     public AudioClip yelp;
-    Wave wave;
+    Wave wave1;
+    Wave wave2;
     float destroyDelay = 3;
     Vector3 prevFramePos;
     bool invincible;
+    bool wounded;
     public FireBreath fireBreath;
 
     public enum PHASE {
         PHASE1,
         PHASE2,
-        PHASE3,
-        PHASE4
+        PHASE3
     }
 
     private PHASE currentPhase;
@@ -30,8 +31,10 @@ public class Dragon : Monster
         //////////anim.Play("birth");
         currentPhase = PHASE.PHASE1;
         this.GetComponent<AudioSource>().PlayOneShot(roar);
-        wave = GameObject.Find("Dragonwave").GetComponent<Wave>();
+        wave1 = GameObject.Find("Dragonwave1").GetComponent<Wave>();
+        wave2 = GameObject.Find("Dragonwave2").GetComponent<Wave>();
         invincible = false;
+        wounded = false;
     }
 
     public void OnTriggerEnter(Collider collider) {
@@ -59,20 +62,17 @@ public class Dragon : Monster
             GetComponent<AudioSource>().PlayOneShot(roar);
         }
         */
-        if (currentPhase == PHASE.PHASE1 && health < 400) {
+        if (currentPhase == PHASE.PHASE1 && health < 350) {
             enterPhase2();
         }
-        else if (currentPhase == PHASE.PHASE2 && health < 300) {
+        else if (currentPhase == PHASE.PHASE2 && health < 150) {
             enterPhase3();
-        }
-        else if (currentPhase == PHASE.PHASE3 && health < 200) {
-            enterPhase4();
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             StartCoroutine(DestroyDelay(destroyDelay));
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !wounded)
         {
             int attackInt = Random.Range(1, 4);
             //animator.SetInteger("Attack 0", 3);
@@ -132,6 +132,7 @@ public class Dragon : Monster
         Vector3 end = transform.position - (transform.forward * 10);
         fireBreath.AbruptStop();
         animator.SetBool("isReversing", true);
+        wounded = true;
         StartCoroutine(MoveOverSeconds(end, 5f));
         wave.SpawnEnemies();
         invincible = true;
@@ -142,27 +143,21 @@ public class Dragon : Monster
         end = transform.position + (transform.forward * 10);
         fireBreath.AbruptStop();
         animator.SetBool("isReversing", false);
+        wounded = false;
         StartCoroutine(MoveOverSeconds(end, 5f));
     }
 
     private void enterPhase2() {
         Debug.Log("Dragon: Entering Phase 2");
         currentPhase = PHASE.PHASE2;
-        StartCoroutine(DragonWave(wave));
+        StartCoroutine(DragonWave(wave1));
         Debug.Log("Dragon: Ending Phase 2");
     }
 
     private void enterPhase3() {
         Debug.Log("Dragon: Entering Phase 3");
         currentPhase = PHASE.PHASE3;
-        StartCoroutine(DragonWave(wave));
+        StartCoroutine(DragonWave(wave2));
         Debug.Log("Dragon: Ending Phase 3");
-    }
-
-    private void enterPhase4() {
-        Debug.Log("Dragon: Entering Phase 4");
-        currentPhase = PHASE.PHASE4;
-        StartCoroutine(DragonWave(wave));
-        Debug.Log("Dragon: Ending Phase 4");
     }
 }
