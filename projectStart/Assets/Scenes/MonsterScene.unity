@@ -8107,6 +8107,7 @@ MonoBehaviour:
   handswapper: {fileID: 1219868034}
   clue: {fileID: 487992343}
   monsterRabble: {fileID: 1403113223}
+  athrielSpatialAudio: {fileID: 651880053}
 --- !u!4 &333985962
 Transform:
   m_ObjectHideFlags: 0
