@@ -297,7 +297,7 @@ public class GameManager : MonoBehaviour
         wisp.SetMovementType(WispMovement.MovementType.STILL);
         wisp.AddTarget(wispStartPoint, Vector3.zero, 0f);
         manual = true;
-        _currentLevel = LEVEL.NINJA_STARS;
+        _currentLevel = LEVEL.SETUP;
         Debug.Log(_currentLevel);
     }
 
