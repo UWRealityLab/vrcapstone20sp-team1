@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadLevelDragonBoss()
     {
-        athrielSpatialAudio.gainDb = 13.0f;
+        athrielSpatialAudio.gainDb = 15.0f;
         yield return new WaitForSeconds(5.0f);
         _currentLevel = LEVEL.DRAGON_BOSS;
         //regularCeiling.SetActive(false);
