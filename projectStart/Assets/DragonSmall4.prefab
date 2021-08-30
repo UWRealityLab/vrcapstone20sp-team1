@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 1784171121145644471}
   - component: {fileID: 4982278564981042080}
   - component: {fileID: 7434276148644812695}
+  - component: {fileID: -4802411150139344045}
   m_Layer: 0
   m_Name: DragonSmall4
   m_TagString: dragon
@@ -530,6 +531,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-4802411150139344045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894087948732572726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a4df52fb05b71419239c0538f99a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireBreath: {fileID: 0}
 --- !u!1 &5894089968856434106
 GameObject:
   m_ObjectHideFlags: 0

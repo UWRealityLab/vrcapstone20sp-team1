@@ -9,14 +9,23 @@ public class FireControl : MonoBehaviour
     // Methods are called from animation events attached to the start and end of attack3 and the start of flinch
     void StartBreath()
     {
-        fireBreath.FireDelay();
+        if (fireBreath != null)
+        {
+            fireBreath.FireDelay();
+        }
     }
     void StopBreath()
     {
-        fireBreath.FireStop();
+        if (fireBreath != null)
+        {
+            fireBreath.FireStop();
+        }
     }
     void SuddenStop()
     {
-        fireBreath.AbruptStop();
+        if (fireBreath != null)
+        {
+            fireBreath.AbruptStop();
+        }
     }
 }
