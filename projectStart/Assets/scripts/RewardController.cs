@@ -14,6 +14,8 @@ namespace Valve.VR.InteractionSystem
         private GameObject effectsObject = null;
         int time = -1;
         bool d = true;
+        bool reachedZ = false;
+        public EndParticleTransition endParticles;
 
         //public final position;
         // Start is called before the first frame update
@@ -34,9 +36,18 @@ namespace Valve.VR.InteractionSystem
                 if (other.y > 0.1 )
                 {
                     transform.Translate(v1 * Time.deltaTime * speed);
-                } if (other.z > 1)
+                }
+                if (other.z > 1)
                 {
                     transform.Translate(v2 * Time.deltaTime * speed);
+                }
+                else
+                {
+                    if (reachedZ == false)
+                    {
+                        reachedZ = true;
+                        endParticles.Transition();
+                    }
                 }
             }
             else if (manager.GetLevel() == GameManager.LEVEL.FINAL && effectsObject == null)
@@ -49,6 +60,7 @@ namespace Valve.VR.InteractionSystem
                 if (time == 50)
                 {
                     manager.SetLevelEnd();
+                    Debug.Log("Reached GOal");
                     //Destroy(gameObject);
 
                 }

@@ -65021,6 +65021,11 @@ PrefabInstance:
       propertyPath: speed
       value: 0.545
       objectReference: {fileID: 0}
+    - target: {fileID: 6869255853194906197, guid: 77e4690254483fb4e8ea01e690ad1c18,
+        type: 3}
+      propertyPath: endParticles
+      value: 
+      objectReference: {fileID: 1251742008}
     - target: {fileID: 6869255853194906199, guid: 77e4690254483fb4e8ea01e690ad1c18,
         type: 3}
       propertyPath: m_Name
