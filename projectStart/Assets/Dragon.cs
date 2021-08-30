@@ -121,6 +121,7 @@ public class Dragon : Monster
         while (elapsedTime < seconds)
         {
             //Debug.Log("Dragon: Moving... T =" + elapsedTime/seconds + ", position = " + transform.position);
+            fireBreath.AbruptStop();
             transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
             yield return null;//new WaitForEndOfFrame();
@@ -141,7 +142,6 @@ public class Dragon : Monster
         }
         invincible = false;
         end = transform.position + (transform.forward * 10);
-        fireBreath.AbruptStop();
         animator.SetBool("isReversing", false);
         wounded = false;
         StartCoroutine(MoveOverSeconds(end, 5f));
