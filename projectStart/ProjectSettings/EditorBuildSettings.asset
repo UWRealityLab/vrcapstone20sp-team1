@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MonsterScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/TakeHome.unity
+    guid: 85474d35a735bb041922d4e745138853
   m_configObjects: {}

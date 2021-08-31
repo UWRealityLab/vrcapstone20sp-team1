@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject clue;
     public GameObject monsterRabble;
     public ResonanceAudioSource athrielSpatialAudio;
+    public GameObject pointing;
 
     private static GameManager instance; //Singelton pattern
     public enum LEVEL
@@ -207,6 +208,7 @@ public class GameManager : MonoBehaviour
     public void SetLevelFinal()
     {
         inProgress = true;
+        pointing.SetActive(true);
         audioManager.PlayFinal();
         wisp.AddTarget(
             reward,
@@ -305,7 +307,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetButtonDown("Jump"))
         {
             manual = !manual;
@@ -313,7 +315,7 @@ public class GameManager : MonoBehaviour
             {
                 SetLevelIntro();
             }
-           
+
         }
         
         if (_currentLevel.Equals(LEVEL.INTRO) && GameObject.FindGameObjectsWithTag("IntroObject").Length == 0 && !inProgress)
